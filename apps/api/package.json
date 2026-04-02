@@ -1,0 +1,29 @@
+{
+  "name": "@findable/api",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun --format esm",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "db:generate": "bun x drizzle-kit generate --config drizzle.config.ts",
+    "db:migrate": "bun src/db/migrate.ts",
+    "db:seed": "bun src/db/seed.ts"
+  },
+  "dependencies": {
+    "@findable/shared": "workspace:*",
+    "bullmq": "^5.50.0",
+    "drizzle-orm": "^0.44.0",
+    "hono": "^4.7.0",
+    "ioredis": "^5.5.0",
+    "pg": "^8.14.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.0",
+    "bun-types": "^1.3.11",
+    "drizzle-kit": "^0.31.0",
+    "typescript": "^5.8.0"
+  }
+}
