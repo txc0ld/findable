@@ -11,8 +11,13 @@ const EnvSchema = z.object({
   JWT_SECRET: z.string().min(32).default("findable-local-jwt-secret-change-me-123456"),
   JWT_ISSUER: z.string().default("findable-api"),
   RESEND_API_KEY: z.string().optional(),
-  RESEND_FROM_EMAIL: z.string().default("Findable <no-reply@getfindable.ai>"),
+  RESEND_FROM_EMAIL: z.string().default("Findable <no-reply@getfindable.au>"),
   COOKIE_DOMAIN: z.string().optional(),
+  SHOPIFY_API_KEY: z.string().optional(),
+  SHOPIFY_API_SECRET: z.string().optional(),
+  SHOPIFY_APP_URL: z.string().url().optional(),
+  SHOPIFY_TOKEN_ENCRYPTION_KEY: z.string().optional(),
+  SHOPIFY_API_VERSION: z.string().default("2026-01"),
 });
 
 export const env = EnvSchema.parse({
@@ -28,4 +33,9 @@ export const env = EnvSchema.parse({
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
   COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
+  SHOPIFY_API_KEY: process.env.SHOPIFY_API_KEY,
+  SHOPIFY_API_SECRET: process.env.SHOPIFY_API_SECRET,
+  SHOPIFY_APP_URL: process.env.SHOPIFY_APP_URL,
+  SHOPIFY_TOKEN_ENCRYPTION_KEY: process.env.SHOPIFY_TOKEN_ENCRYPTION_KEY,
+  SHOPIFY_API_VERSION: process.env.SHOPIFY_API_VERSION,
 });

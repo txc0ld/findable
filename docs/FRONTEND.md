@@ -7,7 +7,7 @@
 ## IDENTITY
 
 **Product:** FINDABLE — AI Commerce Readiness Scanner
-**Domain:** getfindable.ai
+**Domain:** getfindable.au
 **Tagline:** "AI agents are shopping for your customers. Can they find you?"
 **Audience:** E-commerce store owners, Shopify merchants, digital agencies. Mix of technical and non-technical. Aged 25-50. Primarily mobile-first browsing but desktop for dashboard work.
 **Tone:** Confident, sharp, slightly urgent. Not corporate. Not playful. Think: a smart friend who works in tech telling you something important you've been missing. Direct without being aggressive. Premium without being pretentious.

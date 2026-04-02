@@ -79,7 +79,7 @@ interface SignalSnapshot {
 }
 
 const USER_AGENT =
-  "Mozilla/5.0 (compatible; FindableBot/1.0; +https://getfindable.ai)";
+  "Mozilla/5.0 (compatible; FindableBot/1.0; +https://getfindable.au)";
 
 function hashString(value: string): number {
   return Array.from(value).reduce((accumulator, character) => {

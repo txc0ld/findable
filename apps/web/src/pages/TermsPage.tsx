@@ -81,7 +81,7 @@ export function TermsPage() {
           </Section>
 
           <Section title="10. Contact">
-            For questions about these terms, contact us at legal@getfindable.ai.
+            For questions about these terms, contact us at legal@getfindable.au.
           </Section>
         </div>
       </main>

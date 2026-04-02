@@ -2,7 +2,7 @@
 
 ## The AI Commerce Readiness Platform
 
-**Domain:** getfindable.ai
+**Domain:** getfindable.au
 **Tagline:** "AI agents are shopping for your customers. Can they find you?"
 
 ---
@@ -1013,13 +1013,13 @@ Merchant scans → sees score (34/100) → shares on socials/Slack
 4.6M+ merchants. Keywords: "AI SEO", "schema markup", "structured data", "ChatGPT shopping", "AI commerce", "agent ready". Free scan within the app drives conversion.
 
 **2. Embeddable Scanner Widget**
-Any e-commerce blog, newsletter, or tool site can embed a "Check Your AI Readiness" widget. Affiliate commission for embedding sites. Widget input: URL → iframe shows score → full report at getfindable.ai.
+Any e-commerce blog, newsletter, or tool site can embed a "Check Your AI Readiness" widget. Affiliate commission for embedding sites. Widget input: URL → iframe shows score → full report at getfindable.au.
 
 **3. Public Score Badges**
 Merchants who score 80+ can embed: "FINDABLE ✓ Score: 91/100" badge on their store. Free advertising for FINDABLE on every page of their store.
 
 **4. Industry Benchmark Reports**
-Quarterly reports: "The Average Shopify Apparel Store Scores 28/100 for AI Readiness." PR + SEO + lead gen. Published on getfindable.ai/reports.
+Quarterly reports: "The Average Shopify Apparel Store Scores 28/100 for AI Readiness." PR + SEO + lead gen. Published on getfindable.au/reports.
 
 **5. Agency Partner Program**
 White-label dashboard. Agency brand, agency pricing, agency client relationships. FINDABLE powers the engine. $999/mo base.
@@ -1050,7 +1050,7 @@ Cross-promote with Judge.me, Stamped (reviews), Klaviyo (email), PageFly (pages)
 ## 11. BUILD PHASES
 
 ### Phase 1: Free Scanner (Weeks 1-3)
-- [ ] Landing page: getfindable.ai (React + Vite + Tailwind)
+- [ ] Landing page: getfindable.au (React + Vite + Tailwind)
 - [ ] 3 URL inputs + email + Cloudflare Turnstile
 - [ ] Email capture + disposable email blocklist
 - [ ] Scan queue worker (Hono + BullMQ + Redis)
@@ -1179,6 +1179,6 @@ Cross-promote with Judge.me, Stamped (reviews), Klaviyo (email), PageFly (pages)
 
 **One sentence:** FINDABLE is Lighthouse for AI commerce — scan your store, see what AI shopping agents see, fix everything in one click.
 
-**30-second version:** 58% of consumers now use AI to find products. ChatGPT processes 50 million shopping queries a day. But fewer than 2% of stores are optimized for AI discovery. FINDABLE scans your product pages, scores them for AI readiness across four dimensions, and auto-fixes everything — from structured data to product descriptions to feed compliance. Paste your URL at getfindable.ai and see your score in 15 seconds.
+**30-second version:** 58% of consumers now use AI to find products. ChatGPT processes 50 million shopping queries a day. But fewer than 2% of stores are optimized for AI discovery. FINDABLE scans your product pages, scores them for AI readiness across four dimensions, and auto-fixes everything — from structured data to product descriptions to feed compliance. Paste your URL at getfindable.au and see your score in 15 seconds.
 
 **The hook:** "AI agents are shopping for your customers. Can they find you?"

@@ -85,12 +85,24 @@ export const stores = pgTable("stores", {
   platform: platformEnum("platform"),
   shopifyShop: text("shopify_shop"),
   shopifyAccessToken: text("shopify_access_token"),
+  shopifyScopes: text("shopify_scopes").array(),
+  shopifyInstalledAt: timestamp("shopify_installed_at", { withTimezone: true }),
+  shopifyUninstalledAt: timestamp("shopify_uninstalled_at", { withTimezone: true }),
+  active: boolean("active").notNull().default(true),
   wcUrl: text("wc_url"),
   wcKey: text("wc_key"),
   wcSecret: text("wc_secret"),
   productCount: integer("product_count"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const shopifyWebhookDeliveries = pgTable("shopify_webhook_deliveries", {
+  deliveryId: text("delivery_id").primaryKey(),
+  storeId: uuid("store_id").references(() => stores.id, { onDelete: "cascade" }),
+  shop: text("shop").notNull(),
+  topic: text("topic").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
 export const scans = pgTable("scans", {
@@ -211,6 +223,7 @@ export const schema = {
   authRefreshTokens,
   passwordResetTokens,
   stores,
+  shopifyWebhookDeliveries,
   scans,
   products,
   issues,
@@ -223,6 +236,7 @@ export type Account = typeof accounts.$inferSelect;
 export type AuthRefreshToken = typeof authRefreshTokens.$inferSelect;
 export type PasswordResetToken = typeof passwordResetTokens.$inferSelect;
 export type Store = typeof stores.$inferSelect;
+export type ShopifyWebhookDelivery = typeof shopifyWebhookDeliveries.$inferSelect;
 export type Scan = typeof scans.$inferSelect;
 export type Product = typeof products.$inferSelect;
 export type Issue = typeof issues.$inferSelect;

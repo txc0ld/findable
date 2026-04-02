@@ -19,7 +19,7 @@ if (!db) {
 const existingAccount = await db
   .select({ id: accounts.id })
   .from(accounts)
-  .where(eq(accounts.email, "demo@getfindable.ai"))
+  .where(eq(accounts.email, "demo@getfindable.au"))
   .limit(1);
 
 if (existingAccount.length > 0) {
@@ -30,7 +30,7 @@ if (existingAccount.length > 0) {
 const [account] = await db
   .insert(accounts)
   .values({
-    email: "demo@getfindable.ai",
+    email: "demo@getfindable.au",
     plan: "starter",
     freeScanUsed: true,
   })
@@ -44,7 +44,7 @@ const [store] = await db
   .insert(stores)
   .values({
     accountId: account.id,
-    url: "https://demo-store.getfindable.ai",
+    url: "https://demo-store.getfindable.au",
     name: "Demo Store",
     platform: "shopify",
     shopifyShop: "demo-store.myshopify.com",
@@ -64,9 +64,9 @@ const [scan] = await db
     scanType: "full",
     status: "complete",
     urlsInput: [
-      "https://demo-store.getfindable.ai/products/heavyweight-tee",
-      "https://demo-store.getfindable.ai/products/canvas-sneaker",
-      "https://demo-store.getfindable.ai/products/everyday-tote",
+      "https://demo-store.getfindable.au/products/heavyweight-tee",
+      "https://demo-store.getfindable.au/products/canvas-sneaker",
+      "https://demo-store.getfindable.au/products/everyday-tote",
     ],
     pagesScanned: 3,
     pagesTotal: 3,
@@ -93,7 +93,7 @@ const [product] = await db
   .values({
     scanId: scan.id,
     storeId: store.id,
-    url: "https://demo-store.getfindable.ai/products/heavyweight-tee",
+    url: "https://demo-store.getfindable.au/products/heavyweight-tee",
     name: "Heavyweight Tee",
     platformProductId: "gid://shopify/Product/1",
     googleCategory: "Apparel > Shirts > T-Shirts",
@@ -188,7 +188,7 @@ await db.insert(competitors).values({
 await db.insert(feeds).values({
   storeId: store.id,
   feedType: "acp",
-  fileUrl: "https://feeds.getfindable.ai/demo/acp.jsonl.gz",
+  fileUrl: "https://feeds.getfindable.au/demo/acp.jsonl.gz",
   productCount: 3,
   refreshMinutes: 1440,
   lastGenerated: new Date(),

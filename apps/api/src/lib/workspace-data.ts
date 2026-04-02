@@ -600,7 +600,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
       name: latestStore?.name ?? null,
       platform: latestStore?.platform ?? null,
       productCount: latestStore?.productCount ?? workspaceProducts.length,
-      status: latestStore?.url ? "connected" : "not_connected",
+      status: latestStore?.url && latestStore.active ? "connected" : "not_connected",
       updatedAt: latestStore?.updatedAt?.toISOString() ?? null,
       url: latestStore?.url ?? null,
     },
@@ -612,7 +612,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
       criticalIssues: sortedIssues.filter((issue) => issue.severity === "critical").length,
       autoFixableIssues: sortedIssues.filter((issue) => issue.fixType === "auto" && !issue.fixed).length,
       recentScanCount: scanRows.length,
-      connectedStores: latestStore?.url ? 1 : 0,
+      connectedStores: latestStore?.url && latestStore.active ? 1 : 0,
       productsScanned: workspaceProducts.length,
     },
   };

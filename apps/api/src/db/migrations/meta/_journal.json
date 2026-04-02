@@ -15,6 +15,13 @@
       "when": 1775100031125,
       "tag": "0001_careless_morgan_stark",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1775103606313,
+      "tag": "0002_sharp_ultragirl",
+      "breakpoints": true
     }
   ]
 }

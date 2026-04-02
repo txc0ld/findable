@@ -64,11 +64,11 @@ export function PrivacyPage() {
           <Section title="7. Your Rights">
             You have the right to access, correct, or delete your personal data.
             You may also request a copy of the data we hold about you. Contact
-            us at privacy@getfindable.ai to exercise these rights.
+            us at privacy@getfindable.au to exercise these rights.
           </Section>
 
           <Section title="8. Contact">
-            For privacy-related questions, contact us at privacy@getfindable.ai.
+            For privacy-related questions, contact us at privacy@getfindable.au.
           </Section>
         </div>
       </main>

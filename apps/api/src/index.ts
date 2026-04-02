@@ -6,6 +6,7 @@ import { accountRoute } from "./routes/account";
 import { authRoute } from "./routes/auth";
 import { healthRoute } from "./routes/health";
 import { scanRoute } from "./routes/scan";
+import { shopifyRoute } from "./routes/shopify";
 
 const app = new Hono();
 const allowedOrigins = (
@@ -49,6 +50,8 @@ app.route("/api/health", healthRoute);
 app.route("/api/auth", authRoute);
 app.route("/api/account", accountRoute);
 app.route("/api/scan", scanRoute);
+app.route("/api/shopify", shopifyRoute);
+app.route("/shopify", shopifyRoute);
 
 export type AppType = typeof app;
 
