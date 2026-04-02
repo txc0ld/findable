@@ -74,7 +74,7 @@ export function BillingPage() {
                   <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
                     {plan.plan}
                   </p>
-                  <p className="mt-2 text-3xl font-extrabold text-[#ccff00]">{plan.price}</p>
+                  <p className="mt-2 text-2xl font-extrabold text-[#ccff00] sm:text-3xl">{plan.price}</p>
                   <p className="mt-2 text-sm text-white/50">{plan.description}</p>
                 </div>
                 {isCurrent && (

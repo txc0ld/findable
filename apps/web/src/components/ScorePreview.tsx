@@ -10,7 +10,7 @@ interface ScorePreviewProps {
 
 export function ScorePreview({ score, schema, llm, protocol }: ScorePreviewProps) {
   return (
-    <div className="card-glass p-8 sm:p-10 border-none bg-transparent shadow-none backdrop-blur-none">
+    <div className="card-glass p-5 sm:p-8 lg:p-10 border-none bg-transparent shadow-none backdrop-blur-none">
       <ScoreRing score={score} />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-3">

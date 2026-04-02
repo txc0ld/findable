@@ -31,7 +31,7 @@ export function MetricCard({
           </div>
         )}
       </div>
-      <p className={`mt-3 text-3xl font-extrabold tabular-nums tracking-tight ${tone?.accentClass ?? ""}`}>
+      <p className={`mt-3 text-2xl font-extrabold tabular-nums tracking-tight sm:text-3xl ${tone?.accentClass ?? ""}`}>
         {value}
       </p>
       {sublabel && (

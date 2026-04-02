@@ -440,7 +440,7 @@ function ScoreCard({ label, score }: { label: string; score: number }) {
   return (
     <div className="card p-5 text-center">
       <p className="text-sm text-text-muted">{label}</p>
-      <p className={`mt-3 text-4xl font-extrabold tabular-nums ${tone.accentClass}`}>
+      <p className={`mt-3 text-3xl font-extrabold tabular-nums sm:text-4xl ${tone.accentClass}`}>
         {score}
       </p>
     </div>

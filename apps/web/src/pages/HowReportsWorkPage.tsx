@@ -232,7 +232,7 @@ export function HowReportsWorkPage() {
                   Low signal
                 </span>
               </div>
-              <pre className="overflow-x-auto bg-[#0A0A0F] p-6 font-mono text-[13px] leading-relaxed text-white/50">
+              <pre className="overflow-x-auto bg-[#0A0A0F] p-4 font-mono text-[11px] leading-relaxed text-white/50 sm:p-6 sm:text-[13px]">
                 {BEFORE_AFTER.before}
               </pre>
             </div>
@@ -247,7 +247,7 @@ export function HowReportsWorkPage() {
                   High signal
                 </span>
               </div>
-              <pre className="overflow-x-auto bg-[#0A0A0F] p-6 font-mono text-[13px] leading-relaxed text-cyan-300/80">
+              <pre className="overflow-x-auto bg-[#0A0A0F] p-4 font-mono text-[11px] leading-relaxed text-cyan-300/80 sm:p-6 sm:text-[13px]">
                 {BEFORE_AFTER.after}
               </pre>
             </div>
@@ -256,7 +256,7 @@ export function HowReportsWorkPage() {
 
         {/* CTA */}
         <SectionReveal className="mt-24">
-          <div className="card p-8 text-center sm:p-10">
+          <div className="card p-5 text-center sm:p-8 lg:p-10">
             <h2 className="text-2xl font-extrabold tracking-tight">
               See it in action on your store.
             </h2>

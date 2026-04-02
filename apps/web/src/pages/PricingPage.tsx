@@ -190,7 +190,7 @@ export function PricingPage() {
           {PLANS.filter((p) => p.name !== "Free Scan").slice(0, 3).map((plan) => (
             <SectionReveal key={plan.name}>
               <div
-                className={`card relative flex h-full flex-col p-8 ${
+                className={`card relative flex h-full flex-col p-5 sm:p-8 ${
                   plan.highlight
                     ? "border-[#ccff00]/40 shadow-[0_0_24px_-16px_rgba(204,255,0,0.25)]"
                     : ""
@@ -205,7 +205,7 @@ export function PricingPage() {
                   {plan.name}
                 </h3>
                 <div className="mt-3 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold text-[#ccff00]">
+                  <span className="text-3xl font-extrabold text-[#ccff00] sm:text-4xl">
                     {plan.price}
                   </span>
                   {plan.period && (
@@ -261,12 +261,12 @@ export function PricingPage() {
           {PLANS.filter((p) => p.name === "Pro" || p.name === "Agency").map(
             (plan) => (
               <SectionReveal key={plan.name}>
-                <div className="card flex h-full flex-col p-8">
+                <div className="card flex h-full flex-col p-5 sm:p-8">
                   <h3 className="font-mono text-xl font-bold text-white">
                     {plan.name}
                   </h3>
                   <div className="mt-3 flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold text-[#ccff00]">
+                    <span className="text-3xl font-extrabold text-[#ccff00] sm:text-4xl">
                       {plan.price}
                     </span>
                     {plan.period && (
@@ -333,7 +333,7 @@ export function PricingPage() {
 
         {/* CTA */}
         <SectionReveal className="mt-24">
-          <div className="card p-8 text-center sm:p-10">
+          <div className="card p-5 text-center sm:p-8 lg:p-10">
             <h2 className="text-2xl font-extrabold tracking-tight">
               Start with the scan.
             </h2>

@@ -7,7 +7,7 @@ export function NotFoundPage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-bg-primary px-6 text-text-primary">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-[#ccff00]/8 blur-[120px]" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-full max-w-[375px] -translate-x-1/2 rounded-full bg-[#ccff00]/8 blur-[120px] sm:max-w-[600px]" />
       </div>
 
       <div className="relative text-center">
@@ -16,7 +16,7 @@ export function NotFoundPage() {
           <span className="text-lg font-bold uppercase tracking-[0.2em]">FINDABLE</span>
         </a>
 
-        <p className="mt-10 font-mono text-7xl font-extrabold text-[#ccff00]">404</p>
+        <p className="mt-10 font-mono text-5xl font-extrabold text-[#ccff00] sm:text-7xl">404</p>
         <h1 className="mt-4 text-2xl font-extrabold tracking-tight">Page not found</h1>
         <p className="mt-2 text-sm text-white/60">
           The page you're looking for doesn't exist or has been moved.

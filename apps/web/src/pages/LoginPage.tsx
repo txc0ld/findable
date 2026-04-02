@@ -122,7 +122,7 @@ function AuthShell({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-bg-primary px-4 text-text-primary">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-[#ccff00]/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-full max-w-[375px] -translate-x-1/2 rounded-full bg-[#ccff00]/10 blur-[120px] sm:max-w-[600px]" />
       </div>
 
       <div className="relative w-full max-w-sm">

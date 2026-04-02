@@ -58,7 +58,7 @@ export function ProductDetailPage() {
 
       {/* Score + dimensions */}
       <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-        <div className="card flex items-center justify-center p-8">
+        <div className="card flex items-center justify-center p-5 sm:p-8">
           <ScoreRing score={product.overallScore} />
         </div>
 
@@ -116,7 +116,7 @@ export function ProductDetailPage() {
               <CopyButton text={JSON.stringify(product.generatedSchema ?? {}, null, 2)} />
             </div>
           </div>
-          <pre className="overflow-x-auto p-6 font-mono text-[13px] leading-relaxed text-cyan-300/70">
+          <pre className="overflow-x-auto p-4 font-mono text-[11px] leading-relaxed text-cyan-300/70 sm:p-6 sm:text-[13px]">
             {JSON.stringify(product.generatedSchema ?? {}, null, 2)}
           </pre>
         </div>

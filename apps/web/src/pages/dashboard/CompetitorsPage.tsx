@@ -84,7 +84,7 @@ function CompetitorRow({
           </div>
           {url && <p className="mt-0.5 truncate text-xs text-[#53eafd]">{url}</p>}
         </div>
-        <p className={`text-3xl font-extrabold tabular-nums ${tone.accentClass}`}>{score}</p>
+        <p className={`text-2xl font-extrabold tabular-nums sm:text-3xl ${tone.accentClass}`}>{score}</p>
       </div>
 
       <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5">

@@ -53,7 +53,7 @@ export function LandingPage() {
         {/* ───────── Section 1 : Hero ───────── */}
         <section className="relative overflow-hidden px-5 pb-24 pt-20 sm:px-6">
           {/* Dimensional Glows */}
-          <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[520px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px]" />
+          <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[320px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px] sm:w-[520px]" />
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
             <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
@@ -123,7 +123,7 @@ export function LandingPage() {
         <SectionReveal id="topology" className="relative py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-8">
-              <div className="flex flex-col justify-center lg:col-span-5 lg:pr-8">
+              <div className="flex flex-col justify-center text-center lg:col-span-5 lg:pr-8 lg:text-left">
                 <p className="eyebrow">Product Map</p>
                 <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
                   What the <span className="text-[#ccff00]">scanner</span>
@@ -195,7 +195,7 @@ export function LandingPage() {
                     <span className="font-mono text-xs text-text-secondary transition-colors duration-300 group-hover:text-white/70">Human-readable only</span>
                   </div>
                 </div>
-                <div className="bg-[#0A0A0F] p-6 font-mono text-[13px] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-text-secondary">
+                <div className="bg-[#0A0A0F] p-4 font-mono text-[11px] leading-relaxed text-text-muted transition-colors duration-500 group-hover:text-text-secondary sm:p-6 sm:text-[13px]">
                   <span className="text-pink-500/70 transition-colors duration-300 group-hover:text-pink-500">&lt;h1&gt;</span>Heavyweight Tee<span className="text-pink-500/70 transition-colors duration-300 group-hover:text-pink-500">&lt;/h1&gt;</span><br/>
                   <span className="text-pink-500/70 transition-colors duration-300 group-hover:text-pink-500">&lt;p&gt;</span>Premium 100% cotton heavyweight...<br/>
                   <span className="text-pink-500/70 transition-colors duration-300 group-hover:text-pink-500">&lt;span class="price"&gt;</span>$49.95<span className="text-pink-500/70 transition-colors duration-300 group-hover:text-pink-500">&lt;/span&gt;</span><br/>
@@ -215,7 +215,7 @@ export function LandingPage() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#0A0A0F] p-6 font-mono text-[13px] leading-relaxed text-cyan-300/80 transition-colors duration-500 group-hover:text-cyan-300">
+                <div className="bg-[#0A0A0F] p-4 font-mono text-[11px] leading-relaxed text-cyan-300/80 transition-colors duration-500 group-hover:text-cyan-300 sm:p-6 sm:text-[13px]">
 {`{
   "@type": "Product",
   "name": "Heavyweight Tee",
@@ -236,10 +236,10 @@ export function LandingPage() {
         {/* ───────── Section 4 : Stats Bar ───────── */}
         <SectionReveal className="border-y border-white/5 bg-white/2 py-24">
           <div className="mx-auto max-w-7xl px-6">
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:border-x lg:border-white/5 lg:px-8">
+            <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4 lg:gap-8 lg:border-x lg:border-white/5 lg:px-8">
               {LANDING_STATS.map((stat, i) => (
                 <div key={stat.label} className={`relative flex flex-col justify-center ${i !== 0 ? "lg:border-l lg:border-white/5 lg:pl-8" : ""}`}>
-                  <div className="font-mono text-4xl font-bold tracking-tight text-white">
+                  <div className="font-mono text-3xl font-bold tracking-tight text-white sm:text-4xl">
                     {stat.prefix}
                     <AnimatedCounter
                       value={stat.value}
@@ -260,7 +260,7 @@ export function LandingPage() {
         <SectionReveal className="py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-20 text-center">
-               <h2 className="font-display text-3xl tracking-wider sm:text-4xl">How the <span className="text-[#ccff00]">workflow</span> lands.</h2>
+               <h2 className="font-display text-2xl tracking-wider sm:text-3xl lg:text-4xl">How the <span className="text-[#ccff00]">workflow</span> lands.</h2>
                <p className="mt-4 text-text-secondary">Start with a scan, convert it into a report, then work the queue from the dashboard.</p>
             </div>
             
@@ -319,7 +319,7 @@ export function LandingPage() {
                     {tier.name}
                   </h3>
                   <div className="mt-4 flex items-baseline gap-1">
-                     <span className="text-4xl font-extrabold text-[#ccff00]">{tier.monthlyPrice}</span>
+                     <span className="text-3xl font-extrabold text-[#ccff00] sm:text-4xl">{tier.monthlyPrice}</span>
                      {tier.monthlyPrice !== "Custom" && <span className="text-sm text-text-muted">/mo</span>}
                   </div>
                   <p className="mt-4 flex-1 text-sm leading-relaxed text-text-secondary">

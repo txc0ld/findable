@@ -187,7 +187,7 @@ export function WhatWeScanPage() {
         </div>
 
         <SectionReveal className="mt-24">
-          <div className="card p-8 text-center sm:p-10">
+          <div className="card p-5 text-center sm:p-8 lg:p-10">
             <h2 className="text-2xl font-extrabold tracking-tight">
               Ready to see your score?
             </h2>

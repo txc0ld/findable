@@ -195,7 +195,7 @@ export function GlossaryPage() {
         </div>
 
         <SectionReveal className="mt-20">
-          <div className="card p-8 text-center sm:p-10">
+          <div className="card p-5 text-center sm:p-8 lg:p-10">
             <h2 className="text-2xl font-extrabold tracking-tight">
               See where your store stands.
             </h2>
