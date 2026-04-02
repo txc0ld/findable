@@ -98,10 +98,10 @@ export function LandingPage() {
         </section>
 
         {/* ───────── Section 2 : Diagnostic Matrix ───────── */}
-        <SectionReveal className="py-32">
+        <SectionReveal className="py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-5xl px-6 text-center">
             <p className="eyebrow">Diagnostic Matrix</p>
-            <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
+            <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
               See the <span className="text-[#ccff00]">score</span> before
               <br />
               you touch the dashboard.
@@ -120,12 +120,12 @@ export function LandingPage() {
         </SectionReveal>
 
         {/* ───────── Section 3 : Topology (What We Scan) ───────── */}
-        <SectionReveal id="topology" className="relative py-32">
+        <SectionReveal id="topology" className="relative py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-8">
               <div className="flex flex-col justify-center lg:col-span-5 lg:pr-8">
                 <p className="eyebrow">Product Map</p>
-                <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
+                <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
                   What the <span className="text-[#ccff00]">scanner</span>
                   <br />
                   actually checks.
@@ -168,11 +168,11 @@ export function LandingPage() {
         </SectionReveal>
 
         {/* ───────── Section 3 : Sequence of Events (Before/After) ───────── */}
-        <SectionReveal id="engine" className="relative overflow-hidden py-32">
+        <SectionReveal id="engine" className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center">
               <p className="eyebrow">Report Flow</p>
-              <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
+              <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
                 From storefront markup
                 <br />
                 to <span className="text-[#ccff00]">machine-readable</span> output.
@@ -257,7 +257,7 @@ export function LandingPage() {
         </SectionReveal>
 
         {/* ───────── Section 6 : How It Works Sequence ───────── */}
-        <SectionReveal className="py-32">
+        <SectionReveal className="py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-20 text-center">
                <h2 className="font-display text-3xl tracking-wider sm:text-4xl">How the <span className="text-[#ccff00]">workflow</span> lands.</h2>
@@ -271,14 +271,14 @@ export function LandingPage() {
                 {HOW_IT_WORKS_STEPS.map((step, index) => (
                   <div
                     key={step.title}
-                    className={`relative flex flex-col gap-8 md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                    className={`relative flex flex-col gap-4 sm:gap-8 md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
                   >
                     <div className="flex w-full items-center justify-start md:w-1/2 md:justify-center">
                        <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-black shadow-xl shadow-[#ccff00]/10 backdrop-blur-md">
                          <span className="font-mono text-xl font-bold text-white">0{index + 1}</span>
                        </div>
                     </div>
-                    <div className={`card-glass w-full p-8 md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                    <div className={`card-glass w-full p-5 sm:p-8 md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                       <h3 className="font-mono text-xs uppercase tracking-widest text-[#ccff00]">Phase {index + 1}</h3>
                       <h4 className="mt-2 text-2xl font-bold text-white">{step.title}</h4>
                       <p className="mt-4 leading-relaxed text-text-secondary">{step.body}</p>
@@ -291,10 +291,10 @@ export function LandingPage() {
         </SectionReveal>
 
         {/* ───────── Section 7 : Pricing Tiers ───────── */}
-        <SectionReveal id="pricing" className="py-32">
+        <SectionReveal id="pricing" className="py-16 sm:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center">
-              <h2 className="font-display text-balance text-3xl tracking-wider sm:text-5xl">
+              <h2 className="font-display text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
                 Choose Your <span className="text-[#ccff00]">Network</span> Layer.
               </h2>
               <p className="mt-6 text-lg text-text-secondary">
@@ -306,7 +306,7 @@ export function LandingPage() {
               {PRICING_TIERS.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`card-glass relative flex flex-col p-8 ${
+                  className={`card-glass relative flex flex-col p-5 sm:p-6 lg:p-8 ${
                     tier.highlight ? "border-[#ccff00]/40 shadow-[0_0_24px_-16px_rgba(204,255,0,0.25)]" : ""
                   }`}
                 >
@@ -350,13 +350,13 @@ export function LandingPage() {
         </SectionReveal>
 
         {/* ───────── Section 8 : Footer CTA ───────── */}
-        <SectionReveal className="relative overflow-hidden py-40">
+        <SectionReveal className="relative overflow-hidden py-20 sm:py-32 lg:py-40">
            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[280px] bg-[#ccff00]/8 blur-[80px]"></div>
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-            <h2 className="font-display text-balance text-4xl tracking-wider text-white sm:text-6xl">
+            <h2 className="font-display text-balance text-2xl tracking-wider text-white sm:text-4xl lg:text-6xl">
               Start with the scan.
             </h2>
-            <p className="mt-6 text-xl text-text-secondary">
+            <p className="mt-6 text-base text-text-secondary sm:text-lg lg:text-xl">
                Get the score, open the report, and move straight into the workspace.
             </p>
             <div className="mt-12">

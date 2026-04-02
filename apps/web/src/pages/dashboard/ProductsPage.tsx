@@ -65,7 +65,7 @@ export function ProductsPage() {
             );
           })
         ) : (
-          <div className="card flex flex-col items-center p-10 text-center">
+          <div className="card flex flex-col items-center p-6 text-center sm:p-10">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/8 bg-white/5">
               <ScanLine className="h-6 w-6 text-white/30" />
             </div>

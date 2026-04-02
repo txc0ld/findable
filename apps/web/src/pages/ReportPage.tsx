@@ -131,7 +131,7 @@ export function ReportPage() {
 
 function LoadingState() {
   return (
-    <div className="flex flex-col items-center py-24 text-center">
+    <div className="flex flex-col items-center py-12 text-center sm:py-24">
       <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#ccff00]/20 bg-[#ccff00]/10">
         <LoaderCircle className="h-8 w-8 animate-spin text-[#ccff00]" />
       </div>
@@ -155,15 +155,15 @@ function InProgressState({ scan }: { scan: ScanDetails }) {
   );
 
   return (
-    <div className="py-24">
-      <div className="card mx-auto max-w-2xl p-8 text-center sm:p-10">
+    <div className="py-12 sm:py-24">
+      <div className="card mx-auto max-w-2xl p-5 text-center sm:p-8 lg:p-10">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[#ccff00]/20 bg-[#ccff00]/10">
           <LoaderCircle className="h-8 w-8 animate-spin text-[#ccff00]" />
         </div>
         <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-[#ccff00]">
           {getStatusLabel(scan.status)}
         </p>
-        <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
           Your report is still running
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-text-secondary">
@@ -218,7 +218,7 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ccff00]">
           Scan Report
         </p>
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="mt-4 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
           Your AI Commerce Readiness Score
         </h1>
         {report?.summary ? (
@@ -227,8 +227,8 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
           </p>
         ) : null}
 
-        <div className="mx-auto mt-12 max-w-xs">
-          <ScoreRing score={overallScore} size={240} />
+        <div className="mx-auto mt-10 max-w-xs sm:mt-12">
+          <ScoreRing score={overallScore} size={180} />
         </div>
 
         <div className="mx-auto mt-8 flex flex-wrap justify-center gap-4">
@@ -363,8 +363,8 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
       </SectionReveal>
 
       <SectionReveal className="pb-20">
-        <div className="card p-8 text-center sm:p-10">
-          <h2 className="text-2xl font-extrabold tracking-tight">
+        <div className="card p-5 text-center sm:p-8 lg:p-10">
+          <h2 className="text-xl font-extrabold tracking-tight sm:text-2xl">
             Ready to fix your score?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-text-secondary">
@@ -402,8 +402,8 @@ function StatePanel({
   tone: "error";
 }) {
   return (
-    <div className="py-24">
-      <div className="card mx-auto max-w-2xl p-8 text-center sm:p-10">
+    <div className="py-12 sm:py-24">
+      <div className="card mx-auto max-w-2xl p-5 text-center sm:p-8 lg:p-10">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10">
           <AlertTriangle className="h-8 w-8 text-red-400" />
         </div>
@@ -414,7 +414,7 @@ function StatePanel({
         >
           Report status
         </p>
-        <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl">
           {title}
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-text-secondary">

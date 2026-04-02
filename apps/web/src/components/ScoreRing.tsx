@@ -73,7 +73,7 @@ export function ScoreRing({
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span
-            className={`text-7xl font-extrabold tracking-[-0.04em] sm:text-8xl ${tone.accentClass}`}
+            className={`text-5xl font-extrabold tracking-[-0.04em] sm:text-7xl lg:text-8xl ${tone.accentClass}`}
           >
             <AnimatedCounter value={score} duration={1.5} />
           </span>
