@@ -19,7 +19,6 @@ export function SettingsPage() {
 
   async function handleSave() {
     setIsSaving(true);
-
     try {
       if (formValues.url.trim()) {
         await updateStore({
@@ -28,22 +27,14 @@ export function SettingsPage() {
           url: formValues.url.trim(),
         });
       }
-
       const notifications = await updateNotifications({
         competitorChanges: formValues.competitorChanges,
         criticalAlerts: formValues.criticalAlerts,
         weeklyReport: formValues.weeklyReport,
       });
-
       setWorkspace((current) =>
-        current
-          ? {
-              ...current,
-              notifications,
-            }
-          : current,
+        current ? { ...current, notifications } : current,
       );
-
       await refreshWorkspace();
       setSaved(true);
       window.setTimeout(() => setSaved(false), 1800);
@@ -53,21 +44,24 @@ export function SettingsPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-extrabold tracking-tight">Settings</h1>
-      <p className="mt-1 text-text-secondary">
-        Manage your store connection and account preferences.
-      </p>
+    <div className="mx-auto max-w-2xl space-y-8">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Settings</h1>
+        <p className="mt-1 text-sm text-white/50">
+          Manage your store connection and preferences.
+        </p>
+      </div>
 
-      <div className="card mt-8 p-6">
+      {/* Current plan */}
+      <div className="card p-6">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
               Current plan
             </p>
             <p className="mt-1 text-xl font-bold">{workspace.profile.plan.toUpperCase()}</p>
-            <p className="mt-1 text-sm text-text-secondary">
-              {workspace.summary.recentScanCount} scans completed &middot; Upgrade for monitoring and more automation
+            <p className="mt-1 text-sm text-white/50">
+              {workspace.summary.recentScanCount} scans completed
             </p>
           </div>
           <a
@@ -79,34 +73,27 @@ export function SettingsPage() {
         </div>
       </div>
 
-      <div className="card mt-6 p-6">
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+      {/* Store connection */}
+      <div className="card p-6">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
           Store connection
         </p>
-        <div className="mt-4 grid gap-4">
+        <div className="mt-5 grid gap-4">
           <label className="block">
-            <span className="text-sm text-text-secondary">Store name</span>
+            <span className="text-xs font-medium text-white/60">Store name</span>
             <input
               type="text"
               value={formValues.name}
-              onChange={(event) =>
-                setFormValues((current) => ({ ...current, name: event.target.value }))
-              }
+              onChange={(e) => setFormValues((c) => ({ ...c, name: e.target.value }))}
               className="landing-input mt-1.5"
-              placeholder="Findable Demo Store"
+              placeholder="My Store"
             />
           </label>
-
           <label className="block">
-            <span className="text-sm text-text-secondary">Platform</span>
+            <span className="text-xs font-medium text-white/60">Platform</span>
             <select
               value={formValues.platform ?? "shopify"}
-              onChange={(event) =>
-                setFormValues((current) => ({
-                  ...current,
-                  platform: event.target.value as typeof current.platform,
-                }))
-              }
+              onChange={(e) => setFormValues((c) => ({ ...c, platform: e.target.value as typeof c.platform }))}
               className="landing-input mt-1.5"
             >
               <option value="shopify">Shopify</option>
@@ -115,20 +102,16 @@ export function SettingsPage() {
               <option value="custom">Custom</option>
             </select>
           </label>
-
           <label className="block">
-            <span className="text-sm text-text-secondary">Store URL</span>
+            <span className="text-xs font-medium text-white/60">Store URL</span>
             <input
               type="url"
               value={formValues.url}
-              onChange={(event) =>
-                setFormValues((current) => ({ ...current, url: event.target.value }))
-              }
+              onChange={(e) => setFormValues((c) => ({ ...c, url: e.target.value }))}
               className="landing-input landing-input-mono mt-1.5"
               placeholder="https://your-store.com"
             />
           </label>
-
           <div className="rounded-xl border border-white/8 bg-white/[0.03] p-4">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#ccff00]/20 bg-[#ccff00]/10">
@@ -136,10 +119,10 @@ export function SettingsPage() {
               </div>
               <div>
                 <p className="text-sm font-medium">
-                  {workspace.store.status === "connected" ? "Store connected" : "Store not connected"}
+                  {workspace.store.status === "connected" ? "Store connected" : "Not connected"}
                 </p>
-                <p className="text-xs text-text-muted">
-                  {workspace.store.url ?? "Save a store URL to connect the workspace."}
+                <p className="text-xs text-white/40">
+                  {workspace.store.url ?? "Save a store URL to connect."}
                 </p>
               </div>
             </div>
@@ -147,78 +130,65 @@ export function SettingsPage() {
         </div>
       </div>
 
-      <div className="card mt-6 p-6">
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+      {/* Account */}
+      <div className="card p-6">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
           Account
         </p>
-        <div className="mt-4 space-y-4">
+        <div className="mt-5 space-y-4">
           <label className="block">
-            <span className="text-sm text-text-secondary">Email</span>
+            <span className="text-xs font-medium text-white/60">Email</span>
             <input type="email" value={workspace.profile.email} className="landing-input mt-1.5" disabled />
           </label>
-          <a
-            href="/dashboard/billing"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#ccff00]"
-          >
-            Manage billing
-            <ExternalLink className="h-4 w-4" />
-          </a>
-          <a
-            href="/forgot-password"
-            className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition hover:text-[#ccff00]"
-          >
-            Reset password
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          <div className="flex gap-6">
+            <a href="/dashboard/billing" className="inline-flex items-center gap-1.5 text-xs font-medium text-[#ccff00]">
+              Manage billing <ExternalLink className="h-3 w-3" />
+            </a>
+            <a href="/forgot-password" className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition hover:text-[#ccff00]">
+              Reset password <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="card mt-6 p-6">
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+      {/* Notifications */}
+      <div className="card p-6">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
           Notifications
         </p>
-        <div className="mt-4 space-y-4">
+        <div className="mt-5 space-y-5">
           <ToggleRow
             label="Weekly score report"
-            description="Receive a summary of score changes every Monday."
+            description="Summary of score changes every Monday."
             checked={formValues.weeklyReport}
-            onChange={(value) =>
-              setFormValues((current) => ({ ...current, weeklyReport: value }))
-            }
+            onChange={(v) => setFormValues((c) => ({ ...c, weeklyReport: v }))}
           />
           <ToggleRow
             label="Critical issue alerts"
-            description="Get notified immediately when a critical issue is detected."
+            description="Immediate notification on critical issues."
             checked={formValues.criticalAlerts}
-            onChange={(value) =>
-              setFormValues((current) => ({ ...current, criticalAlerts: value }))
-            }
+            onChange={(v) => setFormValues((c) => ({ ...c, criticalAlerts: v }))}
           />
           <ToggleRow
             label="Competitor changes"
-            description="Alert when a competitor's score changes significantly."
+            description="Alert when competitor scores change."
             checked={formValues.competitorChanges}
-            onChange={(value) =>
-              setFormValues((current) => ({ ...current, competitorChanges: value }))
-            }
+            onChange={(v) => setFormValues((c) => ({ ...c, competitorChanges: v }))}
           />
         </div>
       </div>
 
-      <div className="mt-6 flex justify-end">
+      {/* Save */}
+      <div className="flex justify-end">
         <button
           onClick={() => void handleSave()}
           disabled={isSaving}
           className="btn-primary rounded-xl px-6 py-3 text-sm font-semibold"
         >
           {isSaving ? (
-            <>
-              <LoaderCircle className="h-4 w-4 animate-spin" /> Saving
-            </>
+            <><LoaderCircle className="h-4 w-4 animate-spin" /> Saving</>
           ) : saved ? (
-            <>
-              <Check className="h-4 w-4" /> Saved
-            </>
+            <><Check className="h-4 w-4" /> Saved</>
           ) : (
             "Save changes"
           )}
@@ -237,13 +207,13 @@ function ToggleRow({
   label: string;
   description: string;
   checked: boolean;
-  onChange: (nextValue: boolean) => void;
+  onChange: (v: boolean) => void;
 }) {
   return (
     <div className="flex items-start justify-between gap-4">
       <div>
         <p className="text-sm font-medium">{label}</p>
-        <p className="mt-0.5 text-xs text-text-muted">{description}</p>
+        <p className="mt-0.5 text-xs text-white/40">{description}</p>
       </div>
       <button
         onClick={() => onChange(!checked)}

@@ -7,13 +7,15 @@ export function FeedsPage() {
   const { workspace } = useDashboardContext();
 
   return (
-    <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Feeds</h1>
-      <p className="mt-1 text-text-secondary">
-        Manage your AI commerce protocol feeds.
-      </p>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Feeds</h1>
+        <p className="mt-1 text-sm text-white/50">
+          Manage your AI commerce protocol feeds.
+        </p>
+      </div>
 
-      <div className="mt-8 space-y-4">
+      <div className="space-y-3">
         {workspace.feeds.map((feed) => (
           <div key={feed.id} className="card p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -23,8 +25,8 @@ export function FeedsPage() {
                 </div>
                 <div>
                   <p className="font-semibold">{feed.name}</p>
-                  <p className="mt-1 text-sm text-text-secondary">{feed.description}</p>
-                  <p className="mt-2 text-xs text-text-muted">
+                  <p className="mt-1 text-sm text-white/50">{feed.description}</p>
+                  <p className="mt-2 text-xs text-white/40">
                     Format: {feed.format}
                     {feed.lastGenerated ? ` · Last generated ${new Date(feed.lastGenerated).toLocaleString()}` : ""}
                   </p>
@@ -32,7 +34,7 @@ export function FeedsPage() {
               </div>
 
               {feed.status === "coming_soon" ? (
-                <span className="inline-flex shrink-0 items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-text-muted">
+                <span className="inline-flex shrink-0 items-center rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-xs text-white/40">
                   Coming soon
                 </span>
               ) : feed.fileUrl ? (
@@ -48,9 +50,8 @@ export function FeedsPage() {
               ) : (
                 <Link
                   to="/dashboard/settings"
-                  className="btn-primary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold"
+                  className="btn-secondary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold"
                 >
-                  <ExternalLink className="h-4 w-4" />
                   Connect store
                 </Link>
               )}
@@ -59,15 +60,15 @@ export function FeedsPage() {
         ))}
       </div>
 
-      <div className="card mt-8 p-6 text-center">
-        <p className="text-sm text-text-secondary">
+      <div className="card p-6 text-center">
+        <p className="text-sm text-white/50">
           {workspace.store.status === "connected"
-            ? "Your connected store can now drive feed generation and future monitoring jobs."
+            ? "Your connected store can drive feed generation and monitoring."
             : "Connect your store to auto-generate and host product feeds."}
         </p>
         <Link
           to="/dashboard/settings"
-          className="mt-3 inline-block text-sm font-medium text-[#ccff00] transition hover:text-[#ccff00]"
+          className="mt-3 inline-block text-xs font-medium text-[#ccff00] transition hover:text-white"
         >
           Go to Settings &rarr;
         </Link>

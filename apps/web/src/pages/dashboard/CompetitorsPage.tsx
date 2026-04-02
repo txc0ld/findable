@@ -7,15 +7,16 @@ export function CompetitorsPage() {
   const topCompetitor = workspace.competitors[0];
 
   return (
-    <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Competitors</h1>
-      <p className="mt-1 text-text-secondary">
-        See how your AI readiness compares to the competition.
-      </p>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Competitors</h1>
+        <p className="mt-1 text-sm text-white/50">
+          See how your AI readiness compares to the field.
+        </p>
+      </div>
 
-      <div className="mt-8 space-y-4">
+      <div className="space-y-3">
         <CompetitorRow name="Your Store" score={yourScore} isYou />
-
         {workspace.competitors.map((competitor) => (
           <CompetitorRow
             key={competitor.id}
@@ -29,19 +30,20 @@ export function CompetitorsPage() {
         ))}
       </div>
 
-      <div className="card mt-10 p-6">
-        <p className="font-semibold">Competitive insight</p>
-        <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+      <div className="card p-6">
+        <p className="text-sm font-semibold">Competitive insight</p>
+        <p className="mt-2 text-sm leading-relaxed text-white/50">
           {topCompetitor ? (
             <>
               Your store scores{" "}
-              <strong className="text-red-400">
+              <strong className="text-[#ff3366]">
                 {Math.max(topCompetitor.overallScore - yourScore, 0)} points below
               </strong>{" "}
-              {topCompetitor.name}. Closing schema and protocol gaps will move the needle fastest.
+              {topCompetitor.name}. Closing schema and protocol gaps will move the
+              needle fastest.
             </>
           ) : (
-            "Run competitor scans once you have a connected store to unlock benchmark insights."
+            "Run competitor scans once you have a connected store."
           )}
         </p>
       </div>
@@ -74,37 +76,31 @@ function CompetitorRow({
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <p className="truncate font-semibold">{name}</p>
-            {isYou ? (
+            {isYou && (
               <span className="rounded-full bg-[#ccff00]/15 px-2 py-0.5 text-[10px] font-semibold uppercase text-[#ccff00]">
                 You
               </span>
-            ) : null}
+            )}
           </div>
-          {url ? <p className="mt-0.5 truncate text-xs text-text-muted">{url}</p> : null}
+          {url && <p className="mt-0.5 truncate text-xs text-[#53eafd]">{url}</p>}
         </div>
         <p className={`text-3xl font-extrabold tabular-nums ${tone.accentClass}`}>{score}</p>
       </div>
 
-      <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/5">
+      <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/5">
         <div
           className="h-full rounded-full transition-all duration-700"
           style={{ width: `${score}%`, background: tone.color }}
         />
       </div>
 
-      {schemaScore !== undefined ? (
-        <div className="mt-3 flex gap-4 text-xs text-text-muted">
-          <span>
-            Schema: <strong className="text-text-secondary">{schemaScore}</strong>
-          </span>
-          <span>
-            LLM: <strong className="text-text-secondary">{llmScore}</strong>
-          </span>
-          <span>
-            Protocol: <strong className="text-text-secondary">{protocolScore}</strong>
-          </span>
+      {schemaScore !== undefined && (
+        <div className="mt-3 flex gap-4 text-xs text-white/40">
+          <span>Schema: <strong className="text-white/70">{schemaScore}</strong></span>
+          <span>LLM: <strong className="text-white/70">{llmScore}</strong></span>
+          <span>Protocol: <strong className="text-white/70">{protocolScore}</strong></span>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -18,7 +18,7 @@ export function ProductDetailPage() {
         <p className="text-lg font-semibold">Product not found</p>
         <Link
           to="/dashboard/products"
-          className="mt-4 inline-block text-sm text-[#ccff00] hover:text-[#ccff00]"
+          className="mt-4 inline-block text-sm text-[#ccff00]"
         >
           &larr; Back to products
         </Link>
@@ -27,71 +27,71 @@ export function ProductDetailPage() {
   }
 
   return (
-    <div>
-      <Link
-        to="/dashboard/products"
-        className="inline-flex items-center gap-1.5 text-sm text-text-secondary transition hover:text-text-primary"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Products
-      </Link>
+    <div className="space-y-10">
+      <div>
+        <Link
+          to="/dashboard/products"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition hover:text-white"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          Products
+        </Link>
 
-      <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">{product.name}</h1>
-          <a
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-1 inline-flex items-center gap-1 text-sm text-text-muted transition hover:text-text-primary"
-          >
-            {product.url}
-            <ExternalLink className="h-3 w-3" />
-          </a>
+        <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-extrabold tracking-tight">{product.name}</h1>
+            <a
+              href={product.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-flex items-center gap-1 text-xs text-[#53eafd] transition hover:text-[#53eafd]/80"
+            >
+              {product.url}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
+          <span className="inline-flex w-fit items-center rounded-full border border-white/8 bg-white/5 px-3 py-1.5 text-xs text-white/50">
+            {product.category}
+          </span>
         </div>
-        <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-text-muted">
-          {product.category}
-        </span>
       </div>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_1.4fr]">
+      {/* Score + dimensions */}
+      <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
         <div className="card flex items-center justify-center p-8">
           <ScoreRing score={product.overallScore} />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <DimensionBar label="Schema Intelligence" value={product.schemaScore} />
           <DimensionBar label="LLM Discoverability" value={product.llmScore} />
           <DimensionBar label="Protocol Compliance" value={product.protocolScore} />
 
-          <div className="card mt-6 p-5">
-            <p className="text-sm font-semibold">Fix summary</p>
+          <div className="card p-5">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">Fix summary</p>
             <div className="mt-3 flex flex-wrap gap-4 text-sm">
-              <span className="text-text-secondary">
-                <strong className="text-text-primary">{product.issues.length}</strong> total issues
+              <span className="text-white/50">
+                <strong className="text-white">{product.issues.length}</strong> total issues
               </span>
-              <span className="text-text-secondary">
+              <span className="text-white/50">
                 <strong className="text-emerald-400">
-                  {product.issues.filter((issue) => issue.fixType === "auto").length}
+                  {product.issues.filter((i) => i.fixType === "auto").length}
                 </strong>{" "}
                 auto-fixable
               </span>
-              <span className="text-text-secondary">
-                <strong className="text-text-primary">
-                  +{product.issues.reduce((sum, issue) => sum + issue.pointsImpact, 0)}
+              <span className="text-white/50">
+                <strong className="text-[#ccff00]">
+                  +{product.issues.reduce((s, i) => s + i.pointsImpact, 0)}
                 </strong>{" "}
                 points available
               </span>
-            </div>
-            <div className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm font-semibold text-emerald-400 sm:w-auto">
-              <Check className="h-4 w-4" />
-              {product.status === "fixed" ? "All fixes applied" : "Auto-fix available"}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-10">
+      {/* Issues */}
+      <div>
         <h2 className="text-lg font-bold">Issues ({product.issues.length})</h2>
         <div className="mt-4 space-y-3">
           {product.issues.map((issue) => (
@@ -100,10 +100,11 @@ export function ProductDetailPage() {
         </div>
       </div>
 
-      <div className="mt-10">
+      {/* JSON-LD Preview */}
+      <div>
         <h2 className="text-lg font-bold">JSON-LD Preview</h2>
-        <p className="mt-1 text-sm text-text-secondary">
-          What FINDABLE would inject into this product page.
+        <p className="mt-1 text-sm text-white/50">
+          What Findable would inject into this product page.
         </p>
         <div className="card mt-4 overflow-hidden border-emerald-500/15">
           <div className="flex items-center gap-2.5 border-b border-emerald-500/10 px-6 py-3">
@@ -136,10 +137,7 @@ function DimensionBar({ label, value }: { label: string; value: number }) {
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/5">
         <div
           className="h-full rounded-full transition-all duration-700"
-          style={{
-            width: `${value}%`,
-            background: tone.color,
-          }}
+          style={{ width: `${value}%`, background: tone.color }}
         />
       </div>
     </div>

@@ -22,15 +22,17 @@ export function IssuesPage() {
   ).length;
 
   return (
-    <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Issues</h1>
-      <p className="mt-1 text-text-secondary">
-        {workspace.issues.length} issues found &middot;{" "}
-        <span className="text-red-400">{criticalCount} critical</span> &middot;{" "}
-        <span className="text-emerald-400">{autoFixable} auto-fixable</span>
-      </p>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Issues</h1>
+        <p className="mt-1 text-sm text-white/50">
+          {workspace.issues.length} issues &middot;{" "}
+          <span className="text-[#ff3366]">{criticalCount} critical</span> &middot;{" "}
+          <span className="text-emerald-400">{autoFixable} auto-fixable</span>
+        </p>
+      </div>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2">
         {FILTERS.map((currentFilter) => {
           const count =
             currentFilter === "all"
@@ -41,25 +43,25 @@ export function IssuesPage() {
             <button
               key={currentFilter}
               onClick={() => setFilter(currentFilter)}
-              className={`rounded-full px-3.5 py-1.5 text-sm font-medium capitalize transition-colors ${
+              className={`rounded-full px-3.5 py-1.5 text-xs font-medium capitalize transition-colors ${
                 filter === currentFilter
                   ? "bg-[#ccff00]/15 text-[#ccff00]"
-                  : "bg-white/5 text-text-secondary hover:bg-white/8 hover:text-text-primary"
+                  : "bg-white/5 text-white/50 hover:bg-white/8 hover:text-white/70"
               }`}
             >
               {currentFilter === "all" ? "All" : currentFilter}{" "}
-              <span className="ml-1 text-xs opacity-60">{count}</span>
+              <span className="ml-1 opacity-60">{count}</span>
             </button>
           );
         })}
       </div>
 
-      <div className="mt-6 space-y-3">
+      <div className="space-y-3">
         {filtered.map((issue) => (
           <IssueCard key={issue.id} issue={issue} showProduct />
         ))}
         {filtered.length === 0 && (
-          <p className="py-12 text-center text-text-muted">
+          <p className="py-16 text-center text-sm text-white/40">
             No {filter} issues found.
           </p>
         )}

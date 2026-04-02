@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { AlertTriangle, Package, ScanLine } from "lucide-react";
+import {
+  AlertTriangle,
+  BarChart3,
+  BrainCircuit,
+  Package,
+  PlugZap,
+  ScanLine,
+  Search,
+} from "lucide-react";
 
 import { IssueCard } from "../../components/IssueCard";
 import { MetricCard } from "../../components/MetricCard";
@@ -12,45 +20,53 @@ export function DashboardHome() {
   const recentProducts = workspace.products.slice(0, 5);
 
   return (
-    <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Dashboard</h1>
-      <p className="mt-1 text-text-secondary">
-        Overview of your store&apos;s AI commerce readiness.
-      </p>
+    <div className="space-y-10">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Dashboard</h1>
+        <p className="mt-1 text-sm text-white/50">
+          AI commerce readiness overview for your store.
+        </p>
+      </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Score cards */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          label="Overall Score"
+          label="Overall"
           value={workspace.summary.overallScore}
           sublabel={`${workspace.summary.criticalIssues} critical issues`}
+          icon={BarChart3}
           scoreColor
         />
         <MetricCard
           label="Schema"
           value={workspace.summary.schemaScore}
           sublabel={`${workspace.summary.productsScanned} products scanned`}
+          icon={Search}
           scoreColor
         />
         <MetricCard
           label="LLM"
           value={workspace.summary.llmScore}
           sublabel={`${workspace.summary.autoFixableIssues} auto-fixable`}
+          icon={BrainCircuit}
           scoreColor
         />
         <MetricCard
           label="Protocol"
           value={workspace.summary.protocolScore}
-          sublabel={`${workspace.summary.connectedStores} connected store`}
+          sublabel={`${workspace.summary.connectedStores} connected`}
+          icon={PlugZap}
           scoreColor
         />
       </div>
 
-      <div className="mt-10">
+      {/* Recent Issues */}
+      <div>
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold">Recent Issues</h2>
           <Link
             to="/dashboard/issues"
-            className="text-sm text-[#ccff00] transition hover:text-[#ccff00]"
+            className="text-xs font-medium text-[#ccff00] transition hover:text-white"
           >
             View all &rarr;
           </Link>
@@ -61,46 +77,44 @@ export function DashboardHome() {
               <IssueCard key={issue.id} issue={issue} showProduct />
             ))
           ) : (
-            <div className="card flex flex-col items-center p-8 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <AlertTriangle className="h-6 w-6 text-text-muted" />
-              </div>
-              <p className="mt-4 font-medium">No issues yet</p>
-              <p className="mt-1 text-sm text-text-secondary">Run a scan to populate your remediation queue.</p>
-              <Link to="/" className="mt-4 text-sm font-medium text-[#ccff00]">Run a scan &rarr;</Link>
-            </div>
+            <EmptyState
+              icon={AlertTriangle}
+              title="No issues yet"
+              description="Run a scan to populate your remediation queue."
+            />
           )}
         </div>
       </div>
 
-      <div className="mt-10">
+      {/* Products */}
+      <div>
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold">Products</h2>
           <Link
             to="/dashboard/products"
-            className="text-sm text-[#ccff00] transition hover:text-[#ccff00]"
+            className="text-xs font-medium text-[#ccff00] transition hover:text-white"
           >
             View all &rarr;
           </Link>
         </div>
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 space-y-2">
           {recentProducts.length > 0 ? (
             recentProducts.map((product) => {
               const tone = getScoreTone(product.overallScore);
-
               return (
                 <Link
                   key={product.productId}
                   to={`/dashboard/products/${product.productId}`}
-                  className="card flex items-center gap-4 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-white/12"
+                  className="card flex items-center gap-4 p-4"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                    <Package className="h-5 w-5 text-text-muted" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/8 bg-white/5">
+                    <Package className="h-5 w-5 text-white/30" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium">{product.name}</p>
-                    <p className="truncate text-xs text-text-muted">
-                      {product.category} &middot; {product.issueCount} issues
+                    <p className="truncate text-sm font-medium">{product.name}</p>
+                    <p className="truncate text-xs text-white/40">
+                      {product.category} &middot;{" "}
+                      <span className="text-[#ff3366]">{product.issueCount} issues</span>
                     </p>
                   </div>
                   <p className={`text-2xl font-bold tabular-nums ${tone.accentClass}`}>
@@ -110,17 +124,40 @@ export function DashboardHome() {
               );
             })
           ) : (
-            <div className="card flex flex-col items-center p-8 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <ScanLine className="h-6 w-6 text-text-muted" />
-              </div>
-              <p className="mt-4 font-medium">No products scanned</p>
-              <p className="mt-1 text-sm text-text-secondary">Products appear here after your first completed scan.</p>
-              <Link to="/" className="mt-4 text-sm font-medium text-[#ccff00]">Run a scan &rarr;</Link>
-            </div>
+            <EmptyState
+              icon={ScanLine}
+              title="No products scanned"
+              description="Products appear here after your first completed scan."
+            />
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function EmptyState({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: typeof AlertTriangle;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="card flex flex-col items-center p-10 text-center">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/8 bg-white/5">
+        <Icon className="h-6 w-6 text-white/30" />
+      </div>
+      <p className="mt-4 text-sm font-medium">{title}</p>
+      <p className="mt-1 text-xs text-white/40">{description}</p>
+      <Link
+        to="/"
+        className="mt-5 inline-flex items-center rounded-lg border border-[#ccff00]/20 bg-[#ccff00]/10 px-4 py-2 text-xs font-semibold text-[#ccff00] transition hover:bg-[#ccff00]/20"
+      >
+        Run a scan &rarr;
+      </Link>
     </div>
   );
 }

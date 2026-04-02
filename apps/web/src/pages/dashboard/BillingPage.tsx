@@ -43,7 +43,6 @@ export function BillingPage() {
 
   async function handleSelect(plan: PlanTier) {
     setActivePlan(plan);
-
     try {
       await updatePlan(plan);
       await refreshWorkspace();
@@ -53,37 +52,39 @@ export function BillingPage() {
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Billing</h1>
-      <p className="mt-1 text-text-secondary">
-        Choose the plan that matches your v1 rollout.
-      </p>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-extrabold tracking-tight">Billing</h1>
+        <p className="mt-1 text-sm text-white/50">
+          Choose the plan that matches your rollout.
+        </p>
+      </div>
 
-      <div className="mt-8 grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         {PLANS.map((plan) => {
           const isCurrent = workspace.profile.plan === plan.plan;
 
           return (
             <div
               key={plan.plan}
-              className={`card p-6 ${isCurrent ? "ring-1 ring-[#ccff00]/30" : ""}`}
+              className={`card flex flex-col p-6 ${isCurrent ? "ring-1 ring-[#ccff00]/30" : ""}`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
+                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/40">
                     {plan.plan}
                   </p>
                   <p className="mt-2 text-3xl font-extrabold text-[#ccff00]">{plan.price}</p>
-                  <p className="mt-2 text-sm text-text-secondary">{plan.description}</p>
+                  <p className="mt-2 text-sm text-white/50">{plan.description}</p>
                 </div>
-                {isCurrent ? (
+                {isCurrent && (
                   <span className="rounded-full border border-[#ccff00]/20 bg-[#ccff00]/10 px-3 py-1 text-xs font-medium text-[#ccff00]">
                     Current
                   </span>
-                ) : null}
+                )}
               </div>
 
-              <ul className="mt-6 space-y-3 text-sm text-text-secondary">
+              <ul className="mt-6 flex-1 space-y-3 border-t border-white/5 pt-5 text-sm text-white/60">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
