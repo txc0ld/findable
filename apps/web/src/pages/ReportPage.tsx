@@ -283,7 +283,7 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
                       href={product.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-1 inline-flex items-center gap-1 text-xs text-text-muted transition hover:text-text-primary"
+                      className="mt-1 inline-flex items-center gap-1 text-xs text-[#53eafd] transition hover:text-[#53eafd]/80"
                     >
                       View product
                       <ExternalLink className="h-3 w-3" />
@@ -302,7 +302,7 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
                   <MetricPill label="P" value={product.protocolScore} />
                 </div>
 
-                <p className="mt-4 text-xs text-text-secondary">
+                <p className="mt-4 text-xs text-[#ff3366]">
                   {product.issues.length} finding{product.issues.length === 1 ? "" : "s"}
                 </p>
               </div>
@@ -325,7 +325,7 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
               <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-amber-500/20 bg-amber-500/10 text-xs font-semibold text-amber-300">
                 {index + 1}
               </span>
-              <p className="text-sm leading-relaxed text-text-secondary">{issue}</p>
+              <p className="text-sm leading-relaxed text-white">{issue}</p>
             </div>
           ))}
         </div>
@@ -339,7 +339,7 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="font-medium">{product.name}</p>
-                  <p className="mt-1 text-xs text-text-muted">{product.url}</p>
+                  <p className="mt-1 text-xs text-[#53eafd]">{product.url}</p>
                 </div>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-text-secondary">
                   {product.issues.length} issue{product.issues.length === 1 ? "" : "s"}
@@ -450,7 +450,7 @@ function ScoreCard({ label, score }: { label: string; score: number }) {
 function MetricPill({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-2xl border border-white/6 bg-white/4 px-3 py-2">
-      <p className="text-[10px] uppercase tracking-[0.18em]">{label}</p>
+      <p className="text-[10px] uppercase tracking-[0.18em] text-white/60">{label}</p>
       <p className="mt-1 text-sm font-semibold text-text-primary">{value}</p>
     </div>
   );
