@@ -31,6 +31,7 @@
       "version": "0.1.0",
       "dependencies": {
         "@findable/shared": "workspace:*",
+        "@fontsource-variable/inter": "^5.2.8",
         "@fontsource/jetbrains-mono": "^5.1.0",
         "@vercel/analytics": "^2.0.1",
         "lucide-react": "^0.511.0",
@@ -164,6 +165,8 @@
     "@findable/shared": ["@findable/shared@workspace:packages/shared"],
 
     "@findable/web": ["@findable/web@workspace:apps/web"],
+
+    "@fontsource-variable/inter": ["@fontsource-variable/inter@5.2.8", "", {}, "sha512-kOfP2D+ykbcX/P3IFnokOhVRNoTozo5/JxhAIVYLpea/UBmCQ/YWPBfWIDuBImXX/15KH+eKh4xpEUyS2sQQGQ=="],
 
     "@fontsource/jetbrains-mono": ["@fontsource/jetbrains-mono@5.2.8", "", {}, "sha512-6w8/SG4kqvIMu7xd7wt6x3idn1Qux3p9N62s6G3rfldOUYHpWcc2FKrqf+Vo44jRvqWj2oAtTHrZXEP23oSKwQ=="],
 

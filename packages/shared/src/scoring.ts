@@ -10,37 +10,37 @@ export const SCORE_BANDS: ScoreBand[] = [
     min: 0,
     max: 25,
     label: "Critical - invisible to AI",
-    color: "#EF4444",
+    color: "#ff3366",
   },
   {
     min: 26,
     max: 40,
     label: "Poor - major gaps",
-    color: "#F97316",
+    color: "#ff8833",
   },
   {
     min: 41,
     max: 55,
     label: "Fair - needs work",
-    color: "#F59E0B",
+    color: "#ffcc00",
   },
   {
     min: 56,
     max: 70,
     label: "Good - on the right track",
-    color: "#84CC16",
+    color: "#aacc00",
   },
   {
     min: 71,
     max: 85,
     label: "Great - competitive",
-    color: "#10B981",
+    color: "#00e699",
   },
   {
     min: 86,
     max: 100,
     label: "Excellent - fully optimized",
-    color: "#06B6D4",
+    color: "#00ccff",
   },
 ];
 

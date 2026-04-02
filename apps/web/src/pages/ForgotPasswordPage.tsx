@@ -2,10 +2,12 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
 import { forgotPassword } from "../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function ForgotPasswordPage() {
+  usePageTitle("Forgot password");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sentTo, setSentTo] = useState<string | null>(null);
@@ -74,7 +76,7 @@ export function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold text-white"
+            className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold"
           >
             {isLoading ? (
               <>

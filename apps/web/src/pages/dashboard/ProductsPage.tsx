@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AlertTriangle, Package } from "lucide-react";
+import { AlertTriangle, Package, ScanLine } from "lucide-react";
 
 import { useDashboardContext } from "../../lib/dashboard-context";
 import { getScoreTone } from "../../lib/scores";
@@ -63,8 +63,13 @@ export function ProductsPage() {
             );
           })
         ) : (
-          <div className="card p-6 text-sm text-text-secondary">
-            No product records yet. Run a scan to populate this view.
+          <div className="card flex flex-col items-center p-8 text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <ScanLine className="h-6 w-6 text-text-muted" />
+            </div>
+            <p className="mt-4 font-medium">No products yet</p>
+            <p className="mt-1 text-sm text-text-secondary">Run a scan to populate this view with scored products.</p>
+            <Link to="/" className="mt-4 text-sm font-medium text-[#ccff00]">Run a scan &rarr;</Link>
           </div>
         )}
       </div>

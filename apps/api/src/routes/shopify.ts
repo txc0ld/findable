@@ -288,7 +288,12 @@ shopifyRoute.post("/webhooks", async (c) => {
     topic,
   });
 
-  const payload = rawBody ? (JSON.parse(rawBody) as Record<string, unknown>) : {};
+  let payload: Record<string, unknown> = {};
+  try {
+    payload = rawBody ? (JSON.parse(rawBody) as Record<string, unknown>) : {};
+  } catch {
+    return c.json({ success: false, error: "Malformed webhook payload." }, 400);
+  }
 
   switch (topic) {
     case "app/uninstalled":

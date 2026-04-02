@@ -2,9 +2,11 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, LoaderCircle, Sparkles } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
 import { getCurrentAccount, login } from "../lib/auth-api";
 
 export function LoginPage() {
+  usePageTitle("Sign in");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -83,7 +85,7 @@ export function LoginPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold text-white"
+          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold"
         >
           {isLoading ? (
             <>

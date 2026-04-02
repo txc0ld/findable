@@ -90,79 +90,90 @@ export function ScanForm({
   return (
     <form className={className} onSubmit={handleSubmit} noValidate>
       <div className="card-glass p-6 sm:p-8 border-none bg-transparent shadow-none backdrop-blur-none">
+        <h3 className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-white">
+          Free <span className="text-[#ccff00]">AI Readiness</span> Scan
+        </h3>
         <div className="space-y-4">
-          {values.urls.map((url, index) => (
-            <div key={`scan-url-${index}`}>
-              <input
-                className={`landing-input landing-input-mono ${
-                  errors.urls[index] ? "landing-input-error" : ""
-                }`}
-                onChange={(e) => updateUrl(index, e.target.value)}
-                placeholder={
-                  index === 0
-                    ? "https://your-store.com/products/product-1"
-                    : index === 1
-                      ? "https://your-store.com/products/product-2"
-                      : "https://your-store.com/products/optional"
-                }
-                type="url"
-                value={url}
-                aria-label={
-                  index === 2
-                    ? "Product URL (optional)"
-                    : `Product URL ${index + 1}`
-                }
-              />
-              {errors.urls[index] && (
-                <p className="mt-1.5 text-sm text-red-400">
-                  {errors.urls[index]}
-                </p>
-              )}
-            </div>
-          ))}
+          {values.urls.map((url, index) => {
+            const labels = ["Product Page 1", "Product Page 2", "Product Page 3 (optional)"];
+            return (
+              <div key={`scan-url-${index}`}>
+                <label className="mb-1.5 block text-xs font-medium text-white/70">
+                  {labels[index]}
+                </label>
+                <input
+                  className={`landing-input landing-input-mono ${
+                    errors.urls[index] ? "landing-input-error" : ""
+                  }`}
+                  onChange={(e) => updateUrl(index, e.target.value)}
+                  placeholder={
+                    index === 0
+                      ? "https://your-store.com/products/product-1"
+                      : index === 1
+                        ? "https://your-store.com/products/product-2"
+                        : "https://your-store.com/products/optional"
+                  }
+                  type="url"
+                  value={url}
+                />
+                {errors.urls[index] && (
+                  <p className="mt-1.5 text-sm text-red-400">
+                    {errors.urls[index]}
+                  </p>
+                )}
+              </div>
+            );
+          })}
 
-          <input
-            className={`landing-input ${errors.email ? "landing-input-error" : ""}`}
-            onChange={(e) => updateEmail(e.target.value)}
-            placeholder="your@email.com"
-            type="email"
-            value={values.email}
-            aria-label="Work email"
-          />
-          {errors.email && (
-            <p className="mt-1.5 text-sm text-red-400">{errors.email}</p>
-          )}
+          <div>
+            <label className="mb-1.5 block text-xs font-medium text-white/70">
+              Email for report
+            </label>
+            <input
+              className={`landing-input ${errors.email ? "landing-input-error" : ""}`}
+              onChange={(e) => updateEmail(e.target.value)}
+              placeholder="your@email.com"
+              type="email"
+              value={values.email}
+              aria-label="Work email"
+            />
+            {errors.email && (
+              <p className="mt-1.5 text-sm text-red-400">{errors.email}</p>
+            )}
+          </div>
 
           <TurnstileWidget
             error={errors.turnstile}
             onTokenChange={handleTurnstileChange}
           />
 
-          <button
-            className="btn-primary cta-pulse flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white"
-            disabled={isSubmitting}
-            type="submit"
-          >
-            {isSubmitting ? (
-              <>
-                <LoaderCircle className="h-4 w-4 animate-spin" />
-                Scanning...
-              </>
-            ) : (
-              <>
-                {ctaLabel}
-                <ArrowRight className="h-4 w-4" />
-              </>
-            )}
-          </button>
+          <div className="mt-8 space-y-3">
+            <button
+              className="btn-primary cta-pulse flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold"
+              disabled={isSubmitting}
+              type="submit"
+            >
+              {isSubmitting ? (
+                <>
+                  <LoaderCircle className="h-4 w-4 animate-spin" />
+                  Scanning...
+                </>
+              ) : (
+                <>
+                  {ctaLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </>
+              )}
+            </button>
 
-          {errors.submit ? (
-            <p className="text-center text-sm text-red-400">{errors.submit}</p>
-          ) : null}
+            {errors.submit ? (
+              <p className="text-center text-sm text-red-400">{errors.submit}</p>
+            ) : null}
 
-          <p className="text-center text-xs text-text-muted">
-            Protected by Cloudflare &middot; Free &middot; 15 seconds
-          </p>
+            <p className="mt-4 text-center text-[10px] tracking-wide text-[#ccff00]/60">
+              Bot protection by Cloudflare
+            </p>
+          </div>
         </div>
       </div>
     </form>

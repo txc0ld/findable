@@ -130,35 +130,29 @@ export function TurnstileWidget({
   }, [isDevFallback, siteKey]);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       <div
-        className={`rounded-2xl border p-4 ${
+        className={`rounded-2xl border p-3 ${
           error
             ? "border-score-critical/35 bg-score-critical/8"
             : "border-white/8 bg-white/4"
         }`}
       >
-        <div className="flex items-center justify-between gap-4 text-sm text-text-secondary">
-          <span>Bot protection</span>
-          <span className="rounded-full border border-[#ccff00]/25 bg-[#ccff00]/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-[#ccff00]">
-            Cloudflare
-          </span>
-        </div>
         {isDevFallback ? (
-          <div className="mt-4 rounded-2xl border border-dashed border-white/10 bg-black/10 px-4 py-5 text-sm text-text-secondary">
+          <div className="rounded-xl border border-dashed border-white/10 bg-black/10 px-4 py-4 text-center text-sm text-text-secondary">
             Turnstile site key missing. Local preview mode is active until
             `VITE_CLOUDFLARE_TURNSTILE_SITE_KEY` is configured.
           </div>
         ) : (
-          <div ref={containerRef} className="mt-4 min-h-16" />
+          <div ref={containerRef} className="flex min-h-16 items-center justify-center [&>div]:mx-auto" />
         )}
       </div>
       {loadState === "error" ? (
-        <p className="text-sm text-score-critical">
+        <p className="text-center text-xs text-score-critical">
           Turnstile could not load. Refresh and try again.
         </p>
       ) : null}
-      {error ? <p className="text-sm text-score-critical">{error}</p> : null}
+      {error ? <p className="text-center text-xs text-score-critical">{error}</p> : null}
     </div>
   );
 }

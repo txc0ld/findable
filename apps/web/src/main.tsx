@@ -1,3 +1,4 @@
+import "@fontsource-variable/inter";
 import "@fontsource/jetbrains-mono";
 import "./styles/global.css";
 

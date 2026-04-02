@@ -8,6 +8,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
+import { CopyButton } from "../components/CopyButton";
 import { ScoreRing } from "../components/ScoreRing";
 import { SectionReveal } from "../components/SectionReveal";
 import {
@@ -24,6 +26,7 @@ type CompletedScan = ScanDetails & {
 };
 
 export function ReportPage() {
+  usePageTitle("Scan Report");
   const { id } = useParams();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -89,9 +92,7 @@ export function ReportPage() {
               FINDABLE
             </span>
           </a>
-          <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-text-muted">
-            Scan {id ?? "unknown"}
-          </span>
+          <CopyButton text={id ?? ""} className="text-text-muted" />
         </nav>
       </header>
 
@@ -373,13 +374,13 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               to="/dashboard"
-              className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white"
+              className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold"
             >
               Go to Dashboard
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
-              href="/#pricing"
+              href="/pricing"
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-text-primary transition hover:border-white/20 hover:bg-white/8"
             >
               View Plans

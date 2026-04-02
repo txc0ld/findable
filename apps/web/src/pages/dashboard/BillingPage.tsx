@@ -95,7 +95,7 @@ export function BillingPage() {
               <button
                 onClick={() => void handleSelect(plan.plan)}
                 disabled={isCurrent || activePlan === plan.plan}
-                className="btn-primary mt-6 w-full rounded-xl px-5 py-3 text-sm font-semibold text-white"
+                className="btn-primary mt-6 w-full rounded-xl px-5 py-3 text-sm font-semibold"
               >
                 {activePlan === plan.plan ? (
                   <>

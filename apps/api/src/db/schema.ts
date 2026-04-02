@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import {
   boolean,
   integer,
@@ -218,18 +219,131 @@ export const alerts = pgTable("alerts", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+export const accountsRelations = relations(accounts, ({ many }) => ({
+  authRefreshTokens: many(authRefreshTokens),
+  passwordResetTokens: many(passwordResetTokens),
+  stores: many(stores),
+  scans: many(scans),
+}));
+
+export const authRefreshTokensRelations = relations(authRefreshTokens, ({ one }) => ({
+  account: one(accounts, {
+    fields: [authRefreshTokens.accountId],
+    references: [accounts.id],
+  }),
+}));
+
+export const passwordResetTokensRelations = relations(passwordResetTokens, ({ one }) => ({
+  account: one(accounts, {
+    fields: [passwordResetTokens.accountId],
+    references: [accounts.id],
+  }),
+}));
+
+export const storesRelations = relations(stores, ({ one, many }) => ({
+  account: one(accounts, {
+    fields: [stores.accountId],
+    references: [accounts.id],
+  }),
+  scans: many(scans),
+  products: many(products),
+  competitors: many(competitors),
+  feeds: many(feeds),
+  alerts: many(alerts),
+  shopifyWebhookDeliveries: many(shopifyWebhookDeliveries),
+}));
+
+export const shopifyWebhookDeliveriesRelations = relations(shopifyWebhookDeliveries, ({ one }) => ({
+  store: one(stores, {
+    fields: [shopifyWebhookDeliveries.storeId],
+    references: [stores.id],
+  }),
+}));
+
+export const scansRelations = relations(scans, ({ one, many }) => ({
+  account: one(accounts, {
+    fields: [scans.accountId],
+    references: [accounts.id],
+  }),
+  store: one(stores, {
+    fields: [scans.storeId],
+    references: [stores.id],
+  }),
+  products: many(products),
+  issues: many(issues),
+}));
+
+export const productsRelations = relations(products, ({ one, many }) => ({
+  scan: one(scans, {
+    fields: [products.scanId],
+    references: [scans.id],
+  }),
+  store: one(stores, {
+    fields: [products.storeId],
+    references: [stores.id],
+  }),
+  issues: many(issues),
+}));
+
+export const issuesRelations = relations(issues, ({ one }) => ({
+  scan: one(scans, {
+    fields: [issues.scanId],
+    references: [scans.id],
+  }),
+  product: one(products, {
+    fields: [issues.productId],
+    references: [products.id],
+  }),
+}));
+
+export const competitorsRelations = relations(competitors, ({ one }) => ({
+  store: one(stores, {
+    fields: [competitors.storeId],
+    references: [stores.id],
+  }),
+  lastScan: one(scans, {
+    fields: [competitors.lastScanId],
+    references: [scans.id],
+  }),
+}));
+
+export const feedsRelations = relations(feeds, ({ one }) => ({
+  store: one(stores, {
+    fields: [feeds.storeId],
+    references: [stores.id],
+  }),
+}));
+
+export const alertsRelations = relations(alerts, ({ one }) => ({
+  store: one(stores, {
+    fields: [alerts.storeId],
+    references: [stores.id],
+  }),
+}));
+
 export const schema = {
   accounts,
+  accountsRelations,
   authRefreshTokens,
+  authRefreshTokensRelations,
   passwordResetTokens,
+  passwordResetTokensRelations,
   stores,
+  storesRelations,
   shopifyWebhookDeliveries,
+  shopifyWebhookDeliveriesRelations,
   scans,
+  scansRelations,
   products,
+  productsRelations,
   issues,
+  issuesRelations,
   competitors,
+  competitorsRelations,
   feeds,
+  feedsRelations,
   alerts,
+  alertsRelations,
 };
 
 export type Account = typeof accounts.$inferSelect;

@@ -1,16 +1,4 @@
-const DISPOSABLE_EMAIL_DOMAINS = new Set([
-  "10minutemail.com",
-  "dispostable.com",
-  "fakeinbox.com",
-  "getairmail.com",
-  "guerrillamail.com",
-  "maildrop.cc",
-  "mailinator.com",
-  "sharklasers.com",
-  "tempmail.com",
-  "throwawaymail.com",
-  "yopmail.com",
-]);
+import { isDisposableEmailDomain } from "@findable/shared";
 
 const urlPattern = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -67,7 +55,7 @@ export function validateScanForm(
   } else {
     const domain = email.split("@")[1];
 
-    if (domain && DISPOSABLE_EMAIL_DOMAINS.has(domain)) {
+    if (domain && isDisposableEmailDomain(domain)) {
       errors.email = "Use a work or store email, not a disposable inbox.";
     }
   }

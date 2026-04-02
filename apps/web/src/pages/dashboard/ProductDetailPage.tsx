@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 
+import { CopyButton } from "../../components/CopyButton";
 import { IssueCard } from "../../components/IssueCard";
 import { ScoreRing } from "../../components/ScoreRing";
 import { useDashboardContext } from "../../lib/dashboard-context";
@@ -110,6 +111,9 @@ export function ProductDetailPage() {
             <span className="text-sm font-medium text-emerald-400">
               Generated Schema
             </span>
+            <div className="ml-auto">
+              <CopyButton text={JSON.stringify(product.generatedSchema ?? {}, null, 2)} />
+            </div>
           </div>
           <pre className="overflow-x-auto p-6 font-mono text-[13px] leading-relaxed text-cyan-300/70">
             {JSON.stringify(product.generatedSchema ?? {}, null, 2)}

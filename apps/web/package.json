@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@findable/shared": "workspace:*",
+    "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.1.0",
     "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.511.0",

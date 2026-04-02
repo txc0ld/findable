@@ -1,6 +1,8 @@
 import { Check, Sparkles, X, ChevronRight, BarChart3, BrainCircuit, PlugZap, Search } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
 import { AnimatedCounter } from "../components/AnimatedCounter";
+import { CopyButton } from "../components/CopyButton";
 import { ScanForm } from "../components/ScanForm";
 import { ScorePreview } from "../components/ScorePreview";
 import { SectionReveal } from "../components/SectionReveal";
@@ -12,6 +14,7 @@ import {
 } from "../lib/content";
 
 export function LandingPage() {
+  usePageTitle();
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
       {/* ───────── Nav ───────── */}
@@ -27,13 +30,13 @@ export function LandingPage() {
           </div>
 
           <div className="hidden items-center gap-8 text-[13px] font-medium tracking-wide text-text-secondary md:flex">
-            <a href="#topology" className="transition hover:text-white">
+            <a href="/what-we-scan" className="transition hover:text-white">
               Product Map
             </a>
-            <a href="#engine" className="transition hover:text-white">
+            <a href="/how-reports-work" className="transition hover:text-white">
               Report Flow
             </a>
-            <a href="#pricing" className="transition hover:text-white">
+            <a href="/pricing" className="transition hover:text-white">
               Pricing
             </a>
             <a href="/login" className="transition hover:text-white">
@@ -41,12 +44,6 @@ export function LandingPage() {
             </a>
           </div>
 
-          <a
-            href="#hero-form"
-            className="btn-secondary rounded-lg px-4 py-2 text-[13px] font-semibold"
-          >
-            Start Free Scan <ChevronRight className="ml-1 h-3 w-3" />
-          </a>
         </nav>
       </header>
 
@@ -59,22 +56,21 @@ export function LandingPage() {
           <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[520px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px]" />
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
-            <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(420px,520px)] lg:gap-12">
+            <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
               <div className="hero-enter text-center lg:text-left">
-                <h1 className="font-display mx-auto max-w-5xl text-balance text-5xl leading-[1.1] tracking-wider sm:text-6xl md:text-7xl lg:mx-0 lg:max-w-4xl lg:text-[5rem]">
-                  Make Your Products
+                <h1 className="font-display mx-auto text-balance text-4xl leading-[1.08] tracking-tight sm:text-5xl lg:mx-0 lg:text-[3.5rem]">
+                  <span className="relative -top-5">Is Your Store</span>
                   <br />
-                  <span className="text-[#ccff00]">Understandable to AI</span>
+                  <span className="relative left-5 text-[#ccff00] text-[calc(1em+0.5rem)]">Agent-Ready?</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary sm:text-xl lg:mx-0 lg:max-w-xl">
-                  AI shopping agents are starting to influence what gets discovered,
-                  recommended, and purchased. Scan your product pages and see where your
-                  catalog is falling behind.
+                  Scan your product pages to see whether AI shopping agents can
+                  find, understand, and recommend what you sell.
                 </p>
-                <div className="mx-auto mt-8 flex max-w-xl flex-wrap gap-3 text-sm text-text-secondary lg:mx-0">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">1-3 live URLs</span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">15 second scan</span>
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">Dashboard-ready report</span>
+                <div className="mx-auto mt-8 flex w-full max-w-lg items-center justify-between lg:mx-0">
+                  <img src="/logos/shopify.png" alt="Shopify" className="h-8 object-contain" />
+                  <img src="/logos/woocommerce.png" alt="WooCommerce" className="ml-6 h-16 object-contain" />
+                  <img src="/logos/squarespace.png" alt="Squarespace" className="ml-2 h-14 object-contain" />
                 </div>
               </div>
 
@@ -96,18 +92,41 @@ export function LandingPage() {
                  <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><BrainCircuit className="h-4 w-4"/> GEMINI</div>
                  <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><PlugZap className="h-4 w-4"/> ANTHROPIC</div>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* ───────── Section 2 : Topology (What We Scan) ───────── */}
+        {/* ───────── Section 2 : Diagnostic Matrix ───────── */}
+        <SectionReveal className="py-32">
+          <div className="mx-auto max-w-5xl px-6 text-center">
+            <p className="eyebrow">Diagnostic Matrix</p>
+            <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
+              See the <span className="text-[#ccff00]">score</span> before
+              <br />
+              you touch the dashboard.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-text-secondary">
+              Most stores look fine to humans and weak to AI. The report shows where schema,
+              discoverability, and protocol readiness fall apart.
+            </p>
+
+            <div className="mx-auto mt-16 max-w-3xl transition-transform duration-300">
+              <div className="card-glass-panel p-2">
+                 <ScorePreview score={34} schema={41} llm={28} protocol={15} />
+              </div>
+            </div>
+          </div>
+        </SectionReveal>
+
+        {/* ───────── Section 3 : Topology (What We Scan) ───────── */}
         <SectionReveal id="topology" className="relative py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-8">
               <div className="flex flex-col justify-center lg:col-span-5 lg:pr-8">
                 <p className="eyebrow">Product Map</p>
                 <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
-                  What the scanner
+                  What the <span className="text-[#ccff00]">scanner</span>
                   <br />
                   actually checks.
                 </h2>
@@ -119,32 +138,27 @@ export function LandingPage() {
 
               <div className="lg:col-span-7">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {DIMENSION_CARDS.map(({ title, subtitle, bullets, icon: Icon }, index) => (
+                  {DIMENSION_CARDS.map(({ title, subtitle, bullets, icon: Icon }) => (
                     <div
                       key={title}
-                      className="card-glass panel-glow group relative cursor-pointer overflow-hidden p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#ccff00]/6"
+                      className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-white/5"
                     >
-                      {/* Subtle hover background sweep */}
-                      <div className="absolute inset-0 z-0 bg-linear-to-br from-[#ccff00]/0 via-[#ccff00]/0 to-[#ccff00]/0 transition-all duration-500 group-hover:from-[#ccff00]/5 group-hover:to-transparent" />
-                      
-                      <div className="relative z-10">
-                        <div className="mb-6 inline-flex rounded-lg border border-white/10 bg-white/5 p-3 transition-colors duration-300 group-hover:border-[#ccff00]/30 group-hover:bg-[#ccff00]/20">
-                          <Icon className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-[#ccff00]" />
-                        </div>
-                        <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-[#ccff00]">
-                          {title}
-                        </h3>
-                        <p className="mt-2 text-sm text-text-secondary transition-colors duration-300 group-hover:text-white/80">
-                          {subtitle}
-                        </p>
-                        <ul className="mt-6 space-y-2 border-t border-white/5 pt-4">
-                          {bullets.map((bullet) => (
-                            <li key={bullet} className="flex items-center gap-3 text-xs text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
-                              <span className="h-1 w-1 rounded-full bg-[#ccff00]/50 transition-all duration-300 group-hover:h-1.5 group-hover:w-1.5 group-hover:bg-emerald-400 group-hover:shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span> {bullet}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="mb-6 inline-flex rounded-lg border border-white/10 bg-white/5 p-3 transition-colors duration-300 group-hover:border-white/20 group-hover:bg-white/10">
+                        <Icon className="h-5 w-5 text-white" />
                       </div>
+                      <h3 className="font-mono text-sm font-bold uppercase tracking-wide text-white">
+                        {title}
+                      </h3>
+                      <p className="mt-2 text-sm text-text-secondary transition-colors duration-300 group-hover:text-white/80">
+                        {subtitle}
+                      </p>
+                      <ul className="mt-6 space-y-2 border-t border-white/5 pt-4">
+                        {bullets.map((bullet) => (
+                          <li key={bullet} className="flex items-center gap-3 text-xs text-text-muted transition-colors duration-300 group-hover:text-[#53eafd]">
+                            <span className="h-1 w-1 rounded-full bg-white/30 transition-all duration-300 group-hover:h-1.5 group-hover:w-1.5 group-hover:bg-[#53eafd]"></span> {bullet}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
                 </div>
@@ -161,7 +175,7 @@ export function LandingPage() {
               <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
                 From storefront markup
                 <br />
-                to machine-readable output.
+                to <span className="text-[#ccff00]">machine-readable</span> output.
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary">
                 The report makes the gap obvious: what humans can browse is not the same thing as
@@ -173,7 +187,7 @@ export function LandingPage() {
               <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
               <div className="relative z-10 grid gap-8 lg:grid-cols-2">
                 {/* Before */}
-              <div className="card-glass-panel relative overflow-hidden p-1 group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/5">
+              <div className="card-glass-panel relative overflow-hidden p-1 group">
                 <div className="absolute right-4 top-4 text-[10px] uppercase tracking-widest text-red-500 transition-colors duration-300 group-hover:text-red-400">Low signal</div>
                 <div className="rounded-t-[20px] border-b border-white/5 bg-black/40 p-4 transition-colors duration-500 group-hover:bg-black/60">
                   <div className="flex items-center gap-2">
@@ -190,12 +204,15 @@ export function LandingPage() {
               </div>
 
               {/* After */}
-              <div className="card-glass-panel panel-glow relative overflow-hidden p-1 group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/8">
+              <div className="card-glass-panel relative overflow-hidden p-1 group">
                 <div className="absolute right-4 top-4 text-[10px] uppercase tracking-widest text-emerald-400 transition-colors duration-300 group-hover:text-emerald-300">High signal</div>
                 <div className="rounded-t-[20px] border-b border-white/5 bg-black/40 p-4 transition-colors duration-500 group-hover:bg-black/60">
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-500 transition-transform duration-300 group-hover:scale-110" />
                     <span className="font-mono text-xs text-text-secondary transition-colors duration-300 group-hover:text-white/70">Structured product record</span>
+                    <div className="ml-auto">
+                      <CopyButton text={`{\n  "@type": "Product",\n  "name": "Heavyweight Tee",\n  "brand": { "name": "ACME" },\n  "offers": {\n    "price": 49.95,\n    "availability": "InStock"\n  },\n  "gtin": "00012345600012"\n}`} />
+                    </div>
                   </div>
                 </div>
                 <div className="bg-[#0A0A0F] p-6 font-mono text-[13px] leading-relaxed text-cyan-300/80 transition-colors duration-500 group-hover:text-cyan-300">
@@ -239,33 +256,11 @@ export function LandingPage() {
           </div>
         </SectionReveal>
 
-        {/* ───────── Section 5 : The Score Engine ───────── */}
-        <SectionReveal className="py-32">
-          <div className="mx-auto max-w-5xl px-6 text-center">
-            <p className="eyebrow">Diagnostic Matrix</p>
-            <h2 className="font-display mt-4 text-balance text-3xl tracking-wider sm:text-5xl">
-              See the score before
-              <br />
-              you touch the dashboard.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-text-secondary">
-              Most stores look fine to humans and weak to AI. The report shows where schema,
-              discoverability, and protocol readiness fall apart.
-            </p>
-
-            <div className="mx-auto mt-16 max-w-3xl transition-transform duration-300">
-              <div className="card-glass-panel p-2">
-                 <ScorePreview score={34} schema={41} llm={28} protocol={15} />
-              </div>
-            </div>
-          </div>
-        </SectionReveal>
-
         {/* ───────── Section 6 : How It Works Sequence ───────── */}
         <SectionReveal className="py-32">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-20 text-center">
-               <h2 className="font-display text-3xl tracking-wider sm:text-4xl">How the workflow lands.</h2>
+               <h2 className="font-display text-3xl tracking-wider sm:text-4xl">How the <span className="text-[#ccff00]">workflow</span> lands.</h2>
                <p className="mt-4 text-text-secondary">Start with a scan, convert it into a report, then work the queue from the dashboard.</p>
             </div>
             
@@ -311,7 +306,7 @@ export function LandingPage() {
               {PRICING_TIERS.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`card-glass relative flex flex-col p-8 transition-transform duration-300 hover:-translate-y-1 ${
+                  className={`card-glass relative flex flex-col p-8 ${
                     tier.highlight ? "border-[#ccff00]/40 shadow-[0_0_24px_-16px_rgba(204,255,0,0.25)]" : ""
                   }`}
                 >
@@ -398,9 +393,10 @@ export function LandingPage() {
              <div>
                 <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Product</h4>
                  <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                   <li><a href="#topology" className="transition hover:text-white">What we scan</a></li>
-                   <li><a href="#engine" className="transition hover:text-white">How reports work</a></li>
-                   <li><a href="#pricing" className="transition hover:text-white">Plans</a></li>
+                   <li><a href="/what-we-scan" className="transition hover:text-white">What we scan</a></li>
+                   <li><a href="/how-reports-work" className="transition hover:text-white">How reports work</a></li>
+                   <li><a href="/pricing" className="transition hover:text-white">Plans</a></li>
+                   <li><a href="/glossary" className="transition hover:text-white">Glossary</a></li>
                  </ul>
              </div>
 

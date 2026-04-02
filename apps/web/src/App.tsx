@@ -1,5 +1,7 @@
 import { Suspense, lazy, type ReactNode } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const LandingPage = lazy(() =>
   import("./pages/LandingPage").then((module) => ({
@@ -39,6 +41,31 @@ const ReportPage = lazy(() =>
 const TermsPage = lazy(() =>
   import("./pages/TermsPage").then((module) => ({
     default: module.TermsPage,
+  })),
+);
+const GlossaryPage = lazy(() =>
+  import("./pages/GlossaryPage").then((module) => ({
+    default: module.GlossaryPage,
+  })),
+);
+const WhatWeScanPage = lazy(() =>
+  import("./pages/WhatWeScanPage").then((module) => ({
+    default: module.WhatWeScanPage,
+  })),
+);
+const HowReportsWorkPage = lazy(() =>
+  import("./pages/HowReportsWorkPage").then((module) => ({
+    default: module.HowReportsWorkPage,
+  })),
+);
+const PricingPage = lazy(() =>
+  import("./pages/PricingPage").then((module) => ({
+    default: module.PricingPage,
+  })),
+);
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage").then((module) => ({
+    default: module.NotFoundPage,
   })),
 );
 const DashboardLayout = lazy(() =>
@@ -101,29 +128,48 @@ function withSuspense(element: ReactNode) {
   return <Suspense fallback={<RouteLoader />}>{element}</Suspense>;
 }
 
+function RootLayout() {
+  return (
+    <>
+      <ScrollToTop />
+      <Outlet />
+    </>
+  );
+}
+
 const router = createBrowserRouter([
-  { path: "/", element: withSuspense(<LandingPage />) },
-  { path: "/scan/:id", element: withSuspense(<ReportPage />) },
-  { path: "/login", element: withSuspense(<LoginPage />) },
-  { path: "/signup", element: withSuspense(<SignupPage />) },
-  { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
-  { path: "/reset-password", element: withSuspense(<ResetPasswordPage />) },
-  { path: "/privacy", element: withSuspense(<PrivacyPage />) },
-  { path: "/terms", element: withSuspense(<TermsPage />) },
   {
-    path: "/dashboard",
-    element: withSuspense(<DashboardLayout />),
+    element: <RootLayout />,
     children: [
-      { index: true, element: withSuspense(<DashboardHome />) },
-      { path: "products", element: withSuspense(<ProductsPage />) },
-      { path: "products/:id", element: withSuspense(<ProductDetailPage />) },
-      { path: "issues", element: withSuspense(<IssuesPage />) },
-      { path: "fixes", element: withSuspense(<FixesPage />) },
-      { path: "feeds", element: withSuspense(<FeedsPage />) },
-      { path: "competitors", element: withSuspense(<CompetitorsPage />) },
-      { path: "billing", element: withSuspense(<BillingPage />) },
-      { path: "admin", element: withSuspense(<AdminPage />) },
-      { path: "settings", element: withSuspense(<SettingsPage />) },
+      { path: "/", element: withSuspense(<LandingPage />) },
+      { path: "/scan/:id", element: withSuspense(<ReportPage />) },
+      { path: "/login", element: withSuspense(<LoginPage />) },
+      { path: "/signup", element: withSuspense(<SignupPage />) },
+      { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
+      { path: "/reset-password", element: withSuspense(<ResetPasswordPage />) },
+      { path: "/glossary", element: withSuspense(<GlossaryPage />) },
+      { path: "/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
+      { path: "/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
+      { path: "/pricing", element: withSuspense(<PricingPage />) },
+      { path: "/privacy", element: withSuspense(<PrivacyPage />) },
+      { path: "/terms", element: withSuspense(<TermsPage />) },
+      {
+        path: "/dashboard",
+        element: withSuspense(<DashboardLayout />),
+        children: [
+          { index: true, element: withSuspense(<DashboardHome />) },
+          { path: "products", element: withSuspense(<ProductsPage />) },
+          { path: "products/:id", element: withSuspense(<ProductDetailPage />) },
+          { path: "issues", element: withSuspense(<IssuesPage />) },
+          { path: "fixes", element: withSuspense(<FixesPage />) },
+          { path: "feeds", element: withSuspense(<FeedsPage />) },
+          { path: "competitors", element: withSuspense(<CompetitorsPage />) },
+          { path: "billing", element: withSuspense(<BillingPage />) },
+          { path: "admin", element: withSuspense(<AdminPage />) },
+          { path: "settings", element: withSuspense(<SettingsPage />) },
+        ],
+      },
+      { path: "*", element: withSuspense(<NotFoundPage />) },
     ],
   },
 ]);

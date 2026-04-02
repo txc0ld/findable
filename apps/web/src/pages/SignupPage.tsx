@@ -2,10 +2,12 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
 import { getCurrentAccount, signup } from "../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function SignupPage() {
+  usePageTitle("Create account");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -99,7 +101,7 @@ export function SignupPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold text-white"
+          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold"
         >
           {isLoading ? (
             <>

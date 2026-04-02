@@ -72,7 +72,7 @@ export function SettingsPage() {
           </div>
           <a
             href="/dashboard/billing"
-            className="btn-primary rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
+            className="btn-primary rounded-xl px-4 py-2.5 text-sm font-semibold"
           >
             Upgrade
           </a>
@@ -209,7 +209,7 @@ export function SettingsPage() {
         <button
           onClick={() => void handleSave()}
           disabled={isSaving}
-          className="btn-primary rounded-xl px-6 py-3 text-sm font-semibold text-white"
+          className="btn-primary rounded-xl px-6 py-3 text-sm font-semibold"
         >
           {isSaving ? (
             <>

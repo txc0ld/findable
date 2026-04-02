@@ -30,7 +30,7 @@ app.use(
         return origin;
       }
 
-      return allowedOrigins[0] ?? env.FRONTEND_URL;
+      return undefined as unknown as string;
     },
   }),
 );

@@ -40,7 +40,7 @@ export function FeedsPage() {
                   href={feed.fileUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-primary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
+                  className="btn-primary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold"
                 >
                   <ExternalLink className="h-4 w-4" />
                   Open feed
@@ -48,7 +48,7 @@ export function FeedsPage() {
               ) : (
                 <Link
                   to="/dashboard/settings"
-                  className="btn-primary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold text-white"
+                  className="btn-primary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold"
                 >
                   <ExternalLink className="h-4 w-4" />
                   Connect store

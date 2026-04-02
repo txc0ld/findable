@@ -68,7 +68,7 @@ export function FixesPage() {
         <button
           onClick={() => void handleApplyAll()}
           disabled={isApplyingAll || autoFixable.length === 0}
-          className="btn-primary shrink-0 rounded-xl px-6 py-3 text-sm font-semibold text-white"
+          className="btn-primary shrink-0 rounded-xl px-6 py-3 text-sm font-semibold"
         >
           {isApplyingAll ? (
             <>

@@ -8,7 +8,7 @@ import type {
   WorkspaceProduct,
   WorkspaceScanListItem,
 } from "@findable/shared";
-import { desc, eq } from "drizzle-orm";
+import { count, desc, eq, isNotNull } from "drizzle-orm";
 
 import { db } from "../db/client";
 import {
@@ -560,14 +560,24 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
   );
 
   return {
-    admin: {
-      accounts: (await db.select().from(accounts)).length,
-      activeFeeds: (await db.select().from(feeds)).length,
-      connectedStores: (await db.select().from(stores)).filter((storeRow) => Boolean(storeRow.url)).length,
-      pendingFixes: (await db.select().from(issues)).filter((issueRow) => !issueRow.fixed).length,
-      scans: (await db.select().from(scans)).length,
-      stores: (await db.select().from(stores)).length,
-    },
+    admin: await (async () => {
+      const [[accountCount], [feedCount], [connectedStoreCount], [pendingFixCount], [scanCount], [storeCount]] = await Promise.all([
+        db.select({ value: count() }).from(accounts),
+        db.select({ value: count() }).from(feeds),
+        db.select({ value: count() }).from(stores).where(isNotNull(stores.url)),
+        db.select({ value: count() }).from(issues).where(eq(issues.fixed, false)),
+        db.select({ value: count() }).from(scans),
+        db.select({ value: count() }).from(stores),
+      ]);
+      return {
+        accounts: accountCount?.value ?? 0,
+        activeFeeds: feedCount?.value ?? 0,
+        connectedStores: connectedStoreCount?.value ?? 0,
+        pendingFixes: pendingFixCount?.value ?? 0,
+        scans: scanCount?.value ?? 0,
+        stores: storeCount?.value ?? 0,
+      };
+    })(),
     billing: {
       canUpgrade: account.plan !== "agency",
       currentPlan: getMemoryPlan(account.email) ?? account.plan,

@@ -2,10 +2,12 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
+import { usePageTitle } from "../hooks/usePageTitle";
 import { resetPassword } from "../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function ResetPasswordPage() {
+  usePageTitle("Reset password");
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -87,7 +89,7 @@ export function ResetPasswordPage() {
         <button
           type="submit"
           disabled={isLoading || !token}
-          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold text-white"
+          className="btn-primary flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold"
         >
           {isLoading ? (
             <>
