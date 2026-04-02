@@ -75,7 +75,7 @@ export function WhatIsAeoPage() {
                   </div>
                   <div className="p-5">
                     <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Findable fixes it</p>
-                    <p className="mt-2 text-sm text-white/60">{card.solution}</p>
+                    <p className="mt-2 text-sm text-white">{card.solution}</p>
                   </div>
                 </div>
               </div>
