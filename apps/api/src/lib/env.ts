@@ -18,6 +18,8 @@ const EnvSchema = z.object({
   SHOPIFY_APP_URL: z.string().url().optional(),
   SHOPIFY_TOKEN_ENCRYPTION_KEY: z.string().optional(),
   SHOPIFY_API_VERSION: z.string().default("2026-01"),
+  OPENAI_API_KEY: z.string().optional(),
+  OPENAI_MODEL: z.string().default("gpt-4o"),
 });
 
 export const env = EnvSchema.parse({
@@ -38,4 +40,6 @@ export const env = EnvSchema.parse({
   SHOPIFY_APP_URL: process.env.SHOPIFY_APP_URL,
   SHOPIFY_TOKEN_ENCRYPTION_KEY: process.env.SHOPIFY_TOKEN_ENCRYPTION_KEY,
   SHOPIFY_API_VERSION: process.env.SHOPIFY_API_VERSION,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+  OPENAI_MODEL: process.env.OPENAI_MODEL,
 });

@@ -3,6 +3,7 @@ import type {
   WorkspaceIssueDimension,
   WorkspaceIssueSeverity,
 } from "@findable/shared";
+import { analyzeWithAi, type AiAnalysisResult } from "./ai-analyzer";
 
 export interface ScanJobPayload {
   scanId: string;
@@ -546,12 +547,80 @@ function analyzeFallback(url: string): PageAnalysis {
 }
 
 async function analyzeProductUrl(url: string) {
+  let html: string;
   try {
-    const html = await fetchHtml(url);
-    return analyzeFetchedHtml(url, html);
+    html = await fetchHtml(url);
   } catch {
     return analyzeFallback(url);
   }
+
+  const baseAnalysis = analyzeFetchedHtml(url, html);
+
+  // Enhance with AI analysis when OpenAI is configured
+  const bodyText = stripTags(html).slice(0, 2000);
+  const schemaObjects = parseJsonLdObjects(html);
+  const productSchema = findSchemaObject(schemaObjects, "Product");
+  const visibleAttributes = bodyText.match(/\b(cotton|polyester|leather|wool|size|color|weight|dimension|material|fit|warranty)\b/gi) ?? [];
+
+  const aiResult = await analyzeWithAi({
+    url,
+    productName: baseAnalysis.name,
+    description: baseAnalysis.description || bodyText.slice(0, 1000),
+    existingSchema: productSchema,
+    visiblePrice: baseAnalysis.price,
+    visibleAttributes: [...new Set(visibleAttributes.map((a) => a.toLowerCase()))],
+    htmlSnippet: html.slice(0, 4000),
+  });
+
+  if (!aiResult) {
+    return baseAnalysis;
+  }
+
+  // Merge AI results into the base analysis
+  return mergeAiAnalysis(baseAnalysis, aiResult);
+}
+
+function mergeAiAnalysis(base: PageAnalysis, ai: AiAnalysisResult): PageAnalysis {
+  // AI-enhanced LLM score uses the AEO score weighted with heuristic
+  const enhancedLlmScore = Math.round(ai.aeoScore * 0.7 + base.llmScore * 0.3);
+
+  // Add AI-detected issues
+  const aiIssues: ScanExecutionIssue[] = [];
+
+  if (ai.descriptionType === "marketing") {
+    aiIssues.push(
+      buildIssue(base.url, base.name, "Description uses marketing language", "AI analysis detected marketing-heavy copy that LLMs and ACP feeds will deprioritize. Rewrite with factual, attribute-dense language.", 12, "high", "llm", "auto"),
+    );
+  }
+
+  for (const attr of ai.missingAttributes.slice(0, 5)) {
+    aiIssues.push(
+      buildIssue(base.url, base.name, `Missing attribute: ${attr}`, `The ${attr} attribute is expected for this product category but was not found in the page or schema.`, 4, "medium", "schema", "manual"),
+    );
+  }
+
+  if (ai.aeoIssues) {
+    for (const issue of ai.aeoIssues.slice(0, 3)) {
+      aiIssues.push(
+        buildIssue(base.url, base.name, issue, "Identified by AI analysis of description quality and LLM discoverability.", 5, "medium", "llm", "auto"),
+      );
+    }
+  }
+
+  const allIssues = [...base.issues, ...aiIssues];
+  const overallScore = Math.round(base.schemaScore * 0.4 + enhancedLlmScore * 0.35 + base.protocolScore * 0.25);
+
+  return {
+    ...base,
+    category: ai.googleCategory || base.category,
+    llmScore: enhancedLlmScore,
+    overallScore,
+    issues: allIssues,
+    generatedSchema: ai.generatedSchema && typeof ai.generatedSchema === "object"
+      ? ai.generatedSchema
+      : base.generatedSchema,
+    description: ai.rewrittenDescription || base.description,
+  };
 }
 
 export async function runScan(payload: ScanJobPayload): Promise<ScanExecutionResult> {
