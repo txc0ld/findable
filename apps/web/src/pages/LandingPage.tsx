@@ -1,4 +1,5 @@
-import { Check, Sparkles, X, ChevronRight, BarChart3, BrainCircuit, PlugZap, Search } from "lucide-react";
+import { useState } from "react";
+import { Check, Menu, Sparkles, X, ChevronRight, BarChart3, BrainCircuit, PlugZap, Search } from "lucide-react";
 
 import { usePageTitle } from "../hooks/usePageTitle";
 import { AnimatedCounter } from "../components/AnimatedCounter";
@@ -15,11 +16,12 @@ import {
 
 export function LandingPage() {
   usePageTitle();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
       {/* ───────── Nav ───────── */}
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
               <Sparkles className="h-4 w-4 text-white" />
@@ -30,21 +32,32 @@ export function LandingPage() {
           </div>
 
           <div className="hidden items-center gap-8 text-[13px] font-medium tracking-wide text-text-secondary md:flex">
-            <a href="/what-we-scan" className="transition hover:text-white">
-              Product Map
-            </a>
-            <a href="/how-reports-work" className="transition hover:text-white">
-              Report Flow
-            </a>
-            <a href="/pricing" className="transition hover:text-white">
-              Pricing
-            </a>
-            <a href="/login" className="transition hover:text-white">
-              Dashboard
-            </a>
+            <a href="/what-we-scan" className="transition hover:text-white">Product Map</a>
+            <a href="/how-reports-work" className="transition hover:text-white">Report Flow</a>
+            <a href="/pricing" className="transition hover:text-white">Pricing</a>
+            <a href="/login" className="transition hover:text-white">Dashboard</a>
           </div>
 
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
         </nav>
+
+        {menuOpen && (
+          <div className="border-t border-white/5 bg-bg-primary px-5 pb-6 pt-4 md:hidden">
+            <div className="flex flex-col gap-4 text-sm font-medium text-text-secondary">
+              <a href="/what-we-scan" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Product Map</a>
+              <a href="/how-reports-work" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Report Flow</a>
+              <a href="/pricing" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Pricing</a>
+              <a href="/glossary" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Glossary</a>
+              <a href="/login" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Dashboard</a>
+            </div>
+          </div>
+        )}
       </header>
 
       <main className="relative">
@@ -78,7 +91,7 @@ export function LandingPage() {
                 id="hero-form"
                 className="hero-enter hero-enter-delay relative z-20 mx-auto w-full max-w-lg lg:mx-0 lg:max-w-[560px] lg:justify-self-end"
               >
-                <div className="card-glass-panel p-3">
+                <div className="card-glass-panel p-2 sm:p-3">
                   <ScanForm ctaLabel="Run Free Scan" />
                 </div>
               </div>

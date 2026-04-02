@@ -212,11 +212,18 @@ button:disabled {
   border-radius: 12px;
   border: 1px solid var(--border);
   background: rgba(9, 9, 11, 0.86);
-  padding: 0.85rem 1rem;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
   outline: none;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+@media (min-width: 640px) {
+  .landing-input {
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+  }
 }
 .landing-input::placeholder {
   color: var(--text-muted);

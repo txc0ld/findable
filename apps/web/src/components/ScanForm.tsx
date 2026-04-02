@@ -89,11 +89,11 @@ export function ScanForm({
 
   return (
     <form className={className} onSubmit={handleSubmit} noValidate>
-      <div className="card-glass p-6 sm:p-8 border-none bg-transparent shadow-none backdrop-blur-none">
-        <h3 className="mb-6 text-center text-sm font-bold uppercase tracking-[0.18em] text-white">
+      <div className="card-glass border-none bg-transparent p-4 shadow-none backdrop-blur-none sm:p-6 lg:p-8">
+        <h3 className="mb-4 text-center text-xs font-bold uppercase tracking-[0.18em] text-white sm:mb-6 sm:text-sm">
           Free <span className="text-[#ccff00]">AI Readiness</span> Scan
         </h3>
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {values.urls.map((url, index) => {
             const labels = ["Product Page 1", "Product Page 2", "Product Page 3 (optional)"];
             return (
@@ -147,9 +147,9 @@ export function ScanForm({
             onTokenChange={handleTurnstileChange}
           />
 
-          <div className="mt-8 space-y-3">
+          <div className="mt-5 space-y-3 sm:mt-8">
             <button
-              className="btn-primary cta-pulse flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold"
+              className="btn-primary cta-pulse flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold sm:px-6 sm:py-4 sm:text-base"
               disabled={isSubmitting}
               type="submit"
             >
@@ -170,7 +170,7 @@ export function ScanForm({
               <p className="text-center text-sm text-red-400">{errors.submit}</p>
             ) : null}
 
-            <p className="mt-4 text-center text-[10px] tracking-wide text-[#ccff00]/60">
+            <p className="mt-2 text-center text-[10px] tracking-wide text-[#ccff00]/60 sm:mt-4">
               Bot protection by Cloudflare
             </p>
           </div>
