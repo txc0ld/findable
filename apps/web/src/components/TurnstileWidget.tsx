@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -67,20 +67,24 @@ export function TurnstileWidget({
   error,
   onTokenChange,
 }: TurnstileWidgetProps) {
-  const widgetId = useId().replace(/:/g, "");
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const onTokenChangeRef = useRef(onTokenChange);
   const [loadState, setLoadState] = useState<"idle" | "ready" | "error">("idle");
   const siteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITE_KEY;
   const isDevFallback = !siteKey;
 
   useEffect(() => {
+    onTokenChangeRef.current = onTokenChange;
+  }, [onTokenChange]);
+
+  useEffect(() => {
     if (isDevFallback) {
-      onTokenChange("dev-turnstile-bypass");
+      onTokenChangeRef.current("dev-turnstile-bypass");
       setLoadState("ready");
       return;
     }
 
-    onTokenChange(null);
+    onTokenChangeRef.current(null);
 
     let isActive = true;
 
@@ -94,14 +98,14 @@ export function TurnstileWidget({
           sitekey: siteKey,
           theme: "dark",
           callback: (token) => {
-            onTokenChange(token);
+            onTokenChangeRef.current(token);
           },
           "error-callback": () => {
-            onTokenChange(null);
+            onTokenChangeRef.current(null);
             setLoadState("error");
           },
           "expired-callback": () => {
-            onTokenChange(null);
+            onTokenChangeRef.current(null);
           },
         });
 
@@ -112,7 +116,7 @@ export function TurnstileWidget({
           return;
         }
 
-        onTokenChange(null);
+        onTokenChangeRef.current(null);
         setLoadState("error");
       });
 
@@ -123,7 +127,7 @@ export function TurnstileWidget({
         window.turnstile.remove(containerRef.current);
       }
     };
-  }, [isDevFallback, onTokenChange, siteKey, widgetId]);
+  }, [isDevFallback, siteKey]);
 
   return (
     <div className="space-y-3">

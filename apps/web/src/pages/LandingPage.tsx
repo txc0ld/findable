@@ -15,7 +15,7 @@ export function LandingPage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
       {/* ───────── Nav ───────── */}
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/60 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
@@ -56,7 +56,7 @@ export function LandingPage() {
         {/* ───────── Section 1 : Hero ───────── */}
         <section className="relative overflow-hidden px-4 pb-24 pt-20">
           {/* Dimensional Glows */}
-          <div className="pointer-events-none absolute left-1/2 top-[20%] h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[#ccff00]/20 blur-[120px]" />
+          <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[520px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px]" />
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
             <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(420px,520px)] lg:gap-12">
@@ -122,7 +122,7 @@ export function LandingPage() {
                   {DIMENSION_CARDS.map(({ title, subtitle, bullets, icon: Icon }, index) => (
                     <div
                       key={title}
-                      className="card-glass panel-glow group relative cursor-pointer overflow-hidden p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#ccff00]/10"
+                      className="card-glass panel-glow group relative cursor-pointer overflow-hidden p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#ccff00]/6"
                     >
                       {/* Subtle hover background sweep */}
                       <div className="absolute inset-0 z-0 bg-linear-to-br from-[#ccff00]/0 via-[#ccff00]/0 to-[#ccff00]/0 transition-all duration-500 group-hover:from-[#ccff00]/5 group-hover:to-transparent" />
@@ -173,7 +173,7 @@ export function LandingPage() {
               <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
               <div className="relative z-10 grid gap-8 lg:grid-cols-2">
                 {/* Before */}
-              <div className="card-glass-panel relative overflow-hidden p-1 group transition-all duration-500 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-white/5">
+              <div className="card-glass-panel relative overflow-hidden p-1 group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/5">
                 <div className="absolute right-4 top-4 text-[10px] uppercase tracking-widest text-red-500 transition-colors duration-300 group-hover:text-red-400">Low signal</div>
                 <div className="rounded-t-[20px] border-b border-white/5 bg-black/40 p-4 transition-colors duration-500 group-hover:bg-black/60">
                   <div className="flex items-center gap-2">
@@ -190,7 +190,7 @@ export function LandingPage() {
               </div>
 
               {/* After */}
-              <div className="card-glass-panel panel-glow relative overflow-hidden p-1 group transition-all duration-500 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-2xl hover:shadow-emerald-500/10">
+              <div className="card-glass-panel panel-glow relative overflow-hidden p-1 group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/8">
                 <div className="absolute right-4 top-4 text-[10px] uppercase tracking-widest text-emerald-400 transition-colors duration-300 group-hover:text-emerald-300">High signal</div>
                 <div className="rounded-t-[20px] border-b border-white/5 bg-black/40 p-4 transition-colors duration-500 group-hover:bg-black/60">
                   <div className="flex items-center gap-2">
@@ -253,7 +253,7 @@ export function LandingPage() {
               discoverability, and protocol readiness fall apart.
             </p>
 
-            <div className="mx-auto mt-16 max-w-3xl transform cursor-crosshair transition-transform duration-700 hover:scale-[1.02]">
+            <div className="mx-auto mt-16 max-w-3xl transition-transform duration-300">
               <div className="card-glass-panel p-2">
                  <ScorePreview score={34} schema={41} llm={28} protocol={15} />
               </div>
@@ -311,8 +311,8 @@ export function LandingPage() {
               {PRICING_TIERS.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`card-glass relative flex flex-col p-8 transition-transform duration-300 hover:-translate-y-2 ${
-                    tier.highlight ? "border-[#ccff00]/40 shadow-[0_0_40px_-15px_rgba(79,70,229,0.3)]" : ""
+                  className={`card-glass relative flex flex-col p-8 transition-transform duration-300 hover:-translate-y-1 ${
+                    tier.highlight ? "border-[#ccff00]/40 shadow-[0_0_24px_-16px_rgba(204,255,0,0.25)]" : ""
                   }`}
                 >
                   {tier.highlight && (
@@ -356,7 +356,7 @@ export function LandingPage() {
 
         {/* ───────── Section 8 : Footer CTA ───────── */}
         <SectionReveal className="relative overflow-hidden py-40">
-           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[500px] bg-[#ccff00]/10 blur-[150px]"></div>
+           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[280px] bg-[#ccff00]/8 blur-[80px]"></div>
           <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
             <h2 className="font-display text-balance text-4xl tracking-wider text-white sm:text-6xl">
               Start with the scan.
