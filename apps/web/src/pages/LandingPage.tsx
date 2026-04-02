@@ -56,8 +56,8 @@ export function LandingPage() {
           <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[320px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px] sm:w-[520px]" />
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
-            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
-              <div className="hero-enter text-center lg:text-left">
+            <div className="grid items-center justify-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
+              <div className="hero-enter mx-auto max-w-lg text-center lg:mx-0 lg:max-w-none lg:text-left">
                 <h1 className="font-display mx-auto text-balance text-3xl leading-[1.08] tracking-tight sm:text-5xl lg:mx-0 lg:text-[3.5rem]">
                   <span className="lg:relative lg:-top-5">Is Your Store</span>
                   <br />
@@ -67,7 +67,7 @@ export function LandingPage() {
                   Scan your product pages to see whether AI shopping agents can
                   find, understand, and recommend what you sell.
                 </p>
-                <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-between sm:max-w-sm lg:mx-0 lg:max-w-lg">
+                <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-6 sm:max-w-sm sm:gap-8 lg:mx-0 lg:max-w-lg lg:justify-between lg:gap-0">
                   <img src="/logos/shopify.png" alt="Shopify" className="h-6 object-contain sm:h-8" />
                   <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:ml-6 lg:h-16" />
                   <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:ml-2 lg:h-14" />
@@ -76,7 +76,7 @@ export function LandingPage() {
 
               <div
                 id="hero-form"
-                className="hero-enter hero-enter-delay relative z-20 mx-auto w-full lg:mx-0 lg:max-w-[560px] lg:justify-self-end"
+                className="hero-enter hero-enter-delay relative z-20 mx-auto w-full max-w-lg lg:mx-0 lg:max-w-[560px] lg:justify-self-end"
               >
                 <div className="card-glass-panel p-3">
                   <ScanForm ctaLabel="Run Free Scan" />
