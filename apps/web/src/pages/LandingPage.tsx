@@ -90,7 +90,8 @@ export function LandingPage() {
                 <div className="mx-auto mt-10 text-center lg:mx-0 lg:text-left">
                   <a
                     href="/what-is-aeo"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-5 py-2.5 text-xs font-bold text-black transition hover:bg-[#ccff00]/85"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-5 py-2.5 text-xs font-bold transition hover:bg-[#ccff00]/85"
+                    style={{ color: "#000000" }}
                   >
                     Why are 98% of stores invisible to AI? <ChevronRight className="h-3 w-3" />
                   </a>
