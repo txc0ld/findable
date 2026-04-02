@@ -5,7 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export function NotFoundPage() {
   usePageTitle("Page not found");
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-bg-primary px-6 text-text-primary">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-bg-primary px-4 text-text-primary sm:px-6">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[400px] w-full max-w-[375px] -translate-x-1/2 rounded-full bg-[#ccff00]/8 blur-[120px] sm:max-w-[600px]" />
       </div>

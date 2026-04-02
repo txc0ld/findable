@@ -4,7 +4,7 @@ export function TermsPage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <header className="border-b border-white/5 bg-bg-primary/80 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <a href="/" className="flex items-center gap-2.5">
             <Sparkles className="h-5 w-5 text-[#ccff00]" />
             <span className="text-sm font-bold uppercase tracking-[0.2em]">
@@ -14,7 +14,7 @@ export function TermsPage() {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
           Terms of Service
         </h1>

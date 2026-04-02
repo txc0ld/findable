@@ -202,7 +202,7 @@ export function DashboardLayout() {
           </div>
         </header>
 
-        <main className="p-6 pb-24 lg:pb-6">
+        <main className="p-4 pb-24 sm:p-6 lg:pb-6">
           <Outlet context={outletContext} />
         </main>
       </div>

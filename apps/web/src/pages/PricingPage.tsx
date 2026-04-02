@@ -160,7 +160,7 @@ export function PricingPage() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <a href="/" className="flex items-center gap-2.5">
             <Sparkles className="h-5 w-5 text-[#ccff00]" />
             <span className="text-sm font-bold uppercase tracking-[0.2em]">FINDABLE</span>
@@ -171,7 +171,7 @@ export function PricingPage() {
         </nav>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 pb-24 pt-16">
+      <main className="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-6">
         <SectionReveal>
           <div className="text-center">
             <p className="eyebrow">Plans</p>

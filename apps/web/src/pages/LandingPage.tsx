@@ -112,7 +112,7 @@ export function LandingPage() {
 
         {/* ───────── Section 2 : Diagnostic Matrix ───────── */}
         <SectionReveal className="py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-5xl px-6 text-center">
+          <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
             <p className="eyebrow">Diagnostic Matrix</p>
             <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
               See the <span className="text-[#ccff00]">score</span> before
@@ -134,7 +134,7 @@ export function LandingPage() {
 
         {/* ───────── Section 3 : Topology (What We Scan) ───────── */}
         <SectionReveal id="topology" className="relative py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="grid gap-16 lg:grid-cols-12 lg:items-center lg:gap-8">
               <div className="flex flex-col justify-center text-center lg:col-span-5 lg:pr-8 lg:text-left">
                 <p className="eyebrow">Product Map</p>
@@ -182,7 +182,7 @@ export function LandingPage() {
 
         {/* ───────── Section 3 : Sequence of Events (Before/After) ───────── */}
         <SectionReveal id="engine" className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="text-center">
               <p className="eyebrow">Report Flow</p>
               <h2 className="font-display mt-4 text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
@@ -248,7 +248,7 @@ export function LandingPage() {
 
         {/* ───────── Section 4 : Stats Bar ───────── */}
         <SectionReveal className="border-y border-white/5 bg-white/2 py-24">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-4 lg:gap-8 lg:border-x lg:border-white/5 lg:px-8">
               {LANDING_STATS.map((stat, i) => (
                 <div key={stat.label} className={`relative flex flex-col justify-center ${i !== 0 ? "lg:border-l lg:border-white/5 lg:pl-8" : ""}`}>
@@ -271,7 +271,7 @@ export function LandingPage() {
 
         {/* ───────── Section 6 : How It Works Sequence ───────── */}
         <SectionReveal className="py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="mb-20 text-center">
                <h2 className="font-display text-2xl tracking-wider sm:text-3xl lg:text-4xl">How the <span className="text-[#ccff00]">workflow</span> lands.</h2>
                <p className="mt-4 text-text-secondary">Start with a scan, convert it into a report, then work the queue from the dashboard.</p>
@@ -305,7 +305,7 @@ export function LandingPage() {
 
         {/* ───────── Section 7 : Pricing Tiers ───────── */}
         <SectionReveal id="pricing" className="py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="text-center">
               <h2 className="font-display text-balance text-2xl tracking-wider sm:text-3xl lg:text-5xl">
                 Choose Your <span className="text-[#ccff00]">Network</span> Layer.
@@ -365,7 +365,7 @@ export function LandingPage() {
         {/* ───────── Section 8 : Footer CTA ───────── */}
         <SectionReveal className="relative overflow-hidden py-20 sm:py-32 lg:py-40">
            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[280px] bg-[#ccff00]/8 blur-[80px]"></div>
-          <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
             <h2 className="font-display text-balance text-2xl tracking-wider text-white sm:text-4xl lg:text-6xl">
               Start with the scan.
             </h2>
@@ -387,7 +387,7 @@ export function LandingPage() {
 
       {/* ───────── Footer ───────── */}
       <footer className="border-t border-white/5 bg-[#020205] py-12">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
              <div className="lg:col-span-2">
                 <div className="flex items-center gap-2">
