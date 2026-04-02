@@ -87,6 +87,14 @@ export function LandingPage() {
                   <img src="/logos/squarespace.png" alt="Squarespace" className="ml-4 h-8 object-contain sm:h-10 lg:h-14" />
                   <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:h-16" />
                 </div>
+                <div className="mx-auto mt-6 lg:mx-0">
+                  <a
+                    href="/what-is-aeo"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#ccff00]/25 bg-[#ccff00]/10 px-5 py-2.5 text-xs font-semibold text-[#ccff00] transition hover:bg-[#ccff00]/20"
+                  >
+                    Why are 98% of stores invisible to AI? <ChevronRight className="h-3 w-3" />
+                  </a>
+                </div>
               </div>
 
               <div
