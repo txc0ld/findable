@@ -62,13 +62,14 @@ export function LandingPage() {
             <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(420px,520px)] lg:gap-12">
               <div className="hero-enter text-center lg:text-left">
                 <h1 className="font-display mx-auto max-w-5xl text-balance text-5xl leading-[1.1] tracking-wider sm:text-6xl md:text-7xl lg:mx-0 lg:max-w-4xl lg:text-[5rem]">
-                  Make Your Catalog
+                  Make Your Products
                   <br />
-                  <span className="text-[#ccff00]">Readable to AI.</span>
+                  <span className="text-[#ccff00]">Understandable to AI</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary sm:text-xl lg:mx-0 lg:max-w-xl">
-                  Scan live product pages, see where your store breaks for AI shopping engines,
-                  and turn the report into fixes, feeds, and a usable remediation queue.
+                  AI shopping agents are starting to influence what gets discovered,
+                  recommended, and purchased. Scan your product pages and see where your
+                  catalog is falling behind.
                 </p>
                 <div className="mx-auto mt-8 flex max-w-xl flex-wrap gap-3 text-sm text-text-secondary lg:mx-0">
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">1-3 live URLs</span>
@@ -82,7 +83,7 @@ export function LandingPage() {
                 className="hero-enter hero-enter-delay relative z-20 mx-auto w-full max-w-[560px] lg:mx-0 lg:justify-self-end"
               >
                 <div className="card-glass-panel p-3">
-                  <ScanForm />
+                  <ScanForm ctaLabel="Run Free Scan" />
                 </div>
               </div>
             </div>
