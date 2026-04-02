@@ -88,13 +88,13 @@ export function WhatIsAeoPage() {
             <div className="grid sm:grid-cols-2">
               <div className="border-b border-white/5 p-5 sm:border-b-0 sm:border-r">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-[#ff3366]">Before</p>
-                <p className="mt-2 text-sm italic text-white/40">
+                <p className="mt-2 text-sm italic text-white">
                   "Elevate your everyday wardrobe with our premium heavyweight tee."
                 </p>
               </div>
               <div className="p-5">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">After</p>
-                <p className="mt-2 text-sm text-white/70">
+                <p className="mt-2 text-sm text-white">
                   "300gsm organic cotton crewneck. Relaxed fit, 74cm body (M). GOTS certified. Best for: streetwear layering."
                 </p>
               </div>
