@@ -16,7 +16,7 @@ import {
 export function LandingPage() {
   usePageTitle();
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
+    <div className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
       {/* ───────── Nav ───────── */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -51,32 +51,32 @@ export function LandingPage() {
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-30"></div>
 
         {/* ───────── Section 1 : Hero ───────── */}
-        <section className="relative overflow-hidden px-4 pb-24 pt-20">
+        <section className="relative overflow-hidden px-5 pb-24 pt-20 sm:px-6">
           {/* Dimensional Glows */}
           <div className="pointer-events-none absolute left-1/2 top-[20%] h-[240px] w-[520px] -translate-x-1/2 rounded-full bg-[#ccff00]/12 blur-[72px]" />
 
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
-            <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
               <div className="hero-enter text-center lg:text-left">
                 <h1 className="font-display mx-auto text-balance text-4xl leading-[1.08] tracking-tight sm:text-5xl lg:mx-0 lg:text-[3.5rem]">
-                  <span className="relative -top-5">Is Your Store</span>
+                  <span className="lg:relative lg:-top-5">Is Your Store</span>
                   <br />
-                  <span className="relative left-5 text-[#ccff00] text-[calc(1em+0.5rem)]">Agent-Ready?</span>
+                  <span className="text-[#ccff00] text-[calc(1em+0.5rem)] lg:relative lg:left-5">Agent-Ready?</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary sm:text-xl lg:mx-0 lg:max-w-xl">
                   Scan your product pages to see whether AI shopping agents can
                   find, understand, and recommend what you sell.
                 </p>
-                <div className="mx-auto mt-8 flex w-full max-w-lg items-center justify-between lg:mx-0">
-                  <img src="/logos/shopify.png" alt="Shopify" className="h-8 object-contain" />
-                  <img src="/logos/woocommerce.png" alt="WooCommerce" className="ml-6 h-16 object-contain" />
-                  <img src="/logos/squarespace.png" alt="Squarespace" className="ml-2 h-14 object-contain" />
+                <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-between sm:max-w-sm lg:mx-0 lg:max-w-lg">
+                  <img src="/logos/shopify.png" alt="Shopify" className="h-6 object-contain sm:h-8" />
+                  <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:ml-6 lg:h-16" />
+                  <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:ml-2 lg:h-14" />
                 </div>
               </div>
 
               <div
                 id="hero-form"
-                className="hero-enter hero-enter-delay relative z-20 mx-auto w-full max-w-[560px] lg:mx-0 lg:justify-self-end"
+                className="hero-enter hero-enter-delay relative z-20 mx-auto w-full lg:mx-0 lg:max-w-[560px] lg:justify-self-end"
               >
                 <div className="card-glass-panel p-3">
                   <ScanForm ctaLabel="Run Free Scan" />
@@ -86,11 +86,11 @@ export function LandingPage() {
 
             <div className="hero-enter hero-enter-delay-2 mt-16 flex flex-col items-center border-t border-white/5 pt-10 text-center">
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-muted">Benchmarked against where buyers actually search</span>
-              <div className="mt-6 flex flex-wrap justify-center gap-8 opacity-60 grayscale transition-all hover:grayscale-0 sm:gap-12">
-                 <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><Sparkles className="h-4 w-4"/> OPENAI</div>
-                 <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><Search className="h-4 w-4"/> PERPLEXITY</div>
-                 <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><BrainCircuit className="h-4 w-4"/> GEMINI</div>
-                 <div className="flex items-center gap-2 font-mono text-sm tracking-wider"><PlugZap className="h-4 w-4"/> ANTHROPIC</div>
+              <div className="mt-6 flex flex-wrap justify-center gap-5 opacity-60 grayscale transition-all hover:grayscale-0 sm:gap-12">
+                 <div className="flex items-center gap-1.5 font-mono text-xs tracking-wider sm:gap-2 sm:text-sm"><Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4"/> OPENAI</div>
+                 <div className="flex items-center gap-1.5 font-mono text-xs tracking-wider sm:gap-2 sm:text-sm"><Search className="h-3.5 w-3.5 sm:h-4 sm:w-4"/> PERPLEXITY</div>
+                 <div className="flex items-center gap-1.5 font-mono text-xs tracking-wider sm:gap-2 sm:text-sm"><BrainCircuit className="h-3.5 w-3.5 sm:h-4 sm:w-4"/> GEMINI</div>
+                 <div className="flex items-center gap-1.5 font-mono text-xs tracking-wider sm:gap-2 sm:text-sm"><PlugZap className="h-3.5 w-3.5 sm:h-4 sm:w-4"/> ANTHROPIC</div>
               </div>
 
             </div>
@@ -154,8 +154,8 @@ export function LandingPage() {
                       </p>
                       <ul className="mt-6 space-y-2 border-t border-white/5 pt-4">
                         {bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-center gap-3 text-xs text-text-muted transition-colors duration-300 group-hover:text-[#53eafd]">
-                            <span className="h-1 w-1 rounded-full bg-white/30 transition-all duration-300 group-hover:h-1.5 group-hover:w-1.5 group-hover:bg-[#53eafd]"></span> {bullet}
+                          <li key={bullet} className="flex items-center gap-3 text-xs text-[#53eafd]/70 transition-colors duration-300 group-hover:text-[#53eafd]">
+                            <span className="h-1 w-1 rounded-full bg-[#53eafd]/40 transition-all duration-300 group-hover:h-1.5 group-hover:w-1.5 group-hover:bg-[#53eafd]"></span> {bullet}
                           </li>
                         ))}
                       </ul>
@@ -236,7 +236,7 @@ export function LandingPage() {
         {/* ───────── Section 4 : Stats Bar ───────── */}
         <SectionReveal className="border-y border-white/5 bg-white/2 py-24">
           <div className="mx-auto max-w-7xl px-6">
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 border-x border-white/5 px-8">
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:border-x lg:border-white/5 lg:px-8">
               {LANDING_STATS.map((stat, i) => (
                 <div key={stat.label} className={`relative flex flex-col justify-center ${i !== 0 ? "lg:border-l lg:border-white/5 lg:pl-8" : ""}`}>
                   <div className="font-mono text-4xl font-bold tracking-tight text-white">
