@@ -58,12 +58,12 @@ export function LandingPage() {
           <div className="relative z-10 mx-auto flex min-h-[90vh] w-full max-w-7xl flex-col justify-center">
             <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(400px,500px)] lg:gap-16">
               <div className="hero-enter text-center lg:text-left">
-                <h1 className="font-display mx-auto text-balance text-4xl leading-[1.08] tracking-tight sm:text-5xl lg:mx-0 lg:text-[3.5rem]">
+                <h1 className="font-display mx-auto text-balance text-3xl leading-[1.08] tracking-tight sm:text-5xl lg:mx-0 lg:text-[3.5rem]">
                   <span className="lg:relative lg:-top-5">Is Your Store</span>
                   <br />
-                  <span className="text-[#ccff00] text-[calc(1em+0.5rem)] lg:relative lg:left-5">Agent-Ready?</span>
+                  <span className="text-[#ccff00] lg:relative lg:left-5 lg:text-[calc(1em+0.5rem)]">Agent-Ready?</span>
                 </h1>
-                <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary sm:text-xl lg:mx-0 lg:max-w-xl">
+                <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg lg:mx-0 lg:max-w-xl lg:text-xl">
                   Scan your product pages to see whether AI shopping agents can
                   find, understand, and recommend what you sell.
                 </p>
