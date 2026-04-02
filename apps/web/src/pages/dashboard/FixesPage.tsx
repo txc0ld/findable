@@ -5,7 +5,7 @@ import { useDashboardContext } from "../../lib/dashboard-context";
 import { applyFix } from "../../lib/workspace-api";
 
 export function FixesPage() {
-  const { email, setWorkspace, workspace } = useDashboardContext();
+  const { setWorkspace, workspace } = useDashboardContext();
   const [isApplyingAll, setIsApplyingAll] = useState(false);
   const [activeIssueId, setActiveIssueId] = useState<string | null>(null);
 
@@ -21,7 +21,7 @@ export function FixesPage() {
     setActiveIssueId(issueId);
 
     try {
-      const nextWorkspace = await applyFix(email, issueId);
+      const nextWorkspace = await applyFix(issueId);
       setWorkspace(nextWorkspace);
     } finally {
       setActiveIssueId(null);
@@ -35,7 +35,7 @@ export function FixesPage() {
       let nextWorkspace = workspace;
 
       for (const issue of autoFixable) {
-        nextWorkspace = await applyFix(email, issue.id);
+        nextWorkspace = await applyFix(issue.id);
       }
 
       setWorkspace(nextWorkspace);

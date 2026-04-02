@@ -5,7 +5,7 @@ import { useDashboardContext } from "../../lib/dashboard-context";
 import { updateNotifications, updateStore } from "../../lib/workspace-api";
 
 export function SettingsPage() {
-  const { email, refreshWorkspace, setWorkspace, workspace } = useDashboardContext();
+  const { refreshWorkspace, setWorkspace, workspace } = useDashboardContext();
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -22,14 +22,14 @@ export function SettingsPage() {
 
     try {
       if (formValues.url.trim()) {
-        await updateStore(email, {
+        await updateStore({
           name: formValues.name.trim() || "Connected Store",
           platform: formValues.platform,
           url: formValues.url.trim(),
         });
       }
 
-      const notifications = await updateNotifications(email, {
+      const notifications = await updateNotifications({
         competitorChanges: formValues.competitorChanges,
         criticalAlerts: formValues.criticalAlerts,
         weeklyReport: formValues.weeklyReport,
@@ -161,6 +161,13 @@ export function SettingsPage() {
             className="inline-flex items-center gap-2 text-sm font-medium text-[#ccff00]"
           >
             Manage billing
+            <ExternalLink className="h-4 w-4" />
+          </a>
+          <a
+            href="/forgot-password"
+            className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition hover:text-[#ccff00]"
+          >
+            Reset password
             <ExternalLink className="h-4 w-4" />
           </a>
         </div>

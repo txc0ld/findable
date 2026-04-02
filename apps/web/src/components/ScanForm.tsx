@@ -3,7 +3,6 @@ import { ArrowRight, LoaderCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { createScan } from "../lib/scan-api";
-import { setSessionEmail } from "../lib/session";
 import {
   createEmptyErrors,
   hasFormErrors,
@@ -74,7 +73,6 @@ export function ScanForm({
         turnstileToken: turnstileToken ?? "",
         urls: values.urls.map((url) => url.trim()).filter((url) => url.length > 0),
       });
-      setSessionEmail(values.email.trim());
 
       startTransition(() => {
         navigate(`/scan/${scan.id}`);

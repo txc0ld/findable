@@ -11,6 +11,21 @@ const LoginPage = lazy(() =>
     default: module.LoginPage,
   })),
 );
+const SignupPage = lazy(() =>
+  import("./pages/SignupPage").then((module) => ({
+    default: module.SignupPage,
+  })),
+);
+const ForgotPasswordPage = lazy(() =>
+  import("./pages/ForgotPasswordPage").then((module) => ({
+    default: module.ForgotPasswordPage,
+  })),
+);
+const ResetPasswordPage = lazy(() =>
+  import("./pages/ResetPasswordPage").then((module) => ({
+    default: module.ResetPasswordPage,
+  })),
+);
 const PrivacyPage = lazy(() =>
   import("./pages/PrivacyPage").then((module) => ({
     default: module.PrivacyPage,
@@ -90,6 +105,9 @@ const router = createBrowserRouter([
   { path: "/", element: withSuspense(<LandingPage />) },
   { path: "/scan/:id", element: withSuspense(<ReportPage />) },
   { path: "/login", element: withSuspense(<LoginPage />) },
+  { path: "/signup", element: withSuspense(<SignupPage />) },
+  { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
+  { path: "/reset-password", element: withSuspense(<ResetPasswordPage />) },
   { path: "/privacy", element: withSuspense(<PrivacyPage />) },
   { path: "/terms", element: withSuspense(<TermsPage />) },
   {

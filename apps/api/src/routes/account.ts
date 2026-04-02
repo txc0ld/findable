@@ -1,32 +1,22 @@
 import { Hono } from "hono";
 import { z } from "zod";
 
+import { requireAuth, type AuthVariables } from "../lib/auth-middleware";
 import {
   applyWorkspaceFix,
   buildWorkspaceData,
-  createOrLoadSession,
   updateWorkspaceNotifications,
   updateWorkspacePlan,
   updateWorkspaceStore,
 } from "../lib/workspace-data";
 
-const accountRoute = new Hono();
-
-const EmailSchema = z.object({
-  email: z.string().trim().email(),
-});
-
-const WorkspaceQuerySchema = z.object({
-  email: z.string().trim().email(),
-});
+const accountRoute = new Hono<{ Variables: AuthVariables }>();
 
 const PlanSchema = z.object({
-  email: z.string().trim().email(),
   plan: z.enum(["free", "starter", "growth", "pro", "agency"]),
 });
 
 const NotificationSchema = z.object({
-  email: z.string().trim().email(),
   notifications: z
     .object({
       competitorChanges: z.boolean().optional(),
@@ -39,7 +29,6 @@ const NotificationSchema = z.object({
 });
 
 const StoreSchema = z.object({
-  email: z.string().trim().email(),
   store: z.object({
     name: z.string().trim().min(1),
     platform: z.enum(["shopify", "woocommerce", "bigcommerce", "custom"]).nullable(),
@@ -48,45 +37,15 @@ const StoreSchema = z.object({
 });
 
 const FixSchema = z.object({
-  email: z.string().trim().email(),
   issueId: z.string().trim().min(1),
 });
 
-accountRoute.post("/session", async (c) => {
-  const parseResult = EmailSchema.safeParse(await c.req.json().catch(() => null));
-
-  if (!parseResult.success) {
-    return c.json(
-      {
-        success: false,
-        error: parseResult.error.issues[0]?.message ?? "A valid email is required.",
-      },
-      400,
-    );
-  }
-
-  const session = await createOrLoadSession(parseResult.data.email);
-
-  return c.json({
-    success: true,
-    data: session,
-  });
-});
+accountRoute.use("*", requireAuth());
 
 accountRoute.get("/workspace", async (c) => {
-  const parseResult = WorkspaceQuerySchema.safeParse(c.req.query());
+  const authAccount = c.get("authAccount");
 
-  if (!parseResult.success) {
-    return c.json(
-      {
-        success: false,
-        error: "A valid email query parameter is required.",
-      },
-      400,
-    );
-  }
-
-  const workspace = await buildWorkspaceData(parseResult.data.email);
+  const workspace = await buildWorkspaceData(authAccount.email);
 
   return c.json({
     success: true,
@@ -107,7 +66,8 @@ accountRoute.post("/plan", async (c) => {
     );
   }
 
-  const plan = await updateWorkspacePlan(parseResult.data.email, parseResult.data.plan);
+  const authAccount = c.get("authAccount");
+  const plan = await updateWorkspacePlan(authAccount.email, parseResult.data.plan);
 
   return c.json({
     success: true,
@@ -131,8 +91,9 @@ accountRoute.post("/notifications", async (c) => {
     );
   }
 
+  const authAccount = c.get("authAccount");
   const notifications = await updateWorkspaceNotifications(
-    parseResult.data.email,
+    authAccount.email,
     Object.fromEntries(
       Object.entries(parseResult.data.notifications).filter(([, value]) => value !== undefined),
     ),
@@ -157,7 +118,8 @@ accountRoute.post("/store", async (c) => {
     );
   }
 
-  const store = await updateWorkspaceStore(parseResult.data.email, parseResult.data.store);
+  const authAccount = c.get("authAccount");
+  const store = await updateWorkspaceStore(authAccount.email, parseResult.data.store);
 
   return c.json({
     success: true,
@@ -178,8 +140,9 @@ accountRoute.post("/fixes/apply", async (c) => {
     );
   }
 
-  await applyWorkspaceFix(parseResult.data.email, parseResult.data.issueId);
-  const workspace = await buildWorkspaceData(parseResult.data.email);
+  const authAccount = c.get("authAccount");
+  await applyWorkspaceFix(authAccount.email, parseResult.data.issueId);
+  const workspace = await buildWorkspaceData(authAccount.email);
 
   return c.json({
     success: true,

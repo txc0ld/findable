@@ -283,38 +283,6 @@ async function ensureDbAccount(email: string) {
   return created;
 }
 
-export async function createOrLoadSession(email: string) {
-  const normalizedEmail = email.trim().toLowerCase();
-
-  if (!db) {
-    const account = upsertMemoryAccount(normalizedEmail);
-    const store = getMemoryStore(normalizedEmail);
-
-    return {
-      accountId: normalizedEmail,
-      email: normalizedEmail,
-      freeScanUsed: listFreeScanRecordsByEmail(normalizedEmail).length > 0,
-      notifications: account.notifications,
-      plan: account.plan,
-      storeConnected: Boolean(store?.url),
-    };
-  }
-
-  const account = await ensureDbAccount(normalizedEmail);
-  const store = await db.query.stores.findFirst({
-    where: eq(stores.accountId, account.id),
-  });
-
-  return {
-    accountId: account.id,
-    email: account.email,
-    freeScanUsed: account.freeScanUsed,
-    notifications: getMemoryNotifications(account.email),
-    plan: getMemoryPlan(account.email) ?? account.plan,
-    storeConnected: Boolean(store?.url),
-  };
-}
-
 export async function updateWorkspacePlan(email: string, plan: PlanTier) {
   const normalizedEmail = email.trim().toLowerCase();
   updateMemoryPlan(normalizedEmail, plan);

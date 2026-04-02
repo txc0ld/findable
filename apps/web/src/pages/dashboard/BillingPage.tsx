@@ -38,14 +38,14 @@ const PLANS: Array<{
 ];
 
 export function BillingPage() {
-  const { email, refreshWorkspace, workspace } = useDashboardContext();
+  const { refreshWorkspace, workspace } = useDashboardContext();
   const [activePlan, setActivePlan] = useState<PlanTier | null>(null);
 
   async function handleSelect(plan: PlanTier) {
     setActivePlan(plan);
 
     try {
-      await updatePlan(email, plan);
+      await updatePlan(plan);
       await refreshWorkspace();
     } finally {
       setActivePlan(null);

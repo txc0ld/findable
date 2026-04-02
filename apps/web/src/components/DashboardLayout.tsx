@@ -17,7 +17,8 @@ import {
 import type { WorkspaceData } from "@findable/shared";
 
 import type { DashboardOutletContext } from "../lib/dashboard-context";
-import { clearSessionEmail, getSessionEmail } from "../lib/session";
+import { logout } from "../lib/auth-api";
+import { clearAuthSession } from "../lib/session";
 import { getWorkspace } from "../lib/workspace-api";
 
 const NAV_ITEMS = [
@@ -48,40 +49,39 @@ function navClass(isActive: boolean) {
 }
 
 export function DashboardLayout() {
-  const [email, setEmail] = useState<string | null>(() => getSessionEmail());
   const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [hasResolvedAuth, setHasResolvedAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [workspace, setWorkspace] = useState<WorkspaceData | null>(null);
 
-  useEffect(() => {
-    setEmail(getSessionEmail());
-  }, []);
-
   async function refreshWorkspace() {
-    const sessionEmail = getSessionEmail();
-
-    if (!sessionEmail) {
-      setEmail(null);
-      setWorkspace(null);
-      setIsLoading(false);
-      return;
-    }
-
-    setEmail(sessionEmail);
     setIsLoading(true);
 
     try {
-      const nextWorkspace = await getWorkspace(sessionEmail);
+      const nextWorkspace = await getWorkspace();
       setWorkspace(nextWorkspace);
       setError(null);
+      setIsAuthenticated(true);
     } catch (nextError) {
-      setError(
-        nextError instanceof Error
-          ? nextError.message
-          : "Unable to load your workspace.",
-      );
+      const message =
+        nextError instanceof Error ? nextError.message : "Unable to load your workspace.";
+
+      if (
+        message === "Authentication required." ||
+        message === "Refresh token invalid." ||
+        message === "Refresh token missing."
+      ) {
+        clearAuthSession();
+        setWorkspace(null);
+        setError(null);
+        setIsAuthenticated(false);
+      } else {
+        setError(message);
+      }
     } finally {
       setIsLoading(false);
+      setHasResolvedAuth(true);
     }
   }
 
@@ -89,11 +89,7 @@ export function DashboardLayout() {
     void refreshWorkspace();
   }, []);
 
-  if (!email) {
-    return <Navigate to="/login" replace />;
-  }
-
-  if (isLoading || !workspace) {
+  if (!hasResolvedAuth || (isLoading && !workspace)) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-bg-primary px-6 text-text-secondary">
         <div className="card-glass rounded-2xl px-6 py-4 text-sm uppercase tracking-[0.18em]">
@@ -103,7 +99,11 @@ export function DashboardLayout() {
     );
   }
 
-  if (error) {
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (!workspace || error) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-bg-primary px-6">
         <div className="card max-w-lg p-8 text-center">
@@ -121,7 +121,6 @@ export function DashboardLayout() {
   }
 
   const outletContext: DashboardOutletContext = {
-    email,
     refreshWorkspace,
     setWorkspace,
     workspace,
@@ -166,8 +165,10 @@ export function DashboardLayout() {
             </div>
             <button
               onClick={() => {
-                clearSessionEmail();
-                setEmail(null);
+                void logout().finally(() => {
+                  setWorkspace(null);
+                  setIsAuthenticated(false);
+                });
               }}
               className="text-text-muted transition hover:text-text-primary"
               aria-label="Sign out"
