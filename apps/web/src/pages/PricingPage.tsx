@@ -47,7 +47,7 @@ const PLANS: PlanDetail[] = [
   },
   {
     name: "Starter",
-    price: "$39",
+    price: "$19",
     period: "/mo",
     description:
       "For small catalogs that need clean schema and regular checks. Connect your store and let Findable handle JSON-LD injection and weekly rescans.",
@@ -67,7 +67,7 @@ const PLANS: PlanDetail[] = [
   },
   {
     name: "Growth",
-    price: "$129",
+    price: "$59",
     period: "/mo",
     description:
       "The core plan for merchants actively optimizing for AI commerce. Includes description rewrites, FAQ generation, and ACP/GMC feed hosting.",
@@ -88,7 +88,7 @@ const PLANS: PlanDetail[] = [
   },
   {
     name: "Pro",
-    price: "$349",
+    price: "$249",
     period: "/mo",
     description:
       "For large catalogs and teams that need prompt testing, competitor benchmarks, and fast feed refresh windows.",

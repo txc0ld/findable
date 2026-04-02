@@ -62,21 +62,21 @@ export const HERO_SCORE: ScoreBand = getScoreBand(34);
 export const PRICING_TIERS = [
   {
     name: "Starter",
-    monthlyPrice: "$39",
+    monthlyPrice: "$19",
     description: "For small catalogs that need clean schema and weekly checks.",
     features: ["500 products", "Schema generation", "Schema injection", "Weekly monitoring"],
     highlight: false,
   },
   {
     name: "Growth",
-    monthlyPrice: "$129",
+    monthlyPrice: "$59",
     description: "The core paid plan for merchants who need fixes and feeds fast.",
     features: ["5,000 products", "AEO rewrites", "FAQ generation", "Daily monitoring"],
     highlight: true,
   },
   {
     name: "Pro",
-    monthlyPrice: "$349",
+    monthlyPrice: "$249",
     description: "For large catalogs, prompt testing, and fast feed refresh windows.",
     features: ["Unlimited products", "LLM prompt testing", "Hosted feeds", "5 competitor scans"],
     highlight: false,

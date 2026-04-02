@@ -35,6 +35,7 @@ export function LandingPage() {
             <a href="/what-we-scan" className="transition hover:text-white">Product Map</a>
             <a href="/how-reports-work" className="transition hover:text-white">Report Flow</a>
             <a href="/pricing" className="transition hover:text-white">Pricing</a>
+            <a href="/what-is-aeo" className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
             <a href="/login" className="transition hover:text-white">Dashboard</a>
           </div>
 
@@ -53,6 +54,7 @@ export function LandingPage() {
               <a href="/what-we-scan" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Product Map</a>
               <a href="/how-reports-work" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Report Flow</a>
               <a href="/pricing" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Pricing</a>
+              <a href="/what-is-aeo" onClick={() => setMenuOpen(false)} className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
               <a href="/glossary" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Glossary</a>
               <a href="/login" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Dashboard</a>
             </div>
@@ -82,7 +84,7 @@ export function LandingPage() {
                 </p>
                 <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-6 sm:max-w-sm sm:gap-8 lg:mx-0 lg:max-w-lg lg:justify-between lg:gap-0">
                   <img src="/logos/shopify.png" alt="Shopify" className="h-6 object-contain sm:h-8" />
-                  <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:h-14" />
+                  <img src="/logos/squarespace.png" alt="Squarespace" className="ml-4 h-8 object-contain sm:h-10 lg:h-14" />
                   <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:h-16" />
                 </div>
               </div>

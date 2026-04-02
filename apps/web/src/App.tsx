@@ -48,6 +48,11 @@ const GlossaryPage = lazy(() =>
     default: module.GlossaryPage,
   })),
 );
+const WhatIsAeoPage = lazy(() =>
+  import("./pages/WhatIsAeoPage").then((module) => ({
+    default: module.WhatIsAeoPage,
+  })),
+);
 const WhatWeScanPage = lazy(() =>
   import("./pages/WhatWeScanPage").then((module) => ({
     default: module.WhatWeScanPage,
@@ -148,6 +153,7 @@ const router = createBrowserRouter([
       { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
       { path: "/reset-password", element: withSuspense(<ResetPasswordPage />) },
       { path: "/glossary", element: withSuspense(<GlossaryPage />) },
+      { path: "/what-is-aeo", element: withSuspense(<WhatIsAeoPage />) },
       { path: "/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
       { path: "/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
       { path: "/pricing", element: withSuspense(<PricingPage />) },

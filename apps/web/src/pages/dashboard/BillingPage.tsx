@@ -19,19 +19,19 @@ const PLANS: Array<{
   },
   {
     plan: "starter",
-    price: "$39",
+    price: "$19",
     description: "For stores cleaning up the basics.",
     features: ["Weekly rescans", "Schema fixes", "Feed generation"],
   },
   {
     plan: "growth",
-    price: "$129",
+    price: "$59",
     description: "For merchants actively optimizing for AI discovery.",
     features: ["AEO rewrite suggestions", "FAQ generation", "Daily monitoring"],
   },
   {
     plan: "pro",
-    price: "$349",
+    price: "$249",
     description: "For larger catalogs and teams.",
     features: ["Unlimited products", "Priority support", "Competitor monitoring"],
   },
