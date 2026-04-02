@@ -82,8 +82,8 @@ export function LandingPage() {
                 </p>
                 <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-6 sm:max-w-sm sm:gap-8 lg:mx-0 lg:max-w-lg lg:justify-between lg:gap-0">
                   <img src="/logos/shopify.png" alt="Shopify" className="h-6 object-contain sm:h-8" />
-                  <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:ml-6 lg:h-16" />
-                  <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:ml-2 lg:h-14" />
+                  <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:h-14" />
+                  <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:h-16" />
                 </div>
               </div>
 
