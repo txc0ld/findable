@@ -1,4 +1,5 @@
 const DEFAULT_API_BASE = "http://localhost:3001";
+const PRODUCTION_API_BASE = "https://api.getfindable.au";
 
 export function getApiBaseUrl() {
   const configuredBase = import.meta.env.VITE_API_URL?.trim();
@@ -7,8 +8,8 @@ export function getApiBaseUrl() {
     return configuredBase;
   }
 
-  if (typeof window !== "undefined") {
-    return window.location.origin;
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost") {
+    return PRODUCTION_API_BASE;
   }
 
   return DEFAULT_API_BASE;
