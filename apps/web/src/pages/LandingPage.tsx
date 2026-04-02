@@ -82,12 +82,12 @@ export function LandingPage() {
                   Scan your product pages to see whether AI shopping agents can
                   find, understand, and recommend what you sell.
                 </p>
-                <div className="mx-auto mt-8 flex w-full max-w-xs items-center justify-center gap-6 sm:max-w-sm sm:gap-8 lg:mx-0 lg:max-w-lg lg:justify-between lg:gap-0">
+                <div className="mt-8 flex items-center justify-center gap-8 sm:gap-10 lg:justify-start">
                   <img src="/logos/shopify.png" alt="Shopify" className="h-6 object-contain sm:h-8" />
-                  <img src="/logos/squarespace.png" alt="Squarespace" className="ml-4 h-8 object-contain sm:h-10 lg:h-14" />
+                  <img src="/logos/squarespace.png" alt="Squarespace" className="h-8 object-contain sm:h-10 lg:h-14" />
                   <img src="/logos/woocommerce.png" alt="WooCommerce" className="h-10 object-contain sm:h-14 lg:h-16" />
                 </div>
-                <div className="mx-auto mt-10 text-center lg:mx-0 lg:text-left">
+                <div className="mt-8 flex justify-center lg:justify-start">
                   <a
                     href="/what-is-aeo"
                     className="inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-5 py-2.5 text-xs font-bold transition hover:bg-[#ccff00]/85"
