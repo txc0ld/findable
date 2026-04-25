@@ -22,22 +22,22 @@ import { clearAuthSession } from "../lib/session";
 import { getWorkspace } from "../lib/workspace-api";
 
 const NAV_ITEMS = [
-  { label: "Dashboard", icon: LayoutDashboard, path: "/dashboard", end: true },
-  { label: "Products", icon: Package, path: "/dashboard/products", end: false },
-  { label: "Issues", icon: AlertTriangle, path: "/dashboard/issues", end: true },
-  { label: "Fixes", icon: Wrench, path: "/dashboard/fixes", end: true },
-  { label: "Feeds", icon: Rss, path: "/dashboard/feeds", end: true },
-  { label: "Competitors", icon: BarChart3, path: "/dashboard/competitors", end: true },
-  { label: "Billing", icon: CreditCard, path: "/dashboard/billing", end: true },
-  { label: "Admin", icon: Shield, path: "/dashboard/admin", end: true },
-  { label: "Settings", icon: Settings, path: "/dashboard/settings", end: true },
+  { label: "Dashboard", icon: LayoutDashboard, path: "/findable/dashboard", end: true },
+  { label: "Products", icon: Package, path: "/findable/dashboard/products", end: false },
+  { label: "Issues", icon: AlertTriangle, path: "/findable/dashboard/issues", end: true },
+  { label: "Fixes", icon: Wrench, path: "/findable/dashboard/fixes", end: true },
+  { label: "Feeds", icon: Rss, path: "/findable/dashboard/feeds", end: true },
+  { label: "Competitors", icon: BarChart3, path: "/findable/dashboard/competitors", end: true },
+  { label: "Billing", icon: CreditCard, path: "/findable/dashboard/billing", end: true },
+  { label: "Admin", icon: Shield, path: "/findable/dashboard/admin", end: true },
+  { label: "Settings", icon: Settings, path: "/findable/dashboard/settings", end: true },
 ];
 
 const MOBILE_NAV = [
-  { label: "Home", icon: LayoutDashboard, path: "/dashboard", end: true },
-  { label: "Products", icon: Package, path: "/dashboard/products", end: false },
-  { label: "Fixes", icon: Wrench, path: "/dashboard/fixes", end: true },
-  { label: "Settings", icon: Settings, path: "/dashboard/settings", end: true },
+  { label: "Home", icon: LayoutDashboard, path: "/findable/dashboard", end: true },
+  { label: "Products", icon: Package, path: "/findable/dashboard/products", end: false },
+  { label: "Fixes", icon: Wrench, path: "/findable/dashboard/fixes", end: true },
+  { label: "Settings", icon: Settings, path: "/findable/dashboard/settings", end: true },
 ];
 
 function navClass(isActive: boolean) {
@@ -100,7 +100,7 @@ export function DashboardLayout() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/findable/login" replace />;
   }
 
   if (!workspace || error) {
@@ -129,7 +129,7 @@ export function DashboardLayout() {
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col border-r border-white/5 bg-bg-secondary lg:flex">
-        <a href="/" className="flex items-center gap-2.5 px-6 py-5">
+        <a href="/findable" className="flex items-center gap-2.5 px-6 py-5">
           <Sparkles className="h-5 w-5 text-[#ccff00]" />
           <span className="text-sm font-bold uppercase tracking-[0.2em]">
             FINDABLE
@@ -182,7 +182,7 @@ export function DashboardLayout() {
       <div className="lg:pl-64">
         <header className="sticky top-0 z-30 border-b border-white/5 bg-bg-primary/80 px-6 py-4 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-4">
-            <a href="/" className="flex items-center gap-2.5 lg:pointer-events-none">
+            <a href="/findable" className="flex items-center gap-2.5 lg:pointer-events-none">
               <Sparkles className="h-5 w-5 text-[#ccff00] lg:hidden" />
               <span className="text-sm font-bold uppercase tracking-[0.2em] lg:hidden">
                 FINDABLE

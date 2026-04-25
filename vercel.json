@@ -4,6 +4,20 @@
   "installCommand": "bun install",
   "buildCommand": "cd apps/web && bun run build",
   "outputDirectory": "apps/web/dist",
+  "redirects": [
+    { "source": "/scan/:id", "destination": "/findable/scan/:id", "permanent": true },
+    { "source": "/dashboard", "destination": "/findable/dashboard", "permanent": true },
+    { "source": "/dashboard/:path*", "destination": "/findable/dashboard/:path*", "permanent": true },
+    { "source": "/login", "destination": "/findable/login", "permanent": true },
+    { "source": "/signup", "destination": "/findable/signup", "permanent": true },
+    { "source": "/forgot-password", "destination": "/findable/forgot-password", "permanent": true },
+    { "source": "/reset-password", "destination": "/findable/reset-password", "permanent": true },
+    { "source": "/glossary", "destination": "/findable/glossary", "permanent": true },
+    { "source": "/what-is-aeo", "destination": "/findable/what-is-aeo", "permanent": true },
+    { "source": "/what-we-scan", "destination": "/findable/what-we-scan", "permanent": true },
+    { "source": "/how-reports-work", "destination": "/findable/how-reports-work", "permanent": true },
+    { "source": "/pricing", "destination": "/findable/pricing", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
