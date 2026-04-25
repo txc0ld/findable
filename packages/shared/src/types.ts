@@ -19,6 +19,7 @@ export interface ScoreBreakdown {
   llm: number | null;
   protocol: number | null;
   competitive: number | null;
+  agentReadiness: number | null;
 }
 
 export interface ScanSummary {

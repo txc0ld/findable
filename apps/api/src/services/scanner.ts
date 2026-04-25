@@ -4,6 +4,10 @@ import type {
   WorkspaceIssueSeverity,
 } from "@findable/shared";
 import { analyzeWithAi, type AiAnalysisResult } from "./ai-analyzer";
+import {
+  analyzeAgentReadiness,
+  type AgentReadinessCheckResult,
+} from "./agent-readiness-scanner";
 
 export interface ScanJobPayload {
   scanId: string;
@@ -36,11 +40,13 @@ export interface ScanExecutionProduct {
 }
 
 export interface ScanExecutionResult {
+  agentReadinessChecks: AgentReadinessCheckResult[];
   issues: ScanExecutionIssue[];
   pagesScanned: number;
   pagesTotal: number;
   products: ScanExecutionProduct[];
   reportJson: Record<string, unknown>;
+  scoreAgentReadiness: number;
   scoreCompetitive: number | null;
   scoreLlm: number;
   scoreOverall: number;
@@ -654,7 +660,22 @@ export async function runScan(payload: ScanJobPayload): Promise<ScanExecutionRes
   const scoreProtocol = Math.round(
     products.reduce((sum, product) => sum + product.protocolScore, 0) / pagesTotal,
   );
-  const scoreOverall = Math.round(scoreSchema * 0.4 + scoreLlm * 0.35 + scoreProtocol * 0.25);
+
+  // Agent-readiness is per-domain. Scan once against the first URL's origin;
+  // every URL in a single scan is expected to share a host in practice.
+  const agentReadiness = await analyzeAgentReadiness(payload.urls[0] ?? "");
+  const scoreAgentReadiness = agentReadiness.score;
+  issues.push(...agentReadiness.issues);
+
+  // Re-weighted overall to make room for agent readiness without dropping any
+  // existing dimension to zero. New weights: schema 30%, llm 25%, protocol 20%,
+  // agentReadiness 25% — sums to 1.00.
+  const scoreOverall = Math.round(
+    scoreSchema * 0.3 +
+      scoreLlm * 0.25 +
+      scoreProtocol * 0.2 +
+      scoreAgentReadiness * 0.25,
+  );
 
   return {
     status: "complete",
@@ -666,7 +687,9 @@ export async function runScan(payload: ScanJobPayload): Promise<ScanExecutionRes
     scoreSchema,
     scoreLlm,
     scoreProtocol,
+    scoreAgentReadiness,
     scoreCompetitive: null,
+    agentReadinessChecks: agentReadiness.checks,
     reportJson: {
       generatedAt: new Date().toISOString(),
       summary: `Scanned ${pagesTotal} product page${pagesTotal === 1 ? "" : "s"} for ${payload.email}.`,
@@ -677,6 +700,10 @@ export async function runScan(payload: ScanJobPayload): Promise<ScanExecutionRes
         .slice(0, 5)
         .map((issue) => issue.title),
       issues,
+      agentReadiness: {
+        score: scoreAgentReadiness,
+        checks: agentReadiness.checks,
+      },
     },
   };
 }

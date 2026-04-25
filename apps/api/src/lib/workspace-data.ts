@@ -43,6 +43,7 @@ type NotificationInput = Partial<WorkspaceNotificationSettings>;
 
 function defaultScoreBreakdown(): ScoreBreakdown {
   return {
+    agentReadiness: null,
     competitive: null,
     llm: null,
     overall: null,
@@ -106,6 +107,7 @@ function mapDbScan(scan: typeof scans.$inferSelect): WorkspaceScanListItem {
       llm: scan.scoreLlm,
       protocol: scan.scoreProtocol,
       competitive: scan.scoreCompetitive,
+      agentReadiness: scan.scoreAgentReadiness,
     },
   };
 }
@@ -123,6 +125,7 @@ function mapFreeScan(scan: FreeScanRecord): WorkspaceScanListItem {
       llm: scan.scoreLlm,
       protocol: scan.scoreProtocol,
       competitive: scan.scoreCompetitive,
+      agentReadiness: scan.scoreAgentReadiness,
     },
   };
 }
@@ -398,6 +401,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
       schemaScore: latestScanRecord?.scoreSchema ?? 0,
       llmScore: latestScanRecord?.scoreLlm ?? 0,
       protocolScore: latestScanRecord?.scoreProtocol ?? 0,
+      agentReadinessScore: latestScanRecord?.scoreAgentReadiness ?? 0,
       criticalIssues: sortedIssues.filter((issue) => issue.severity === "critical").length,
       autoFixableIssues: sortedIssues.filter((issue) => issue.fixType === "auto" && !issue.fixed).length,
       recentScanCount: scansForEmail.length,
@@ -429,6 +433,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
           schemaScore: Math.max(summary.schemaScore + 18, 61),
           llmScore: Math.max(summary.llmScore + 16, 54),
           protocolScore: Math.max(summary.protocolScore + 24, 50),
+          agentReadinessScore: Math.max(summary.agentReadinessScore + 20, 55),
         },
       ],
       feeds: buildFeedSet(store?.url ?? null, []),
@@ -593,6 +598,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
       schemaScore: row.scoreSchema ?? 0,
       llmScore: row.scoreLlm ?? 0,
       protocolScore: row.scoreProtocol ?? 0,
+      agentReadinessScore: row.scoreAgentReadiness ?? 0,
     })),
     feeds: mappedFeeds,
     issues: sortedIssues,
@@ -621,6 +627,7 @@ export async function buildWorkspaceData(email: string): Promise<WorkspaceData> 
       schemaScore: latestScan?.scoreSchema ?? 0,
       llmScore: latestScan?.scoreLlm ?? 0,
       protocolScore: latestScan?.scoreProtocol ?? 0,
+      agentReadinessScore: latestScan?.scoreAgentReadiness ?? 0,
       criticalIssues: sortedIssues.filter((issue) => issue.severity === "critical").length,
       autoFixableIssues: sortedIssues.filter((issue) => issue.fixType === "auto" && !issue.fixed).length,
       recentScanCount: scanRows.length,

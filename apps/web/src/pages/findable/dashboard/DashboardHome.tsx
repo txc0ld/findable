@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import {
   AlertTriangle,
   BarChart3,
+  Bot,
   BrainCircuit,
   Package,
   PlugZap,
@@ -29,7 +30,7 @@ export function DashboardHome() {
       </div>
 
       {/* Score cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         <MetricCard
           label="Overall"
           value={workspace.summary.overallScore}
@@ -56,6 +57,13 @@ export function DashboardHome() {
           value={workspace.summary.protocolScore}
           sublabel={workspace.store.shopifyShop ?? (workspace.store.status === "connected" ? workspace.store.platform ?? "Connected" : "Not connected")}
           icon={PlugZap}
+          scoreColor
+        />
+        <MetricCard
+          label="Agent Readiness"
+          value={workspace.summary.agentReadinessScore}
+          sublabel="18 well-known checks"
+          icon={Bot}
           scoreColor
         />
       </div>

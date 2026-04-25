@@ -100,6 +100,7 @@ scanRoute.post("/", async (c) => {
       pagesScanned: 0,
       pagesTotal: parseResult.data.urls.length,
       reportJson: null,
+      scoreAgentReadiness: null,
       scoreCompetitive: null,
       scoreLlm: null,
       scoreOverall: null,
@@ -263,6 +264,7 @@ scanRoute.get("/:id", async (c) => {
                   llm: record.scoreLlm,
                   protocol: record.scoreProtocol,
                   competitive: record.scoreCompetitive,
+                  agentReadiness: record.scoreAgentReadiness,
                 },
                 report: record.reportJson,
               }
@@ -303,6 +305,7 @@ scanRoute.get("/:id", async (c) => {
                 llm: scan.scoreLlm,
                 protocol: scan.scoreProtocol,
                 competitive: scan.scoreCompetitive,
+                agentReadiness: scan.scoreAgentReadiness,
               },
               report: scan.reportJson,
             }

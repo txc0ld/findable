@@ -6,6 +6,7 @@ export interface FreeScanRecord {
   pagesScanned: number;
   pagesTotal: number;
   reportJson: Record<string, unknown> | null;
+  scoreAgentReadiness: number | null;
   scoreCompetitive: number | null;
   scoreLlm: number | null;
   scoreOverall: number | null;
