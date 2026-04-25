@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ExternalLink, Rss } from "lucide-react";
 
-import { useDashboardContext } from "../../lib/dashboard-context";
+import { useDashboardContext } from "../../../lib/dashboard-context";
 
 export function FeedsPage() {
   const { workspace } = useDashboardContext();
@@ -49,7 +49,7 @@ export function FeedsPage() {
                 </a>
               ) : (
                 <Link
-                  to="/dashboard/settings"
+                  to="/findable/dashboard/settings"
                   className="btn-secondary shrink-0 rounded-xl px-4 py-2.5 text-sm font-semibold"
                 >
                   Connect store
@@ -67,7 +67,7 @@ export function FeedsPage() {
             : "Connect your store to auto-generate and host product feeds."}
         </p>
         <Link
-          to="/dashboard/settings"
+          to="/findable/dashboard/settings"
           className="mt-3 inline-block text-xs font-medium text-[#ccff00] transition hover:text-white"
         >
           Go to Settings &rarr;

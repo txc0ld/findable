@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Check, LoaderCircle, Wrench, Zap } from "lucide-react";
 
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { applyFix } from "../../lib/workspace-api";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { applyFix } from "../../../lib/workspace-api";
 
 export function FixesPage() {
   const { setWorkspace, workspace } = useDashboardContext();

@@ -7,8 +7,8 @@ import {
   Users,
 } from "lucide-react";
 
-import { MetricCard } from "../../components/MetricCard";
-import { useDashboardContext } from "../../lib/dashboard-context";
+import { MetricCard } from "../../../components/MetricCard";
+import { useDashboardContext } from "../../../lib/dashboard-context";
 
 export function AdminPage() {
   const { workspace } = useDashboardContext();

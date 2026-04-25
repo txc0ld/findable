@@ -5,170 +5,127 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { UmbrellaLayout } from "./components/layouts/UmbrellaLayout";
 import { StockProofLayout } from "./components/layouts/StockProofLayout";
 
-const LandingPage = lazy(() =>
-  import("./pages/LandingPage").then((module) => ({
-    default: module.LandingPage,
-  })),
-);
+// Umbrella pages
 const UmbrellaHomePage = lazy(() =>
-  import("./pages/umbrella/UmbrellaHomePage").then((module) => ({
-    default: module.UmbrellaHomePage,
-  })),
+  import("./pages/umbrella/UmbrellaHomePage").then((m) => ({ default: m.UmbrellaHomePage })),
 );
 const AboutPage = lazy(() =>
-  import("./pages/umbrella/AboutPage").then((module) => ({
-    default: module.AboutPage,
-  })),
+  import("./pages/umbrella/AboutPage").then((m) => ({ default: m.AboutPage })),
 );
 const ContactPage = lazy(() =>
-  import("./pages/umbrella/ContactPage").then((module) => ({
-    default: module.ContactPage,
-  })),
+  import("./pages/umbrella/ContactPage").then((m) => ({ default: m.ContactPage })),
 );
-const StockProofLandingPage = lazy(() =>
-  import("./pages/stockproof/StockProofLandingPage").then((module) => ({
-    default: module.StockProofLandingPage,
-  })),
+const PrivacyPage = lazy(() =>
+  import("./pages/umbrella/PrivacyPage").then((m) => ({ default: m.PrivacyPage })),
 );
-const StockProofPricingPage = lazy(() =>
-  import("./pages/stockproof/StockProofPricingPage").then((module) => ({
-    default: module.StockProofPricingPage,
-  })),
+const TermsPage = lazy(() =>
+  import("./pages/umbrella/TermsPage").then((m) => ({ default: m.TermsPage })),
 );
-const HowReceivingWorksPage = lazy(() =>
-  import("./pages/stockproof/HowReceivingWorksPage").then((module) => ({
-    default: module.HowReceivingWorksPage,
-  })),
+const NotFoundPage = lazy(() =>
+  import("./pages/umbrella/NotFoundPage").then((m) => ({ default: m.NotFoundPage })),
 );
-const WhyVariancesMatterPage = lazy(() =>
-  import("./pages/stockproof/WhyVariancesMatterPage").then((module) => ({
-    default: module.WhyVariancesMatterPage,
-  })),
-);
-const StockProofFaqPage = lazy(() =>
-  import("./pages/stockproof/StockProofFaqPage").then((module) => ({
-    default: module.StockProofFaqPage,
-  })),
+
+// FindAble pages (each owns its own inline chrome until Phase 3 unifies them under FindableLayout)
+const LandingPage = lazy(() =>
+  import("./pages/findable/LandingPage").then((m) => ({ default: m.LandingPage })),
 );
 const LoginPage = lazy(() =>
-  import("./pages/LoginPage").then((module) => ({
-    default: module.LoginPage,
-  })),
+  import("./pages/findable/LoginPage").then((m) => ({ default: m.LoginPage })),
 );
 const SignupPage = lazy(() =>
-  import("./pages/SignupPage").then((module) => ({
-    default: module.SignupPage,
-  })),
+  import("./pages/findable/SignupPage").then((m) => ({ default: m.SignupPage })),
 );
 const ForgotPasswordPage = lazy(() =>
-  import("./pages/ForgotPasswordPage").then((module) => ({
-    default: module.ForgotPasswordPage,
+  import("./pages/findable/ForgotPasswordPage").then((m) => ({
+    default: m.ForgotPasswordPage,
   })),
 );
 const ResetPasswordPage = lazy(() =>
-  import("./pages/ResetPasswordPage").then((module) => ({
-    default: module.ResetPasswordPage,
-  })),
-);
-const PrivacyPage = lazy(() =>
-  import("./pages/PrivacyPage").then((module) => ({
-    default: module.PrivacyPage,
-  })),
+  import("./pages/findable/ResetPasswordPage").then((m) => ({ default: m.ResetPasswordPage })),
 );
 const ReportPage = lazy(() =>
-  import("./pages/ReportPage").then((module) => ({
-    default: module.ReportPage,
-  })),
-);
-const TermsPage = lazy(() =>
-  import("./pages/TermsPage").then((module) => ({
-    default: module.TermsPage,
-  })),
+  import("./pages/findable/ReportPage").then((m) => ({ default: m.ReportPage })),
 );
 const GlossaryPage = lazy(() =>
-  import("./pages/GlossaryPage").then((module) => ({
-    default: module.GlossaryPage,
-  })),
+  import("./pages/findable/GlossaryPage").then((m) => ({ default: m.GlossaryPage })),
 );
 const WhatIsAeoPage = lazy(() =>
-  import("./pages/WhatIsAeoPage").then((module) => ({
-    default: module.WhatIsAeoPage,
-  })),
+  import("./pages/findable/WhatIsAeoPage").then((m) => ({ default: m.WhatIsAeoPage })),
 );
 const WhatWeScanPage = lazy(() =>
-  import("./pages/WhatWeScanPage").then((module) => ({
-    default: module.WhatWeScanPage,
-  })),
+  import("./pages/findable/WhatWeScanPage").then((m) => ({ default: m.WhatWeScanPage })),
 );
 const HowReportsWorkPage = lazy(() =>
-  import("./pages/HowReportsWorkPage").then((module) => ({
-    default: module.HowReportsWorkPage,
+  import("./pages/findable/HowReportsWorkPage").then((m) => ({
+    default: m.HowReportsWorkPage,
   })),
 );
 const PricingPage = lazy(() =>
-  import("./pages/PricingPage").then((module) => ({
-    default: module.PricingPage,
-  })),
+  import("./pages/findable/PricingPage").then((m) => ({ default: m.PricingPage })),
 );
-const NotFoundPage = lazy(() =>
-  import("./pages/NotFoundPage").then((module) => ({
-    default: module.NotFoundPage,
-  })),
-);
+
+// FindAble dashboard
 const DashboardLayout = lazy(() =>
-  import("./components/DashboardLayout").then((module) => ({
-    default: module.DashboardLayout,
-  })),
-);
-const CompetitorsPage = lazy(() =>
-  import("./pages/dashboard/CompetitorsPage").then((module) => ({
-    default: module.CompetitorsPage,
-  })),
-);
-const BillingPage = lazy(() =>
-  import("./pages/dashboard/BillingPage").then((module) => ({
-    default: module.BillingPage,
-  })),
-);
-const AdminPage = lazy(() =>
-  import("./pages/dashboard/AdminPage").then((module) => ({
-    default: module.AdminPage,
-  })),
+  import("./components/DashboardLayout").then((m) => ({ default: m.DashboardLayout })),
 );
 const DashboardHome = lazy(() =>
-  import("./pages/dashboard/DashboardHome").then((module) => ({
-    default: module.DashboardHome,
-  })),
+  import("./pages/findable/dashboard/DashboardHome").then((m) => ({ default: m.DashboardHome })),
 );
-const FeedsPage = lazy(() =>
-  import("./pages/dashboard/FeedsPage").then((module) => ({
-    default: module.FeedsPage,
-  })),
+const ProductsPage = lazy(() =>
+  import("./pages/findable/dashboard/ProductsPage").then((m) => ({ default: m.ProductsPage })),
 );
-const FixesPage = lazy(() =>
-  import("./pages/dashboard/FixesPage").then((module) => ({
-    default: module.FixesPage,
+const ProductDetailPage = lazy(() =>
+  import("./pages/findable/dashboard/ProductDetailPage").then((m) => ({
+    default: m.ProductDetailPage,
   })),
 );
 const IssuesPage = lazy(() =>
-  import("./pages/dashboard/IssuesPage").then((module) => ({
-    default: module.IssuesPage,
+  import("./pages/findable/dashboard/IssuesPage").then((m) => ({ default: m.IssuesPage })),
+);
+const FixesPage = lazy(() =>
+  import("./pages/findable/dashboard/FixesPage").then((m) => ({ default: m.FixesPage })),
+);
+const FeedsPage = lazy(() =>
+  import("./pages/findable/dashboard/FeedsPage").then((m) => ({ default: m.FeedsPage })),
+);
+const CompetitorsPage = lazy(() =>
+  import("./pages/findable/dashboard/CompetitorsPage").then((m) => ({
+    default: m.CompetitorsPage,
   })),
 );
-const ProductDetailPage = lazy(() =>
-  import("./pages/dashboard/ProductDetailPage").then((module) => ({
-    default: module.ProductDetailPage,
-  })),
+const BillingPage = lazy(() =>
+  import("./pages/findable/dashboard/BillingPage").then((m) => ({ default: m.BillingPage })),
 );
-const ProductsPage = lazy(() =>
-  import("./pages/dashboard/ProductsPage").then((module) => ({
-    default: module.ProductsPage,
-  })),
+const AdminPage = lazy(() =>
+  import("./pages/findable/dashboard/AdminPage").then((m) => ({ default: m.AdminPage })),
 );
 const SettingsPage = lazy(() =>
-  import("./pages/dashboard/SettingsPage").then((module) => ({
-    default: module.SettingsPage,
+  import("./pages/findable/dashboard/SettingsPage").then((m) => ({ default: m.SettingsPage })),
+);
+
+// StockProof pages
+const StockProofLandingPage = lazy(() =>
+  import("./pages/stockproof/StockProofLandingPage").then((m) => ({
+    default: m.StockProofLandingPage,
   })),
+);
+const StockProofPricingPage = lazy(() =>
+  import("./pages/stockproof/StockProofPricingPage").then((m) => ({
+    default: m.StockProofPricingPage,
+  })),
+);
+const HowReceivingWorksPage = lazy(() =>
+  import("./pages/stockproof/HowReceivingWorksPage").then((m) => ({
+    default: m.HowReceivingWorksPage,
+  })),
+);
+const WhyVariancesMatterPage = lazy(() =>
+  import("./pages/stockproof/WhyVariancesMatterPage").then((m) => ({
+    default: m.WhyVariancesMatterPage,
+  })),
+);
+const StockProofFaqPage = lazy(() =>
+  import("./pages/stockproof/StockProofFaqPage").then((m) => ({ default: m.StockProofFaqPage })),
 );
 
 function withSuspense(element: ReactNode) {
@@ -194,33 +151,24 @@ const router = createBrowserRouter([
           { path: "/", element: withSuspense(<UmbrellaHomePage />) },
           { path: "/about", element: withSuspense(<AboutPage />) },
           { path: "/contact", element: withSuspense(<ContactPage />) },
+          { path: "/privacy", element: withSuspense(<PrivacyPage />) },
+          { path: "/terms", element: withSuspense(<TermsPage />) },
+          { path: "*", element: withSuspense(<NotFoundPage />) },
         ],
       },
       { path: "/findable", element: withSuspense(<LandingPage />) },
+      { path: "/findable/glossary", element: withSuspense(<GlossaryPage />) },
+      { path: "/findable/what-is-aeo", element: withSuspense(<WhatIsAeoPage />) },
+      { path: "/findable/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
+      { path: "/findable/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
+      { path: "/findable/pricing", element: withSuspense(<PricingPage />) },
+      { path: "/findable/scan/:id", element: withSuspense(<ReportPage />) },
+      { path: "/findable/login", element: withSuspense(<LoginPage />) },
+      { path: "/findable/signup", element: withSuspense(<SignupPage />) },
+      { path: "/findable/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
+      { path: "/findable/reset-password", element: withSuspense(<ResetPasswordPage />) },
       {
-        element: <StockProofLayout />,
-        children: [
-          { path: "/stockproof", element: withSuspense(<StockProofLandingPage />) },
-          { path: "/stockproof/pricing", element: withSuspense(<StockProofPricingPage />) },
-          { path: "/stockproof/how-receiving-works", element: withSuspense(<HowReceivingWorksPage />) },
-          { path: "/stockproof/why-variances-matter", element: withSuspense(<WhyVariancesMatterPage />) },
-          { path: "/stockproof/faq", element: withSuspense(<StockProofFaqPage />) },
-        ],
-      },
-      { path: "/scan/:id", element: withSuspense(<ReportPage />) },
-      { path: "/login", element: withSuspense(<LoginPage />) },
-      { path: "/signup", element: withSuspense(<SignupPage />) },
-      { path: "/forgot-password", element: withSuspense(<ForgotPasswordPage />) },
-      { path: "/reset-password", element: withSuspense(<ResetPasswordPage />) },
-      { path: "/glossary", element: withSuspense(<GlossaryPage />) },
-      { path: "/what-is-aeo", element: withSuspense(<WhatIsAeoPage />) },
-      { path: "/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
-      { path: "/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
-      { path: "/pricing", element: withSuspense(<PricingPage />) },
-      { path: "/privacy", element: withSuspense(<PrivacyPage />) },
-      { path: "/terms", element: withSuspense(<TermsPage />) },
-      {
-        path: "/dashboard",
+        path: "/findable/dashboard",
         element: withSuspense(<DashboardLayout />),
         children: [
           { index: true, element: withSuspense(<DashboardHome />) },
@@ -235,7 +183,22 @@ const router = createBrowserRouter([
           { path: "settings", element: withSuspense(<SettingsPage />) },
         ],
       },
-      { path: "*", element: withSuspense(<NotFoundPage />) },
+      {
+        element: <StockProofLayout />,
+        children: [
+          { path: "/stockproof", element: withSuspense(<StockProofLandingPage />) },
+          { path: "/stockproof/pricing", element: withSuspense(<StockProofPricingPage />) },
+          {
+            path: "/stockproof/how-receiving-works",
+            element: withSuspense(<HowReceivingWorksPage />),
+          },
+          {
+            path: "/stockproof/why-variances-matter",
+            element: withSuspense(<WhyVariancesMatterPage />),
+          },
+          { path: "/stockproof/faq", element: withSuspense(<StockProofFaqPage />) },
+        ],
+      },
     ],
   },
 ]);

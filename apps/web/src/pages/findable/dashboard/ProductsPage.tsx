@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { AlertTriangle, Package, ScanLine } from "lucide-react";
 
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { getScoreTone } from "../../lib/scores";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { getScoreTone } from "../../../lib/scores";
 
 function ScorePill({ label, value }: { label: string; value: number }) {
   const tone = getScoreTone(value);
@@ -71,7 +71,7 @@ export function ProductsPage() {
             </div>
             <p className="mt-4 text-sm font-medium">No products yet</p>
             <p className="mt-1 text-xs text-white/40">Run a scan to populate this view with scored products.</p>
-            <Link to="/" className="mt-5 inline-flex items-center rounded-lg border border-[#ccff00]/20 bg-[#ccff00]/10 px-4 py-2 text-xs font-semibold text-[#ccff00] transition hover:bg-[#ccff00]/20">
+            <Link to="/findable" className="mt-5 inline-flex items-center rounded-lg border border-[#ccff00]/20 bg-[#ccff00]/10 px-4 py-2 text-xs font-semibold text-[#ccff00] transition hover:bg-[#ccff00]/20">
               Run a scan &rarr;
             </Link>
           </div>

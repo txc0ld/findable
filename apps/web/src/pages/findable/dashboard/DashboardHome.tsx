@@ -9,10 +9,10 @@ import {
   Search,
 } from "lucide-react";
 
-import { IssueCard } from "../../components/IssueCard";
-import { MetricCard } from "../../components/MetricCard";
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { getScoreTone } from "../../lib/scores";
+import { IssueCard } from "../../../components/IssueCard";
+import { MetricCard } from "../../../components/MetricCard";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { getScoreTone } from "../../../lib/scores";
 
 export function DashboardHome() {
   const { workspace } = useDashboardContext();
@@ -65,7 +65,7 @@ export function DashboardHome() {
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold">Recent Issues</h2>
           <Link
-            to="/dashboard/issues"
+            to="/findable/dashboard/issues"
             className="text-xs font-medium text-[#ccff00] transition hover:text-white"
           >
             View all &rarr;
@@ -91,7 +91,7 @@ export function DashboardHome() {
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold">Products</h2>
           <Link
-            to="/dashboard/products"
+            to="/findable/dashboard/products"
             className="text-xs font-medium text-[#ccff00] transition hover:text-white"
           >
             View all &rarr;
@@ -153,7 +153,7 @@ function EmptyState({
       <p className="mt-4 text-sm font-medium">{title}</p>
       <p className="mt-1 text-xs text-white/40">{description}</p>
       <Link
-        to="/"
+        to="/findable"
         className="mt-5 inline-flex items-center rounded-lg border border-[#ccff00]/20 bg-[#ccff00]/10 px-4 py-2 text-xs font-semibold text-[#ccff00] transition hover:bg-[#ccff00]/20"
       >
         Run a scan &rarr;

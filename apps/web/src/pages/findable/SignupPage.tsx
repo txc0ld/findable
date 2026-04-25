@@ -2,8 +2,8 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { getCurrentAccount, signup } from "../lib/auth-api";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { getCurrentAccount, signup } from "../../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function SignupPage() {
@@ -15,7 +15,7 @@ export function SignupPage() {
   useEffect(() => {
     void getCurrentAccount()
       .then(() => {
-        navigate("/dashboard", { replace: true });
+        navigate("/findable/dashboard", { replace: true });
       })
       .catch(() => undefined);
   }, [navigate]);
@@ -38,7 +38,7 @@ export function SignupPage() {
 
     try {
       await signup(email, password);
-      navigate("/dashboard");
+      navigate("/findable/dashboard");
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unable to create account.");
       setIsLoading(false);
@@ -53,7 +53,7 @@ export function SignupPage() {
       footer={
         <>
           Already signed up?{" "}
-          <Link to="/login" className="font-medium text-[#ccff00] transition hover:text-white">
+          <Link to="/findable/login" className="font-medium text-[#ccff00] transition hover:text-white">
             Sign in
           </Link>
         </>

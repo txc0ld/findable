@@ -2,8 +2,8 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ArrowRight, LoaderCircle } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { resetPassword } from "../lib/auth-api";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { resetPassword } from "../../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function ResetPasswordPage() {
@@ -38,7 +38,7 @@ export function ResetPasswordPage() {
 
     try {
       await resetPassword(token, password);
-      navigate("/dashboard");
+      navigate("/findable/dashboard");
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unable to reset password.");
       setIsLoading(false);
@@ -53,7 +53,7 @@ export function ResetPasswordPage() {
       footer={
         <>
           Back to{" "}
-          <Link to="/login" className="font-medium text-[#ccff00] transition hover:text-white">
+          <Link to="/findable/login" className="font-medium text-[#ccff00] transition hover:text-white">
             sign in
           </Link>
         </>

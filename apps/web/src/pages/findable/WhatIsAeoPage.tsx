@@ -6,8 +6,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { SectionReveal } from "../components/SectionReveal";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { SectionReveal } from "../../components/SectionReveal";
 
 const CARDS = [
   {
@@ -42,11 +42,11 @@ export function WhatIsAeoPage() {
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex items-center gap-2.5">
+          <a href="/findable" className="flex items-center gap-2.5">
             <Sparkles className="h-5 w-5 text-[#ccff00]" />
             <span className="text-sm font-bold uppercase tracking-[0.2em]">FINDABLE</span>
           </a>
-          <Link to="/" className="btn-secondary rounded-lg px-4 py-2 text-[13px] font-semibold">
+          <Link to="/findable" className="btn-secondary rounded-lg px-4 py-2 text-[13px] font-semibold">
             <ArrowLeft className="h-3 w-3" /> Back
           </Link>
         </nav>
@@ -109,7 +109,7 @@ export function WhatIsAeoPage() {
             </h2>
             <div className="mt-5">
               <a
-                href="/#hero-form"
+                href="/findable#hero-form"
                 className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold"
               >
                 Run Free Scan <ChevronRight className="h-4 w-4" />

@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 
-import { CopyButton } from "../../components/CopyButton";
-import { IssueCard } from "../../components/IssueCard";
-import { ScoreRing } from "../../components/ScoreRing";
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { getScoreTone } from "../../lib/scores";
+import { CopyButton } from "../../../components/CopyButton";
+import { IssueCard } from "../../../components/IssueCard";
+import { ScoreRing } from "../../../components/ScoreRing";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { getScoreTone } from "../../../lib/scores";
 
 export function ProductDetailPage() {
   const { id } = useParams();
@@ -17,7 +17,7 @@ export function ProductDetailPage() {
       <div className="py-20 text-center">
         <p className="text-lg font-semibold">Product not found</p>
         <Link
-          to="/dashboard/products"
+          to="/findable/dashboard/products"
           className="mt-4 inline-block text-sm text-[#ccff00]"
         >
           &larr; Back to products
@@ -30,7 +30,7 @@ export function ProductDetailPage() {
     <div className="space-y-10">
       <div>
         <Link
-          to="/dashboard/products"
+          to="/findable/dashboard/products"
           className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition hover:text-white"
         >
           <ArrowLeft className="h-3.5 w-3.5" />

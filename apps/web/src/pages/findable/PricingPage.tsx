@@ -7,8 +7,8 @@ import {
   X,
 } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { SectionReveal } from "../components/SectionReveal";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { SectionReveal } from "../../components/SectionReveal";
 
 interface PlanDetail {
   name: string;
@@ -161,11 +161,11 @@ export function PricingPage() {
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex items-center gap-2.5">
+          <a href="/findable" className="flex items-center gap-2.5">
             <Sparkles className="h-5 w-5 text-[#ccff00]" />
             <span className="text-sm font-bold uppercase tracking-[0.2em]">FINDABLE</span>
           </a>
-          <Link to="/" className="btn-secondary rounded-lg px-4 py-2 text-[13px] font-semibold">
+          <Link to="/findable" className="btn-secondary rounded-lg px-4 py-2 text-[13px] font-semibold">
             <ArrowLeft className="h-3 w-3" /> Back
           </Link>
         </nav>
@@ -244,7 +244,7 @@ export function PricingPage() {
                 )}
 
                 <a
-                  href="/#hero-form"
+                  href="/findable#hero-form"
                   className={`mt-8 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-semibold ${
                     plan.highlight ? "btn-primary" : "btn-secondary"
                   }`}
@@ -288,7 +288,7 @@ export function PricingPage() {
                     ))}
                   </ul>
                   <a
-                    href={plan.name === "Agency" ? "mailto:hello@getfindable.au" : "/#hero-form"}
+                    href={plan.name === "Agency" ? "mailto:hello@getfindable.au" : "/findable#hero-form"}
                     className="btn-secondary mt-8 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-semibold"
                   >
                     {plan.name === "Agency" ? "Contact Team" : `Start with ${plan.name}`}
@@ -304,7 +304,7 @@ export function PricingPage() {
           <div className="card p-6 text-center">
             <p className="text-sm text-text-secondary">
               Not ready for a plan?{" "}
-              <a href="/#hero-form" className="font-medium text-[#ccff00]">
+              <a href="/findable#hero-form" className="font-medium text-[#ccff00]">
                 Run the free scan
               </a>{" "}
               — no account required. Scan up to 3 product pages and get the full
@@ -343,7 +343,7 @@ export function PricingPage() {
             </p>
             <div className="mt-6">
               <a
-                href="/#hero-form"
+                href="/findable#hero-form"
                 className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold"
               >
                 Start Free Scan <ChevronRight className="h-4 w-4" />

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Check, ExternalLink, LoaderCircle, Store } from "lucide-react";
 
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { updateNotifications, updateStore } from "../../lib/workspace-api";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { updateNotifications, updateStore } from "../../../lib/workspace-api";
 
 export function SettingsPage() {
   const { refreshWorkspace, setWorkspace, workspace } = useDashboardContext();
@@ -84,7 +84,7 @@ export function SettingsPage() {
             </p>
           </div>
           <a
-            href="/dashboard/billing"
+            href="/findable/dashboard/billing"
             className="btn-primary rounded-xl px-4 py-2.5 text-sm font-semibold"
           >
             Upgrade
@@ -187,10 +187,10 @@ export function SettingsPage() {
             <input type="email" value={workspace.profile.email} className="landing-input mt-1.5" disabled />
           </label>
           <div className="flex gap-6">
-            <a href="/dashboard/billing" className="inline-flex items-center gap-1.5 text-xs font-medium text-[#ccff00]">
+            <a href="/findable/dashboard/billing" className="inline-flex items-center gap-1.5 text-xs font-medium text-[#ccff00]">
               Manage billing <ExternalLink className="h-3 w-3" />
             </a>
-            <a href="/forgot-password" className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition hover:text-[#ccff00]">
+            <a href="/findable/forgot-password" className="inline-flex items-center gap-1.5 text-xs font-medium text-white/50 transition hover:text-[#ccff00]">
               Reset password <ExternalLink className="h-3 w-3" />
             </a>
           </div>

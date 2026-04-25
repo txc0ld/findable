@@ -270,7 +270,7 @@ shopifyRoute.get("/callback", async (c) => {
     return c.redirect(appUrl.toString(), 302);
   }
 
-  const redirectUrl = new URL("/dashboard/settings", env.FRONTEND_URL);
+  const redirectUrl = new URL("/findable/dashboard/settings", env.FRONTEND_URL);
   redirectUrl.searchParams.set("shopify", "connected");
   redirectUrl.searchParams.set("shop", parseResult.data.shop);
 

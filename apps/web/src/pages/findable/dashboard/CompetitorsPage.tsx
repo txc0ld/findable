@@ -1,5 +1,5 @@
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { getScoreTone } from "../../lib/scores";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { getScoreTone } from "../../../lib/scores";
 
 export function CompetitorsPage() {
   const { workspace } = useDashboardContext();

@@ -2,8 +2,8 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, LoaderCircle, Sparkles } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { getCurrentAccount, login } from "../lib/auth-api";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { getCurrentAccount, login } from "../../lib/auth-api";
 
 export function LoginPage() {
   usePageTitle("Sign in");
@@ -14,7 +14,7 @@ export function LoginPage() {
   useEffect(() => {
     void getCurrentAccount()
       .then(() => {
-        navigate("/dashboard", { replace: true });
+        navigate("/findable/dashboard", { replace: true });
       })
       .catch(() => undefined);
   }, [navigate]);
@@ -30,7 +30,7 @@ export function LoginPage() {
 
     try {
       await login(email, password);
-      navigate("/dashboard");
+      navigate("/findable/dashboard");
     } catch (nextError) {
       setError(nextError instanceof Error ? nextError.message : "Unable to sign in.");
       setIsLoading(false);
@@ -45,7 +45,7 @@ export function LoginPage() {
       footer={
         <>
           Need an account?{" "}
-          <Link to="/signup" className="font-medium text-[#ccff00] transition hover:text-white">
+          <Link to="/findable/signup" className="font-medium text-[#ccff00] transition hover:text-white">
             Create one
           </Link>
         </>
@@ -77,7 +77,7 @@ export function LoginPage() {
         </label>
 
         <div className="flex justify-end">
-          <Link to="/forgot-password" className="text-sm font-medium text-text-secondary hover:text-[#ccff00]">
+          <Link to="/findable/forgot-password" className="text-sm font-medium text-text-secondary hover:text-[#ccff00]">
             Forgot password?
           </Link>
         </div>
@@ -127,7 +127,7 @@ function AuthShell({
 
       <div className="relative w-full max-w-sm">
         <div className="text-center">
-          <Link to="/" className="inline-flex items-center gap-2.5">
+          <Link to="/findable" className="inline-flex items-center gap-2.5">
             <Sparkles className="h-7 w-7 text-[#ccff00]" />
             <span className="text-lg font-bold uppercase tracking-[0.2em]">FINDABLE</span>
           </Link>

@@ -2,10 +2,10 @@ import { useState } from "react";
 import type { PlanTier } from "@findable/shared";
 import { Check, LoaderCircle } from "lucide-react";
 
-import { useDashboardContext } from "../../lib/dashboard-context";
-import { updatePlan } from "../../lib/workspace-api";
-import { buildApiUrl, parseApiResponse } from "../../lib/api-base";
-import { getAccessToken } from "../../lib/session";
+import { useDashboardContext } from "../../../lib/dashboard-context";
+import { updatePlan } from "../../../lib/workspace-api";
+import { buildApiUrl, parseApiResponse } from "../../../lib/api-base";
+import { getAccessToken } from "../../../lib/session";
 
 const PLANS: Array<{
   description: string;

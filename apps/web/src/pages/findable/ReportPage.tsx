@@ -8,16 +8,16 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { CopyButton } from "../components/CopyButton";
-import { ScoreRing } from "../components/ScoreRing";
-import { SectionReveal } from "../components/SectionReveal";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { CopyButton } from "../../components/CopyButton";
+import { ScoreRing } from "../../components/ScoreRing";
+import { SectionReveal } from "../../components/SectionReveal";
 import {
   getScan,
   type ScanDetails,
   type ScanProductResult,
-} from "../lib/scan-api";
-import { getScoreTone } from "../lib/scores";
+} from "../../lib/scan-api";
+import { getScoreTone } from "../../lib/scores";
 
 const POLL_INTERVAL_MS = 2500;
 type CompletedScan = ScanDetails & {
@@ -86,7 +86,7 @@ export function ReportPage() {
     <div className="min-h-screen bg-bg-primary text-text-primary">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/80 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex items-center gap-2.5">
+          <a href="/findable" className="flex items-center gap-2.5">
             <Sparkles className="h-5 w-5 text-[#ccff00]" />
             <span className="text-sm font-bold uppercase tracking-[0.2em]">
               FINDABLE
@@ -373,14 +373,14 @@ function ReportResults({ scan }: { scan: CompletedScan }) {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
-              to="/dashboard"
+              to="/findable/dashboard"
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold"
             >
               Go to Dashboard
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
-              href="/pricing"
+              href="/findable/pricing"
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-text-primary transition hover:border-white/20 hover:bg-white/8"
             >
               View Plans
@@ -422,7 +422,7 @@ function StatePanel({
         </p>
         <div className="mt-8 flex justify-center">
           <a
-            href="/"
+            href="/findable"
             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-text-primary transition hover:border-white/20 hover:bg-white/8"
           >
             Start a new scan

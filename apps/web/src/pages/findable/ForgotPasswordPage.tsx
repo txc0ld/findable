@@ -2,8 +2,8 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { forgotPassword } from "../lib/auth-api";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { forgotPassword } from "../../lib/auth-api";
 import { AuthShell } from "./LoginPage";
 
 export function ForgotPasswordPage() {
@@ -40,7 +40,7 @@ export function ForgotPasswordPage() {
       footer={
         <>
           Back to{" "}
-          <Link to="/login" className="font-medium text-[#ccff00] transition hover:text-white">
+          <Link to="/findable/login" className="font-medium text-[#ccff00] transition hover:text-white">
             sign in
           </Link>
         </>

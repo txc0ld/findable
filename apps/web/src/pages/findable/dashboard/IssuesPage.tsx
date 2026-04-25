@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { IssueCard } from "../../components/IssueCard";
-import { useDashboardContext } from "../../lib/dashboard-context";
+import { IssueCard } from "../../../components/IssueCard";
+import { useDashboardContext } from "../../../lib/dashboard-context";
 
 const FILTERS = ["all", "critical", "high", "medium", "low"] as const;
 

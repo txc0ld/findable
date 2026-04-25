@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Check, Menu, Sparkles, X, ChevronRight, BarChart3, BrainCircuit, PlugZap, Search } from "lucide-react";
 
-import { usePageTitle } from "../hooks/usePageTitle";
-import { AnimatedCounter } from "../components/AnimatedCounter";
-import { CopyButton } from "../components/CopyButton";
-import { ScanForm } from "../components/ScanForm";
-import { ScorePreview } from "../components/ScorePreview";
-import { SectionReveal } from "../components/SectionReveal";
+import { usePageTitle } from "../../hooks/usePageTitle";
+import { AnimatedCounter } from "../../components/AnimatedCounter";
+import { CopyButton } from "../../components/CopyButton";
+import { ScanForm } from "../../components/ScanForm";
+import { ScorePreview } from "../../components/ScorePreview";
+import { SectionReveal } from "../../components/SectionReveal";
 import {
   DIMENSION_CARDS,
   HOW_IT_WORKS_STEPS,
   LANDING_STATS,
   PRICING_TIERS,
-} from "../lib/content";
+} from "../../lib/content";
 
 export function LandingPage() {
   usePageTitle();
@@ -32,11 +32,11 @@ export function LandingPage() {
           </div>
 
           <div className="hidden items-center gap-8 text-[13px] font-medium tracking-wide text-text-secondary md:flex">
-            <a href="/what-we-scan" className="transition hover:text-white">Product Map</a>
-            <a href="/how-reports-work" className="transition hover:text-white">Report Flow</a>
-            <a href="/pricing" className="transition hover:text-white">Pricing</a>
-            <a href="/what-is-aeo" className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
-            <a href="/login" className="transition hover:text-white">Dashboard</a>
+            <a href="/findable/what-we-scan" className="transition hover:text-white">Product Map</a>
+            <a href="/findable/how-reports-work" className="transition hover:text-white">Report Flow</a>
+            <a href="/findable/pricing" className="transition hover:text-white">Pricing</a>
+            <a href="/findable/what-is-aeo" className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
+            <a href="/findable/login" className="transition hover:text-white">Dashboard</a>
           </div>
 
           <button
@@ -51,12 +51,12 @@ export function LandingPage() {
         {menuOpen && (
           <div className="border-t border-white/5 bg-bg-primary px-5 pb-6 pt-4 md:hidden">
             <div className="flex flex-col gap-4 text-sm font-medium text-text-secondary">
-              <a href="/what-we-scan" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Product Map</a>
-              <a href="/how-reports-work" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Report Flow</a>
-              <a href="/pricing" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Pricing</a>
-              <a href="/what-is-aeo" onClick={() => setMenuOpen(false)} className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
-              <a href="/glossary" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Glossary</a>
-              <a href="/login" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Dashboard</a>
+              <a href="/findable/what-we-scan" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Product Map</a>
+              <a href="/findable/how-reports-work" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Report Flow</a>
+              <a href="/findable/pricing" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Pricing</a>
+              <a href="/findable/what-is-aeo" onClick={() => setMenuOpen(false)} className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
+              <a href="/findable/glossary" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Glossary</a>
+              <a href="/findable/login" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Dashboard</a>
             </div>
           </div>
         )}
@@ -89,7 +89,7 @@ export function LandingPage() {
                 </div>
                 <div className="mt-8 flex justify-center lg:justify-start">
                   <a
-                    href="/what-is-aeo"
+                    href="/findable/what-is-aeo"
                     className="inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-5 py-2.5 text-xs font-bold transition hover:bg-[#ccff00]/85"
                     style={{ color: "#000000" }}
                   >
@@ -417,17 +417,17 @@ export function LandingPage() {
              <div>
                 <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Product</h4>
                  <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                   <li><a href="/what-we-scan" className="transition hover:text-white">What we scan</a></li>
-                   <li><a href="/how-reports-work" className="transition hover:text-white">How reports work</a></li>
-                   <li><a href="/pricing" className="transition hover:text-white">Plans</a></li>
-                   <li><a href="/glossary" className="transition hover:text-white">Glossary</a></li>
+                   <li><a href="/findable/what-we-scan" className="transition hover:text-white">What we scan</a></li>
+                   <li><a href="/findable/how-reports-work" className="transition hover:text-white">How reports work</a></li>
+                   <li><a href="/findable/pricing" className="transition hover:text-white">Plans</a></li>
+                   <li><a href="/findable/glossary" className="transition hover:text-white">Glossary</a></li>
                  </ul>
              </div>
 
              <div>
                 <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Company</h4>
                  <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                   <li><a href="/login" className="transition hover:text-white">Dashboard</a></li>
+                   <li><a href="/findable/login" className="transition hover:text-white">Dashboard</a></li>
                    <li><a href="/privacy" className="transition hover:text-white">Privacy</a></li>
                    <li><a href="/terms" className="transition hover:text-white">Terms</a></li>
                  </ul>
