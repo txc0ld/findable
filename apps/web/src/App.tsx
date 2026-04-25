@@ -2,10 +2,52 @@ import { Suspense, lazy, type ReactNode } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import { ScrollToTop } from "./components/ScrollToTop";
+import { UmbrellaLayout } from "./components/layouts/UmbrellaLayout";
+import { StockProofLayout } from "./components/layouts/StockProofLayout";
 
 const LandingPage = lazy(() =>
   import("./pages/LandingPage").then((module) => ({
     default: module.LandingPage,
+  })),
+);
+const UmbrellaHomePage = lazy(() =>
+  import("./pages/umbrella/UmbrellaHomePage").then((module) => ({
+    default: module.UmbrellaHomePage,
+  })),
+);
+const AboutPage = lazy(() =>
+  import("./pages/umbrella/AboutPage").then((module) => ({
+    default: module.AboutPage,
+  })),
+);
+const ContactPage = lazy(() =>
+  import("./pages/umbrella/ContactPage").then((module) => ({
+    default: module.ContactPage,
+  })),
+);
+const StockProofLandingPage = lazy(() =>
+  import("./pages/stockproof/StockProofLandingPage").then((module) => ({
+    default: module.StockProofLandingPage,
+  })),
+);
+const StockProofPricingPage = lazy(() =>
+  import("./pages/stockproof/StockProofPricingPage").then((module) => ({
+    default: module.StockProofPricingPage,
+  })),
+);
+const HowReceivingWorksPage = lazy(() =>
+  import("./pages/stockproof/HowReceivingWorksPage").then((module) => ({
+    default: module.HowReceivingWorksPage,
+  })),
+);
+const WhyVariancesMatterPage = lazy(() =>
+  import("./pages/stockproof/WhyVariancesMatterPage").then((module) => ({
+    default: module.WhyVariancesMatterPage,
+  })),
+);
+const StockProofFaqPage = lazy(() =>
+  import("./pages/stockproof/StockProofFaqPage").then((module) => ({
+    default: module.StockProofFaqPage,
   })),
 );
 const LoginPage = lazy(() =>
@@ -146,7 +188,25 @@ const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
-      { path: "/", element: withSuspense(<LandingPage />) },
+      {
+        element: <UmbrellaLayout />,
+        children: [
+          { path: "/", element: withSuspense(<UmbrellaHomePage />) },
+          { path: "/about", element: withSuspense(<AboutPage />) },
+          { path: "/contact", element: withSuspense(<ContactPage />) },
+        ],
+      },
+      { path: "/findable", element: withSuspense(<LandingPage />) },
+      {
+        element: <StockProofLayout />,
+        children: [
+          { path: "/stockproof", element: withSuspense(<StockProofLandingPage />) },
+          { path: "/stockproof/pricing", element: withSuspense(<StockProofPricingPage />) },
+          { path: "/stockproof/how-receiving-works", element: withSuspense(<HowReceivingWorksPage />) },
+          { path: "/stockproof/why-variances-matter", element: withSuspense(<WhyVariancesMatterPage />) },
+          { path: "/stockproof/faq", element: withSuspense(<StockProofFaqPage />) },
+        ],
+      },
       { path: "/scan/:id", element: withSuspense(<ReportPage />) },
       { path: "/login", element: withSuspense(<LoginPage />) },
       { path: "/signup", element: withSuspense(<SignupPage />) },
