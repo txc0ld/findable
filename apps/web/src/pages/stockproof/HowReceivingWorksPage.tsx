@@ -36,7 +36,7 @@ const STEPS = [
 ];
 
 export function HowReceivingWorksPage() {
-  usePageTitle(`How ${STOCKPROOF_BRAND.name} works`);
+  usePageTitle("How it works", STOCKPROOF_BRAND.name);
 
   return (
     <section className="relative px-5 pb-24 pt-16 sm:px-6 sm:pt-20">

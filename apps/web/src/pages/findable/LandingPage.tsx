@@ -20,47 +20,6 @@ export function LandingPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary selection:bg-[#ccff00]/30">
       {/* ───────── Nav ───────── */}
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-              <Sparkles className="h-4 w-4 text-white" />
-            </div>
-            <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-white">
-              FINDABLE
-            </span>
-          </div>
-
-          <div className="hidden items-center gap-8 text-[13px] font-medium tracking-wide text-text-secondary md:flex">
-            <a href="/findable/what-we-scan" className="transition hover:text-white">Product Map</a>
-            <a href="/findable/how-reports-work" className="transition hover:text-white">Report Flow</a>
-            <a href="/findable/pricing" className="transition hover:text-white">Pricing</a>
-            <a href="/findable/what-is-aeo" className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
-            <a href="/findable/login" className="transition hover:text-white">Dashboard</a>
-          </div>
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 md:hidden"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </nav>
-
-        {menuOpen && (
-          <div className="border-t border-white/5 bg-bg-primary px-5 pb-6 pt-4 md:hidden">
-            <div className="flex flex-col gap-4 text-sm font-medium text-text-secondary">
-              <a href="/findable/what-we-scan" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Product Map</a>
-              <a href="/findable/how-reports-work" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Report Flow</a>
-              <a href="/findable/pricing" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Pricing</a>
-              <a href="/findable/what-is-aeo" onClick={() => setMenuOpen(false)} className="text-[#ccff00] transition hover:text-white">What is AEO?</a>
-              <a href="/findable/glossary" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Glossary</a>
-              <a href="/findable/login" onClick={() => setMenuOpen(false)} className="transition hover:text-white">Dashboard</a>
-            </div>
-          </div>
-        )}
-      </header>
 
       <main className="relative">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-30"></div>
@@ -397,56 +356,6 @@ export function LandingPage() {
       </main>
 
       {/* ───────── Footer ───────── */}
-      <footer className="border-t border-white/5 bg-[#020205] py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-             <div className="lg:col-span-2">
-                <div className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded border border-white/10 bg-white/5">
-                    <Sparkles className="h-3 w-3 text-white" />
-                  </div>
-                  <span className="text-sm font-bold uppercase tracking-[0.2em] text-white">
-                    FINDABLE
-                  </span>
-                </div>
-                <p className="mt-4 max-w-sm text-sm text-text-muted">
-                   AI commerce readiness scanning, reporting, and remediation for product teams.
-                </p>
-             </div>
-             
-             <div>
-                <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Product</h4>
-                 <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                   <li><a href="/findable/what-we-scan" className="transition hover:text-white">What we scan</a></li>
-                   <li><a href="/findable/how-reports-work" className="transition hover:text-white">How reports work</a></li>
-                   <li><a href="/findable/pricing" className="transition hover:text-white">Plans</a></li>
-                   <li><a href="/findable/glossary" className="transition hover:text-white">Glossary</a></li>
-                 </ul>
-             </div>
-
-             <div>
-                <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-white">Company</h4>
-                 <ul className="mt-4 space-y-3 text-sm text-text-muted">
-                   <li><a href="/findable/login" className="transition hover:text-white">Dashboard</a></li>
-                   <li><a href="/privacy" className="transition hover:text-white">Privacy</a></li>
-                   <li><a href="/terms" className="transition hover:text-white">Terms</a></li>
-                 </ul>
-             </div>
-          </div>
-          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 sm:flex-row">
-             <p className="text-xs text-text-muted">
-                &copy; 2026 FINDABLE Systems. All rights reserved.
-             </p>
-             <div className="flex items-center gap-2 font-mono text-xs text-emerald-400">
-                <span className="relative flex h-2 w-2">
-                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                </span>
-                STATUS: NOMINAL
-             </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

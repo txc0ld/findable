@@ -21,7 +21,7 @@ export function UmbrellaLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
+    <div className="theme-umbrella min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
       <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6">
           <Link to="/" className="flex items-center gap-3">

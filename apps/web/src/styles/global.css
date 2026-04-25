@@ -14,6 +14,8 @@
   --color-score-good: var(--score-good);
   --color-score-great: var(--score-great);
   --color-score-excellent: var(--score-excellent);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
   --font-sans: "Inter Variable", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Zen Dots", sans-serif;
@@ -35,6 +37,20 @@
   --score-good: #aacc00;
   --score-great: #00e699;
   --score-excellent: #00ccff;
+  /* Per-product accent (default = neutral white for the umbrella). Layouts override
+     these via .theme-findable / .theme-stockproof on the layout root. */
+  --accent: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.18);
+}
+
+.theme-findable {
+  --accent: #ccff00;
+  --accent-glow: rgba(204, 255, 0, 0.25);
+}
+
+.theme-stockproof {
+  --accent: #00ccff;
+  --accent-glow: rgba(0, 204, 255, 0.22);
 }
 
 :root.light {

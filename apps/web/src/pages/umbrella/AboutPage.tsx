@@ -2,7 +2,7 @@ import { usePageTitle } from "../../hooks/usePageTitle";
 import { UMBRELLA_BRAND } from "../../lib/brand";
 
 export function AboutPage() {
-  usePageTitle("About");
+  usePageTitle("About", UMBRELLA_BRAND.name);
 
   return (
     <section className="relative px-5 pb-24 pt-16 sm:px-6 sm:pt-20">

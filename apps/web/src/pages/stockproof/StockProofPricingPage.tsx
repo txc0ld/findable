@@ -4,7 +4,7 @@ import { usePageTitle } from "../../hooks/usePageTitle";
 import { STOCKPROOF_BRAND } from "../../lib/brand";
 
 export function StockProofPricingPage() {
-  usePageTitle(`${STOCKPROOF_BRAND.name} pricing`);
+  usePageTitle("Pricing", STOCKPROOF_BRAND.name);
 
   return (
     <section className="relative px-5 pb-24 pt-16 sm:px-6 sm:pt-20">

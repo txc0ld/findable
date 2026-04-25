@@ -16,7 +16,7 @@ const PRODUCT_ICONS: Record<ProductBrand["key"], ComponentType<{ className?: str
 };
 
 export function UmbrellaHomePage() {
-  usePageTitle(UMBRELLA_BRAND.tagline);
+  usePageTitle(UMBRELLA_BRAND.tagline, UMBRELLA_BRAND.name);
 
   return (
     <section className="relative overflow-hidden px-5 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24">

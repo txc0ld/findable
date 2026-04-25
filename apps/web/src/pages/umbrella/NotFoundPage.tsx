@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import { usePageTitle } from "../../hooks/usePageTitle";
+import { UMBRELLA_BRAND } from "../../lib/brand";
 
 export function NotFoundPage() {
-  usePageTitle("Page not found");
+  usePageTitle("Page not found", UMBRELLA_BRAND.name);
 
   return (
     <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-5 py-20 text-center sm:px-6">

@@ -33,7 +33,7 @@ const FAQ = [
 ];
 
 export function StockProofFaqPage() {
-  usePageTitle(`${STOCKPROOF_BRAND.name} FAQ`);
+  usePageTitle("FAQ", STOCKPROOF_BRAND.name);
 
   return (
     <section className="relative px-5 pb-24 pt-16 sm:px-6 sm:pt-20">

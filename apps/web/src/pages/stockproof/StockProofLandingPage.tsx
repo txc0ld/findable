@@ -79,7 +79,7 @@ const IDEAL_FOR = [
 ];
 
 export function StockProofLandingPage() {
-  usePageTitle(STOCKPROOF_BRAND.tagline);
+  usePageTitle(STOCKPROOF_BRAND.tagline, STOCKPROOF_BRAND.name);
 
   return (
     <>

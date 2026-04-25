@@ -3,6 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import { ScrollToTop } from "./components/ScrollToTop";
 import { UmbrellaLayout } from "./components/layouts/UmbrellaLayout";
+import { FindableLayout } from "./components/layouts/FindableLayout";
 import { StockProofLayout } from "./components/layouts/StockProofLayout";
 
 // Umbrella pages
@@ -156,13 +157,18 @@ const router = createBrowserRouter([
           { path: "*", element: withSuspense(<NotFoundPage />) },
         ],
       },
-      { path: "/findable", element: withSuspense(<LandingPage />) },
-      { path: "/findable/glossary", element: withSuspense(<GlossaryPage />) },
-      { path: "/findable/what-is-aeo", element: withSuspense(<WhatIsAeoPage />) },
-      { path: "/findable/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
-      { path: "/findable/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
-      { path: "/findable/pricing", element: withSuspense(<PricingPage />) },
-      { path: "/findable/scan/:id", element: withSuspense(<ReportPage />) },
+      {
+        element: <FindableLayout />,
+        children: [
+          { path: "/findable", element: withSuspense(<LandingPage />) },
+          { path: "/findable/glossary", element: withSuspense(<GlossaryPage />) },
+          { path: "/findable/what-is-aeo", element: withSuspense(<WhatIsAeoPage />) },
+          { path: "/findable/what-we-scan", element: withSuspense(<WhatWeScanPage />) },
+          { path: "/findable/how-reports-work", element: withSuspense(<HowReportsWorkPage />) },
+          { path: "/findable/pricing", element: withSuspense(<PricingPage />) },
+          { path: "/findable/scan/:id", element: withSuspense(<ReportPage />) },
+        ],
+      },
       { path: "/findable/login", element: withSuspense(<LoginPage />) },
       { path: "/findable/signup", element: withSuspense(<SignupPage />) },
       { path: "/findable/forgot-password", element: withSuspense(<ForgotPasswordPage />) },

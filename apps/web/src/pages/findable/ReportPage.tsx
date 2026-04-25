@@ -84,17 +84,6 @@ export function ReportPage() {
 
   return (
     <div className="min-h-screen bg-bg-primary text-text-primary">
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-bg-primary/80 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/findable" className="flex items-center gap-2.5">
-            <Sparkles className="h-5 w-5 text-[#ccff00]" />
-            <span className="text-sm font-bold uppercase tracking-[0.2em]">
-              FINDABLE
-            </span>
-          </a>
-          <CopyButton text={id ?? ""} className="text-text-muted" />
-        </nav>
-      </header>
 
       <main className="px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">

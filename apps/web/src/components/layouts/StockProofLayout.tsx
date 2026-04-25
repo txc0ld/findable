@@ -15,7 +15,7 @@ export function StockProofLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
+    <div className="theme-stockproof min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
       <div className="border-b border-white/5 bg-bg-primary/80">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-text-muted sm:px-6">
           <Link to="/" className="flex items-center gap-2 transition hover:text-white">

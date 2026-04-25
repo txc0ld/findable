@@ -23,7 +23,7 @@ const SCENARIOS = [
 ];
 
 export function WhyVariancesMatterPage() {
-  usePageTitle("Why variances matter");
+  usePageTitle("Why variances matter", STOCKPROOF_BRAND.name);
 
   return (
     <section className="relative px-5 pb-24 pt-16 sm:px-6 sm:pt-20">

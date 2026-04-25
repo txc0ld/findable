@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 
 import { usePageTitle } from "../../hooks/usePageTitle";
+import { UMBRELLA_BRAND } from "../../lib/brand";
 
 export function PrivacyPage() {
-  usePageTitle("Privacy Policy");
+  usePageTitle("Privacy Policy", UMBRELLA_BRAND.name);
 
   return (
     <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6">
