@@ -143,7 +143,7 @@ const REMEDIATION: Record<
   mcpServerCard: {
     title: "No MCP server card",
     description:
-      "Publish a Model Context Protocol server descriptor at /.well-known/mcp.json (or /.well-known/mcp-server.json) so AI agents can discover your tools, resources, and prompts.",
+      "Publish a Model Context Protocol server descriptor at /.well-known/mcp.json (or /.well-known/mcp-server.json) so AI agents can discover your tools, resources, and prompts.\n\nEasiest path: index your catalog or help docs in Cloudflare AI Search, enable Settings > Public Endpoint to get a hosted MCP server at https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp, then publish /.well-known/mcp.json pointing at that URL. See https://developers.cloudflare.com/ai-search/api/search/mcp/.",
     specUrl: "https://modelcontextprotocol.io/specification",
     weight: 6,
   },
@@ -164,7 +164,7 @@ const REMEDIATION: Record<
   webMcp: {
     title: "No Web MCP manifest",
     description:
-      "Publish a Web MCP manifest at /.well-known/web-mcp.json. Web MCP is the HTTP transport binding of MCP for browser-resident agents and serverless tool exposure.",
+      "Publish a Web MCP manifest at /.well-known/web-mcp.json. Web MCP is the HTTP transport binding of MCP for browser-resident agents and serverless tool exposure.\n\nEasiest path: Cloudflare AI Search exposes a Web-MCP-compatible HTTP endpoint at https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp once you enable Settings > Public Endpoint on your AI Search instance — no separate hosting needed. See https://developers.cloudflare.com/ai-search/api/search/mcp/.",
     specUrl: "https://modelcontextprotocol.io/specification/transports",
     weight: 4,
   },
