@@ -2,7 +2,12 @@ import type { PlanTier, ScanStatus, ScoreBreakdown } from "./types";
 
 export type WorkspacePlatform = "shopify" | "woocommerce" | "bigcommerce" | "custom";
 export type WorkspaceIssueSeverity = "critical" | "high" | "medium" | "low";
-export type WorkspaceIssueDimension = "schema" | "llm" | "protocol" | "consistency";
+export type WorkspaceIssueDimension =
+  | "schema"
+  | "llm"
+  | "protocol"
+  | "consistency"
+  | "agent_readiness";
 export type WorkspaceFixType = "auto" | "manual" | "hybrid";
 
 export interface WorkspaceNotificationSettings {
@@ -24,6 +29,7 @@ export interface WorkspaceStore {
   name: string | null;
   platform: WorkspacePlatform | null;
   productCount: number;
+  shopifyShop: string | null;
   status: "connected" | "not_connected";
   updatedAt: string | null;
   url: string | null;
@@ -71,6 +77,7 @@ export interface WorkspaceFeed {
 }
 
 export interface WorkspaceCompetitor {
+  agentReadinessScore: number;
   id: string;
   llmScore: number;
   name: string;
@@ -90,6 +97,7 @@ export interface WorkspaceScanListItem {
 }
 
 export interface WorkspaceSummary {
+  agentReadinessScore: number;
   autoFixableIssues: number;
   connectedStores: number;
   criticalIssues: number;

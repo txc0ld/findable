@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-const BASE_TITLE = "FINDABLE";
+const DEFAULT_SITE_NAME = "Findable";
 
-export function usePageTitle(title?: string) {
+export function usePageTitle(title?: string, siteName: string = DEFAULT_SITE_NAME) {
   useEffect(() => {
-    document.title = title ? `${title} — ${BASE_TITLE}` : BASE_TITLE;
+    document.title = title ? `${title} — ${siteName}` : siteName;
     return () => {
-      document.title = BASE_TITLE;
+      document.title = siteName;
     };
-  }, [title]);
+  }, [title, siteName]);
 }

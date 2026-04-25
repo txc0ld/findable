@@ -38,6 +38,7 @@ export const issueDimensionEnum = pgEnum("issue_dimension", [
   "llm",
   "protocol",
   "consistency",
+  "agent_readiness",
 ]);
 export const fixTypeEnum = pgEnum("fix_type", ["auto", "manual", "hybrid"]);
 export const feedTypeEnum = pgEnum("feed_type", ["acp", "gmc"]);
@@ -120,6 +121,7 @@ export const scans = pgTable("scans", {
   scoreLlm: integer("score_llm"),
   scoreProtocol: integer("score_protocol"),
   scoreCompetitive: integer("score_competitive"),
+  scoreAgentReadiness: integer("score_agent_readiness"),
   reportJson: jsonb("report_json").$type<Record<string, unknown> | null>(),
   startedAt: timestamp("started_at", { withTimezone: true }),
   completedAt: timestamp("completed_at", { withTimezone: true }),
@@ -195,6 +197,7 @@ export const competitors = pgTable("competitors", {
   scoreSchema: integer("score_schema"),
   scoreLlm: integer("score_llm"),
   scoreProtocol: integer("score_protocol"),
+  scoreAgentReadiness: integer("score_agent_readiness"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

@@ -41,6 +41,7 @@ export async function processScanJob(payload: ScanJobPayload) {
         scoreLlm: result.scoreLlm,
         scoreProtocol: result.scoreProtocol,
         scoreCompetitive: result.scoreCompetitive,
+        scoreAgentReadiness: result.scoreAgentReadiness,
         reportJson: result.reportJson,
         completedAt: new Date(),
       })
@@ -117,6 +118,7 @@ export async function processScanJob(payload: ScanJobPayload) {
       scoreLlm: result.scoreLlm,
       scoreProtocol: result.scoreProtocol,
       scoreCompetitive: result.scoreCompetitive,
+      scoreAgentReadiness: result.scoreAgentReadiness,
       reportJson: result.reportJson,
     });
   }
