@@ -54,7 +54,7 @@ export function DashboardHome() {
         <MetricCard
           label="Protocol"
           value={workspace.summary.protocolScore}
-          sublabel={`${workspace.summary.connectedStores} connected`}
+          sublabel={workspace.store.shopifyShop ?? (workspace.store.status === "connected" ? workspace.store.platform ?? "Connected" : "Not connected")}
           icon={PlugZap}
           scoreColor
         />

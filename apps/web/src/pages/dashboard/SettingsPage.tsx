@@ -17,6 +17,25 @@ export function SettingsPage() {
     weeklyReport: workspace.notifications.weeklyReport,
   });
 
+  const [shopifyShop, setShopifyShop] = useState(workspace.store.shopifyShop ?? "");
+
+  async function handleConnectShopify() {
+    if (!shopifyShop.trim()) {
+      alert("Please enter your .myshopify.com domain.");
+      return;
+    }
+    const cleanShop = shopifyShop.trim().toLowerCase().replace(/^https?:\/\//, "").split("/")[0];
+    const viteApiUrl = import.meta.env.VITE_API_URL;
+    let apiBase = "http://localhost:3001";
+    if (typeof viteApiUrl === "string" && viteApiUrl) {
+      apiBase = viteApiUrl;
+    } else if (typeof window !== "undefined" && window.location.origin) {
+      apiBase = window.location.origin;
+    }
+    const shopParam: string = cleanShop || "";
+    window.location.href = apiBase + "/api/shopify?shop=" + encodeURIComponent(shopParam);
+  }
+
   async function handleSave() {
     setIsSaving(true);
     try {
@@ -112,6 +131,33 @@ export function SettingsPage() {
               placeholder="https://your-store.com"
             />
           </label>
+
+          {formValues.platform === "shopify" && (
+            <div className="rounded-xl border border-white/8 bg-white/[0.03] p-4">
+              <label className="block">
+                <span className="text-xs font-medium text-white/60">Shopify Domain</span>
+                <div className="mt-1.5 flex gap-2">
+                  <input
+                    type="text"
+                    value={shopifyShop}
+                    onChange={(e) => setShopifyShop(e.target.value)}
+                    className="landing-input landing-input-mono flex-1"
+                    placeholder="your-store.myshopify.com"
+                  />
+                  <button
+                    onClick={handleConnectShopify}
+                    className="btn-primary shrink-0 rounded-xl px-4 py-2 text-sm font-semibold"
+                  >
+                    Connect
+                  </button>
+                </div>
+                <p className="mt-2 text-[10px] text-white/40">
+                  Click connect to authorize the Findable app in your Shopify admin.
+                </p>
+              </label>
+            </div>
+          )}
+
           <div className="rounded-xl border border-white/8 bg-white/[0.03] p-4">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#ccff00]/20 bg-[#ccff00]/10">
@@ -122,7 +168,7 @@ export function SettingsPage() {
                   {workspace.store.status === "connected" ? "Store connected" : "Not connected"}
                 </p>
                 <p className="text-xs text-white/40">
-                  {workspace.store.url ?? "Save a store URL to connect."}
+                  {workspace.store.shopifyShop ?? workspace.store.url ?? "Save a store URL to connect."}
                 </p>
               </div>
             </div>

@@ -7,6 +7,13 @@ import { authRoute } from "./routes/auth";
 import { healthRoute } from "./routes/health";
 import { scanRoute } from "./routes/scan";
 import { shopifyRoute } from "./routes/shopify";
+import { shopifyBillingRoute } from "./routes/shopify-billing";
+import { proxyRoute } from "./routes/proxy";
+import { schemaApiRoute } from "./routes/schema-api";
+
+// Start background workers
+import "./workers/shopify-worker";
+import "./workers/scan-worker";
 
 const app = new Hono();
 const allowedOrigins = (
@@ -51,6 +58,9 @@ app.route("/api/auth", authRoute);
 app.route("/api/account", accountRoute);
 app.route("/api/scan", scanRoute);
 app.route("/api/shopify", shopifyRoute);
+app.route("/api/shopify/billing", shopifyBillingRoute);
+app.route("/api/shopify/proxy", proxyRoute);
+app.route("/api/schema", schemaApiRoute);
 app.route("/shopify", shopifyRoute);
 
 export type AppType = typeof app;

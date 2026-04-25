@@ -24,6 +24,7 @@ export interface WorkspaceStore {
   name: string | null;
   platform: WorkspacePlatform | null;
   productCount: number;
+  shopifyShop: string | null;
   status: "connected" | "not_connected";
   updatedAt: string | null;
   url: string | null;

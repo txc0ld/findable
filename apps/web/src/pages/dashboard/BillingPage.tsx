@@ -4,6 +4,8 @@ import { Check, LoaderCircle } from "lucide-react";
 
 import { useDashboardContext } from "../../lib/dashboard-context";
 import { updatePlan } from "../../lib/workspace-api";
+import { buildApiUrl, parseApiResponse } from "../../lib/api-base";
+import { getAccessToken } from "../../lib/session";
 
 const PLANS: Array<{
   description: string;
@@ -44,8 +46,30 @@ export function BillingPage() {
   async function handleSelect(plan: PlanTier) {
     setActivePlan(plan);
     try {
+      // If Shopify, use the dedicated billing route to get a confirmation URL
+      if (workspace.store.platform === "shopify" && plan !== "free") {
+        const response = await fetch(buildApiUrl("/api/shopify/billing/subscribe"), {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${getAccessToken()}`,
+          },
+          body: JSON.stringify({ tier: plan }),
+        });
+
+        const { confirmationUrl } = await parseApiResponse<{ confirmationUrl: string }>(response);
+        if (confirmationUrl) {
+          window.location.href = confirmationUrl;
+          return;
+        }
+      }
+
+      // Default (Stripe or free toggle)
       await updatePlan(plan);
       await refreshWorkspace();
+    } catch (err) {
+      console.error("Billing error:", err);
+      alert(err instanceof Error ? err.message : "Failed to process billing.");
     } finally {
       setActivePlan(null);
     }
